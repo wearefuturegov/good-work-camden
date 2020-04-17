@@ -1,0 +1,152 @@
+
+
+
+<script>
+
+    function BtnClicked(){
+
+    var noOfSelected = CountChecked();
+
+        if(noOfSelected >= 1 && noOfSelected < 3 ){
+            return true;
+        }
+        else{
+            document.getElementById("supportError").style.visibility = "visible";
+            document.getElementById("supportError").classList.add("app-options-validation");
+            document.getElementById("supportError").innerText = "Please select at least one option and a maximum of two.";
+
+        return false;
+        }
+    }
+
+    function CountChecked(){
+        var count = 0;
+        var element = document.getElementsByClassName("govuk-checkboxes__input");
+        var count = 0;
+        for(var i=0; i < element.length; i++){
+        if(element[i].checked)
+            count++;
+        }
+        return count;
+    }
+
+</script>
+
+
+<%= link_to("Back", current_page_params.merge(step: '0'), class: "govuk-back-link") %>
+
+
+    <%= form_tag('/services',{:method => "get", :enforce_utf8 => false}) do %>
+
+    <div class="govuk-checkboxes app-checkbox-wrapper">
+
+
+    <h1 class="govuk-heading-l">Which type of support<br>do you need?</h1>
+    <p class="govuk-label app-label-question">Which of the following apply to you?</p>
+    <p class="govuk-hint">Please select a maximum of two:</p>
+    <br>
+    
+
+
+        <div class="app-checkbox-width_container">
+            <div class="govuk-checkboxes__item app-checkbox-width-third">
+
+                <%= check_box_tag("sprt[]", value = "applying", checked = @sprt.include?('applying') ? true : false , options = {:class=>'govuk-checkboxes__input'}) %>
+                <%= label_tag("sprt[]", "I need help looking and applying for jobs" , class:'govuk-label govuk-checkboxes__label' ) %>
+
+            </div>
+
+
+            <div class="govuk-checkboxes__item">
+
+                <%= check_box_tag("sprt[]", value = "outofwork", checked = @sprt.include?('outofwork') ? true : false , options = {:class=>'govuk-checkboxes__input'}) %>
+                <%= label_tag("sprt[]", "I have been out of work for a long time" , class:'govuk-label govuk-checkboxes__label') %>
+
+            </div>
+        </div>
+
+        <br>
+
+        <div class="app-checkbox-width_container">
+            <div class="govuk-checkboxes__item app-checkbox-width-third">
+
+                <%= check_box_tag("sprt[]", value = "startbusiness", checked = @sprt.include?('startbusiness') ? true : false, options = {:class=>'govuk-checkboxes__input'}) %>
+                <%= label_tag("sprt[]", "I want to start my own business" , class:'govuk-label govuk-checkboxes__label' ) %>
+
+            </div>
+            <div class="govuk-checkboxes__item">
+
+                <%= check_box_tag("sprt[]", value = "betterwork", checked = @sprt.include?('betterwork') ? true : false, options = {:class=>'govuk-checkboxes__input'}) %>
+                <%= label_tag("sprt[]", "I want to find work better suited to my interests"  , class:'govuk-label govuk-checkboxes__label' ) %>
+
+            </div>
+        </div>
+
+        <br>
+
+        <div class="app-checkbox-width_container">
+            <div class="govuk-checkboxes__item app-checkbox-width-third">
+
+                <%= check_box_tag("sprt[]", value = "returning", checked = @sprt.include?('returning') ? true : false, options = {:class=>'govuk-checkboxes__input'}) %>
+                <%= label_tag("sprt[]", "I am a parent returning to work" , class:'govuk-label govuk-checkboxes__label' ) %>
+
+            </div>
+
+            <div class="govuk-checkboxes__item">
+
+                <%= check_box_tag("sprt[]", value = "finance", checked = @sprt.include?('finance') ? true : false, options = {:class=>'govuk-checkboxes__input'}) %>
+                <%= label_tag("sprt[]", "I need help improving my financial situation" , class:'govuk-label govuk-checkboxes__label' ) %>
+
+            </div>
+        </div>
+
+        <br>
+
+        <div class="app-checkbox-width_container">
+            <div class="govuk-checkboxes__item app-checkbox-width-third">
+
+                <%= check_box_tag("sprt[]", value = "schedule", checked = @sprt.include?('schedule') ? true : false, options = {:class=>'govuk-checkboxes__input'}) %>
+                <%= label_tag("sprt[]", "I want to find work that fits my schedule" , class:'govuk-label govuk-checkboxes__label' ) %>
+
+            </div>
+            <div class="govuk-checkboxes__item">
+
+                <%= check_box_tag("sprt[]", value = "health", checked = @sprt.include?('health') ? true : false, options = {:class=>'govuk-checkboxes__input'}) %>
+                <%= label_tag("sprt[]", "I am dealing with health issues at work"  , class:'govuk-label govuk-checkboxes__label' ) %>
+
+            </div>
+        </div>
+
+        <br>
+
+        <div class="app-checkbox-width_container">
+            <div class="govuk-checkboxes__item app-checkbox-width-third">
+
+                <%= check_box_tag("sprt[]", value = "othersprt", checked = @sprt.include?('othersprt') ? true : false, options = {:class=>'govuk-checkboxes__input'}) %>
+                <%= label_tag("sprt[]", "Other" , class:'govuk-label govuk-checkboxes__label' ) %>
+
+            </div>
+        </div>
+
+        <% @persist.except("sprt").each do |key,value| %>
+        <%= hidden_field_tag(key,value) %>
+
+
+        <% end %>
+
+    </div>
+
+
+<div id="supportError">
+</div>
+
+  <br/>
+  <p>
+      <%= button_tag("Continue", type: 'submit', name: 'step', value: '2', class:'app-button-black', onclick:'return BtnClicked()') do %>
+        <span class="app-button-text">Continue <i class="arrow right"></i></span><% end %>
+  </p>
+<% end %>
+
+
+
+

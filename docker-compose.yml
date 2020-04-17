@@ -1,0 +1,34 @@
+version: '3.7'
+services:
+  db:
+    image: postgres
+    volumes:
+      - 'postgres:/var/lib/postgresql/data'
+    ports:
+      - '4040:5432'
+    networks:
+      cbc_network: null
+  web:
+    build:
+      context: .
+      dockerfile: DOCKERFILE
+    command: 'bash -c "rm -f tmp/pids/server.pid && bundle exec rake db:create && bundle exec rake db:migrate && bundle exec rake db:seed && bundle exec rails s -p 3000 -b ''0.0.0.0''"'
+    ports:
+      - '3000:3000'
+    volumes:
+      - '.:/cbcapp'
+      - 'cache:/cache'
+    environment:
+      - SPROCKETS_CACHE=/cache
+    restart: always
+    depends_on:
+      - db
+    links:
+      - 'db:db'
+    networks:
+      cbc_network: null
+volumes:
+  cache: null
+  postgres: null
+networks:
+  cbc_network: null

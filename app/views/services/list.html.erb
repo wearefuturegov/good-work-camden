@@ -1,0 +1,132 @@
+<style>
+.movedinlinestyles {
+    width:300px;border-radius: 27px 0px 0px 27px; border: solid grey 1px;
+}
+</style>
+
+
+<div class="govuk-breadcrumbs">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="/">Home</a>
+    </li>
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">Results</li>
+  </ol>
+</div>
+
+
+
+<% if @services.blank? %>
+<p class="govuk-body">Sorry, we don't have any services that match your criteria.</p>
+<% else %>
+
+
+
+<div class="govuk-grid-row">
+
+<div class="govuk-grid-column-two-thirds">
+
+
+    <h1 class="govuk-heading-l">Your results</h1>
+
+    <div class="govuk-panel app-panel-result-text">
+        <span class="govuk-hint">Based on your answers, we think you might find these services near you helpful. 
+        We can email this list to you for future reference (we don't view or store your details).
+        </span>
+    </div>
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+<label class="govuk-label app-m-email-results">Email your results</label>
+<div class="app-panel-email-results">
+  <label class="govuk-label app-label-padding" for="email" >
+    <h4 class="app-m-email-label">Email your results</h4>
+  </label>
+    <%= form_tag('services/emailresults',{:method => "get", :enforce_utf8 => false}) do %>
+        <%= text_field_tag(:email, "", type:'email', autocomplete:'email', class: 'govuk-input movedinlinestyles app-m-small') %>
+          <% @persist.each do |key,value| %>
+            <%= hidden_field_tag(key,value) %>
+          <% end %>
+        <%= button_tag("Send", type: 'submit', id: 'btnSend', name: 'send', value: '1', class:'app-button-send') do %>Send<% end %>
+    <% end %>
+</div>
+
+
+<!--a few temporary styles -->
+<style>
+#servicelist {
+    list-style-type: none;
+}
+
+#servicelist li {
+  
+    padding: 10px;
+}
+
+#servicelist li a {
+    font-weight: bold;
+}
+
+
+
+
+
+</style>
+
+
+<div class="grid-row">
+
+  <div class="column-full">
+  
+
+
+  <ul id="servicelist" class="app-list-details-custom">
+
+  <% @services.each do |s| %>
+    
+  <li class="govuk-body">
+
+  <%= label_tag('', s.name , class:'govuk-label app-label-li-name' ) %>
+
+  <%= label_tag('', s.description , class:'govuk-label app-label-li-description' ) %>
+
+      <% s.tags.each do |t| %>
+          <% if t.displayed == 1 then %>
+              <%= label_tag('', t.description , class:'govuk-label app-label-li-tags' ) %>
+          <% end %>
+      <% end %>
+  
+      <div class="app-div-button">
+     
+      <%= link_to(label_tag('', "View Details", class: 'app-button-black app-button-li-details app-button-details'),  {:action => 'details', :id => s.id } ) %>
+      </div>
+
+  </li>
+  <% end %>
+</ul>
+
+<% end %>
+
+
+
+
+  </div>
+
+
+</div>
+
+
+
+
+

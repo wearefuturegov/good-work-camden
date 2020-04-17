@@ -1,0 +1,166 @@
+
+<style>
+.start-hidden {
+    display: none;
+  }
+</style>
+
+<script>
+
+  function RadioOnClick(val){
+
+    if(val == 'y'){
+      document.getElementById("postcode-box").style.display = "block";
+      document.getElementById("eligible-box").style.display = "none";
+      document.getElementById("btnContinue").style.display = "block";
+    }
+
+    if(val == 'n'){
+       document.getElementById("postcode-box").style.display = "none";
+       document.getElementById("eligible-box").style.display = "block";
+       document.getElementById("btnContinue").style.display = "none"; 
+     }
+  }
+
+  function SetDefaultDisplayOption(){
+      var message = "<%= @errors['loc']%>";
+      if(message.includes('Not a Camden postcode')){
+          document.getElementById("locError").style.visibility = "visible";
+          document.getElementById("locError").classList.add("app-options-validation");
+          document.getElementById("locError").innerText = "That is not a Camden postcode, please try again";
+      }
+      else{
+        if(document.getElementById("locError")!= null){
+            document.getElementById("locError").style.visibility = "hidden";
+            document.getElementById("locError").innerText = "";
+        }
+      }
+  }
+
+
+  if (document.readyState === 'complete') {
+    SetDefaultDisplayOption();
+  } else {
+      document.addEventListener("DOMContentLoaded", SetDefaultDisplayOption);
+  }
+
+
+  
+  function BtnClicked(){
+
+    var nameEntered = HasValue('loc');
+    if(nameEntered.length > 2){
+        return true;
+    }
+    else{
+      document.getElementById("locError").style.visibility = "visible";
+      document.getElementById("locError").classList.add("app-options-validation");
+      document.getElementById("locError").innerText = "Please enter a post code";
+
+    return false;
+    }
+} 
+
+
+function HasValue(id){
+  var val = '';
+  val = document.getElementById(id).value;
+  return val;
+}
+
+</script>
+
+
+<div class="govuk-breadcrumbs">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="/">Home</a>
+    </li>
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">Location</li>
+  </ol>
+</div>
+
+<div id="locError"><label></label>
+</div>
+
+<div class="govuk-width-container govuk-body">
+  <p>
+    <h1 class="govuk-heading-l">Are you a Camden resident?</h1>
+  </p>
+
+
+    <div class="govuk-radios govuk-radios--inline">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="changed-name" name="changed-name" type="radio" value="yes"  onclick="RadioOnClick('y')">
+        <label class="govuk-label govuk-radios__label" for="changed-name">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="changed-name-2" name="changed-name" type="radio" value="no"  onclick="RadioOnClick('n')">
+        <label class="govuk-label govuk-radios__label" for="changed-name-2">
+          No
+        </label>
+      </div>
+    </div>
+
+<%= form_tag('/services',{:method => "get", :enforce_utf8 => false}) do %>
+
+<div class="app-radios-height">
+    <div id = "postcode-box" class="start-hidden">
+    <div class="app-panel-postcode-sidebar">
+        <p>
+          <label class="govuk-label app-label-question">
+              Please enter your postcode
+          </label>
+        </p>
+      <p>
+          <label class="govuk-hint">
+              We use this to recommend you services that are close to you.
+          </label>
+      </p>
+
+  
+      <div class="govuk-form-group">
+
+          <%= text_field_tag(:loc, "", type:'text', autocomplete:'postal-code', class: 'govuk-input govuk-input--width-10') %>
+          <% @persist.except('res','loc').each do |key,value| %>
+            <%= hidden_field_tag(key,value) %>
+          <% end %>
+
+      </div>
+    </div>
+    </div>
+
+
+    <div id = "eligible-box" class="start-hidden">
+    <div class="app-panel-postcode-sidebar app-width-one-third">
+      <p>
+      
+        <h3>Sorry, you can&#39;t use this service
+
+      </p>
+      <p>
+      <label class="govuk-hint">
+          Unfortunately we can only support Camden residents.
+          We suggest that you contact your local authority or get
+          in touch with <a href="#">National Careers Centre</a> to see what help is available.
+        </label>
+        </p>
+       </div>
+    </div>
+    
+
+      <%= button_tag("Continue", type: 'submit', id: 'btnContinue', name: 'step', value: '1', class:'app-button-black start-hidden',  onclick:'return BtnClicked()') do %>
+        <span class="app-button-text">Continue <i class="arrow right"></i></span><% end %>
+    
+
+  </div>
+
+
+  </div>
+ 
+<% end %>
+
+
+

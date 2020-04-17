@@ -1,0 +1,123 @@
+
+
+<script>
+
+function BtnClicked(){
+
+    var nameEntered = HasValue('name');
+    var emailEntered = HasValue('email');
+
+    if(nameEntered != '' && emailEntered != ''){
+        return true;
+    }
+    else{
+        document.getElementById("supportError").style.visibility = "visible";
+        document.getElementById("supportError").classList.add("app-options-validation");
+        document.getElementById("supportError").innerHTML = "Please enter your full name and <br>a valid email address in the correct format, like name@example.com";
+
+    return false;
+    }
+}
+
+function HasValue(id){
+    var val = '';
+    val = document.getElementById(id).value;
+    return val;
+}
+
+</script>
+
+
+<div class="govuk-breadcrumbs">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="/">Home</a>
+    </li>
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">Contact</li>
+  </ol>
+</div>
+
+
+<div class="govuk-width-container">
+
+
+    <div class="govuk-grid-row">
+
+        <div class="column-full">
+            <h1 class="govuk-heading-l app-heading-additional-padding">Contact</h1>
+            <br>
+        </div>
+
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <%= form_tag('/contact/thankyou',{:method => "get", :enforce_utf8 => false}) do %>
+                <div class="govuk-form-group">
+
+                    <label class="govuk-label" for="name">
+                        Full name
+                    </label>
+                    <%= text_field_tag(:name, "", class: 'govuk-input govuk-!-width-one-half') %>
+                </div>
+
+                <div class="govuk-form-group">
+
+                    <label class="govuk-label" for="email">
+                        Email address
+                    </label>
+                    <%= text_field_tag(:email, "", type: 'email', class: 'govuk-input govuk-!-width-one-half') %>
+
+                </div>
+                <div class="govuk-form-group">
+
+                    <label class="govuk-label" for="message">
+                        Your message
+                    </label>
+                    <%= text_area_tag(:message, "", rows: 5, class: 'govuk-textarea  govuk-!-width-two-thirds') %>
+                </div>
+
+
+                <div id="supportError">
+                </div>
+
+                <p>
+                    <%= button_tag("Continue", type: 'submit', class:'app-button-black app-button-finish-width', onclick:'return BtnClicked()') do %>Submit<% end %>
+                </p>
+            <% end %>
+            
+        </div>
+
+
+
+
+
+
+
+        <div class="govuk-grid-column-one-third app-panel-blog-margin">
+            <div class="app-panel-contact-right">
+
+                <p><label class="govuk-label app-header-text-bold">Related content</label></p>
+
+                <p class="govuk-label app-about-link-blog"><a href="#">Get employment support in camden</a></p>
+
+                <p>
+
+                    <p class="app-p-contact"><label class="govuk-label app-header-text-bold">Contact Details</label></p>
+
+                    <label class="app-contact-address-label">Good Work Camden</label><br>
+                    <label class="app-contact-address-label">5 Pancras Square</label><br>
+                    <label class="app-contact-address-label">London</label><br>
+                    <label class="app-contact-address-label">N1C 4AG</label><br><br>
+
+                    <label class="app-contact-address-label">Email: </label><a href="mailto:gwc@camden.gov.uk">gwc@camden.gov.uk</a><br>
+                    <label class="app-contact-address-label">Phone: 020 7974 4444</label><br>
+
+                </p>
+
+
+
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,168 @@
+
+ <div class="govuk-width-container govuk-body">
+<!-- <%= submit_tag("Back", :class=>'govuk-back-link') %>-->
+
+
+
+<%= link_to("Back", current_page_params.merge(step: '2'), class: "govuk-back-link") %>
+
+<h1 class="govuk-heading-l">Additional information</h1>
+    <p class="govuk-hint app-p-width-half">We ask these optional questions so we can 
+          give you more precise recommendations. 
+          They also help us understand our population 
+          better.
+    </p>
+
+<%= form_tag('/services',{:method => "get", :enforce_utf8 => false}) do %>
+
+  <p class="govuk-label app-label-question">What is your date of birth? (optional)</p>
+
+  <div class="govuk-date-input">
+
+    <div class="govuk-date-input__item">
+      <div class="govuk-form-group">
+
+        <%= label_tag(:dob_day, "Day", class:'govuk-label govuk-date-input__label' ) %>
+        <%= text_field_tag(:dob_day, @persist[:dob_day], autocomplete:'bday-day', minlength:'1', maxlength:'2', inputmode:'numeric', pattern:'[0-9]*', class: 'govuk-input govuk-date-input__input govuk-input--width-2') %>
+
+      </div>
+    </div>
+    
+    <div class="govuk-date-input__item">
+      <div class="govuk-form-group">
+
+        <%= label_tag(:dob_month, "Month", class:'govuk-label  govuk-date-input__label' ) %>
+        <%= text_field_tag(:dob_month, @persist[:dob_month], autocomplete:'bday-month', minlength:'1', maxlength:'2', inputmode:'numeric', pattern:'[0-9]*',  class: 'govuk-input govuk-date-input__input govuk-input--width-2') %>
+
+      </div>
+    </div>
+
+    <div class="govuk-date-input__item">
+      <div class="govuk-form-group">
+
+      <%= label_tag(:dob_year, "Year", class:'govuk-label  govuk-date-input__label' ) %>
+      <%= text_field_tag(:dob_year, @persist[:dob_year], autocomplete:'bday-year', minlength:'4', maxlength:'4', inputmode:'numeric', pattern:'[0-9]*', class: 'govuk-input govuk-date-input__input govuk-input--width-4') %>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <p class="govuk-label app-label-question">What is your gender? (optional)</p>
+
+  <div class="govuk-checkboxes app-checkbox-wrapper">
+
+    <div class="app-checkbox-width_container">
+     
+    <div class="govuk-checkboxes__item">
+        <%= radio_button_tag('gender', 'female', @persist[:gender] == "female", class:'govuk-radios__input') %>
+        <%= label_tag("gender", "Female", class:'govuk-label govuk-radios__label') %>
+    </div>
+     
+    <div class="govuk-checkboxes__item">
+      <%= radio_button_tag('gender', 'male', @persist[:gender] == "male", class:'govuk-radios__input') %>
+      <%= label_tag("gender", "Male", class:'govuk-label govuk-radios__label') %>
+    </div>
+    
+    <div class="govuk-checkboxes__item">
+       <%= radio_button_tag('gender', 'othergen', @persist[:gender] == "othergen", class:'govuk-radios__input') %>
+       <%= label_tag("gender", "Other", class:'govuk-label govuk-radios__label') %>
+    </div>
+     
+    <div class="govuk-checkboxes__item">
+       <%= radio_button_tag('gender', 'privategen', @persist[:gender] == "privategen", class:'govuk-radios__input') %>
+       <%= label_tag("gender", "Prefer not to say", class:'govuk-label govuk-radios__label') %>
+    </div>
+
+  </div>
+   
+  <br>
+
+  </div>
+
+
+  <p class="govuk-label app-label-question">What is your ethnic group? (optional)</p>
+
+  <div class="govuk-checkboxes app-checkbox-wrapper">
+
+    <div class="app-checkbox-width_container">
+      <div class="govuk-checkboxes__item app-checkbox-width-third">
+
+        <%= radio_button_tag('ethnic', 'asian', @persist[:ethnic] == "asian", class:'govuk-radios__input') %>
+        <%= label_tag("ethnic[]", "Asian or Asian British", class:'govuk-label govuk-radios__label') %>
+        <label class="govuk-hint app-hint-include-label" >
+              Includes any Asian background, for example, Bangladeshi, Chinese, Indian, Pakistani
+        </label>
+
+      </div>
+    <div class="govuk-checkboxes__item">
+
+      <%= radio_button_tag('ethnic', 'white', @persist[:ethnic] == "white", class:'govuk-radios__input') %>
+      <%= label_tag("ethnic", "White", class:'govuk-label govuk-radios__label') %>
+      <label class="govuk-hint app-hint-include-label" >
+            Includes any White background
+      </label>
+
+     </div>
+    </div>
+        
+    <br>
+
+    <div class="app-checkbox-width_container">
+      <div class="govuk-checkboxes__item app-checkbox-width-third">
+
+        <%= radio_button_tag('ethnic', 'black', @persist[:ethnic] == "black", class:'govuk-radios__input') %>
+        <%= label_tag("ethnic", "Black, African, Black British or Caribbean", class:'govuk-label govuk-radios__label') %>
+        <label class="govuk-hint app-hint-include-label" >
+              Includes any Black background
+        </label>
+
+      </div>
+    <div class="govuk-checkboxes__item">
+
+      <%= radio_button_tag('ethnic', 'othereth', @persist[:ethnic] == "othereth", class:'govuk-radios__input') %>
+      <%= label_tag("ethnic", "Another ethnic group", class:'govuk-label govuk-radios__label') %>
+      <label class="govuk-hint app-hint-include-label" >
+            Includes any other ethnic group, for example Arab
+      </label>
+
+     </div>
+    </div>
+       
+    <br>
+
+    <div class="app-checkbox-width_container">
+      <div class="govuk-checkboxes__item app-checkbox-width-third">
+
+      <%= radio_button_tag('ethnic', 'mixedeth', @persist[:ethnic] == "mixedeth", class:'govuk-radios__input') %>
+      <%= label_tag("ethnic", "Mixed or multiple ethnic groups", class:'govuk-label govuk-radios__label') %>
+      <label class="govuk-hint app-hint-include-label" >
+            Includes any Mixed background
+      </label>
+
+    </div>
+   <div class="govuk-checkboxes__item">
+
+     <%= radio_button_tag('ethnic', 'privateth', @persist[:ethnic] == "privateth", class:'govuk-radios__input') %>
+     <%= label_tag("ethnic", "Prefer not to say", class:'govuk-label govuk-radios__label') %>
+    
+    </div>
+  </div>
+        
+  <br>
+
+
+  <% @persist.except('dob_day','dob_month','dob_year','gender','ethnic').each do |key,value| %>
+  <%= hidden_field_tag(key,value) %>
+  <% end %>
+
+</div>
+
+    <p>
+        <%= button_tag("Continue", type: 'submit', name: 'step', value: '4', class:'app-button-black') do %><span class="app-button-text">Continue <i class="arrow right"></i></span><% end %>
+    </p>
+<% end %>
+
+</div>

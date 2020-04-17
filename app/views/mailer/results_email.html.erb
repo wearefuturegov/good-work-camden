@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Dear Resident,</p>
+
+    <p>Here are your results:</p>
+
+    <ul>
+        <% @services.each do |s| %>
+            <li><b><%= s.name %></b>
+            <br/><%= s.description %>
+            <br/>How they can help:
+                <% s.tags.each do |t| %>
+                  <% if t.displayed == 1 then %>
+                    <br/>&nbsp;&nbsp;&nbsp;&nbsp;<%= t.description %>
+                  <% end %>
+                <% end %>
+             <br/><a alt="View details" href="<%= s.website %>">View details</a>
+             <br/><br/>
+            </li>
+        <% end %>
+    </ul>
+
+    <br/><br/>
+    <p>Best wishes,<br/>
+    Good Work Camden</p>
+
+
+  </body>
+</html>

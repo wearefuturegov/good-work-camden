@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Dear Good Work Camden team,</p>
+
+    <p>The following message has been entered into the GWC web contact form:</p>
+    <hr/>
+    <br/><br/>
+    <p>Name: <%= sanitize @user[:name] %></p>
+    <p>Email: <%= sanitize @user[:email] %></p>
+    <p>Message: <%= sanitize @user[:message] %></p>
+
+    <br/><br/>
+    <p>Best wishes,<br/>
+    Good Work Camden</p>
+
+
+  </body>
+</html>

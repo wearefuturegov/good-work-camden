@@ -1,0 +1,99 @@
+
+<script>
+
+    function BtnClicked(){
+
+        var nameEntered = HasValue('name');
+        var emailEntered = HasValue('email');
+
+        if(nameEntered != '' && emailEntered != ''){
+            return true;
+        }
+        else{
+            document.getElementById("supportError").style.visibility = "visible";
+            document.getElementById("supportError").classList.add("app-options-validation");
+            document.getElementById("supportError").innerHTML = "Please enter your full name and <br>a valid email address in the correct format, like name@example.com";
+
+        return false;
+        }
+    }
+
+    function HasValue(id){
+        var val = '';
+        val = document.getElementById(id).value;
+        return val;
+    }
+
+</script>
+
+<div class="govuk-width-container govuk-body">
+    <div class="govuk-grid-row">
+
+        <h1 class="govuk-heading-l">Your details</h1>
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <p>
+
+                <label class="govuk-hint">We need your details to get in touch with you. We won&#39;t use them for anything else.</label>
+
+            </p>
+
+            <%= form_tag('/services/thankyou',{:method => "get", :enforce_utf8 => false}) do %>
+
+
+            <div class="govuk-form-group">
+
+                <label class="govuk-label" for="full-name">
+                    Full name
+                </label>
+
+                <%= text_field_tag(:name, "", class: 'govuk-input govuk-input--width-20') %>
+
+            </div>
+
+
+
+            <div class="govuk-form-group">
+
+                <label class="govuk-label" for="Email-address">
+                    Email address
+                </label>
+
+                <%= text_field_tag(:email, "", type:'email', autocomplete: "email", name:'email', spellcheck:'false', class: 'govuk-input govuk-input--width-20') %>
+
+            </div>
+
+
+            <div class="govuk-form-group ">
+
+                <label class="govuk-label" for="telephone-number">
+                    Phone or mobile number (optional)
+                </label>
+
+                <%= text_field_tag(:phone, "", autocomplete: "tel", type:"tel", inputmode:'numeric', pattern:'[0-9]*', class: 'govuk-input govuk-input--width-20') %>
+
+            </div>
+
+            <% @persist.except('name','email','phone').each do |key,value| %>
+            <%= hidden_field_tag(key,value) %>
+            <% end %>
+            <br />
+
+
+            <div id="supportError">
+            </div>
+
+            <p>
+
+                    <%= submit_tag("Finish", type: 'submit', class:'app-button-black app-button-finish-width', onclick:'return BtnClicked()') do %>
+                    <span class="app-button-text">Finish</span><% end %>
+
+
+            </p>
+            <% end %>
+
+
+        </div>
+    </div>
+</div>

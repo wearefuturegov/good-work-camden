@@ -1,0 +1,131 @@
+
+
+<script>
+
+function BtnClicked(){
+
+    var nameEntered = HasValue('name');
+    var emailEntered = HasValue('email');
+
+    if(nameEntered != '' && emailEntered != ''){
+        return true;
+    }
+    else{
+        document.getElementById("supportError").style.visibility = "visible";
+        document.getElementById("supportError").classList.add("app-options-validation");
+        document.getElementById("supportError").innerHTML = "Please enter your full name and <br>a valid email address in the correct format, like name@example.com";
+
+    return false;
+    }
+}
+
+function HasValue(id){
+    var val = '';
+    val = document.getElementById(id).value;
+    return val;
+}
+
+</script>
+
+
+<style>
+    input + label:after { content: ""; }
+    input:checked + label:after { content: ""; }
+
+</style>
+
+
+
+<div class="govuk-width-container">
+
+    <div class="govuk-grid-row">
+
+        <div class="column-full">
+            <h1 class="govuk-heading-l app-heading-additional-padding">Give feedback</h1>
+            <br>
+            
+        </div>
+
+
+        <div class="govuk-grid-column-two-thirds">
+
+        <p>
+            <label class="govuk-label app-header-text-bold">Overall, how do you feel about using this service?</label>
+        </p>
+
+
+        <div style="margin-bottom:50px;">
+
+            <div class="govuk-checkboxes__item">
+
+                <input id="radio-1" type="radio" name="radio-group" value="Very satisfied" class='govuk-radios__input'>
+                <label class='govuk-label govuk-radios__label' for="radio-1">Very satisfied</label>
+
+            </div>
+
+            <div class="govuk-checkboxes__item">
+
+                <input id="radio-1" type="radio" name="radio-group" value= satisfied" class='govuk-radios__input'>
+                <label class='govuk-label govuk-radios__label' for="radio-1">satisfied</label>
+
+            </div>
+
+
+            <div class="govuk-checkboxes__item">
+
+                <input id="radio-1" type="radio" name="radio-group" value="Neither satisfied nor dissatisfied" class='govuk-radios__input'>
+                <label class='govuk-label govuk-radios__label' for="radio-1">Neither satisfied nor dissatisfied</label>
+
+            </div>
+
+            <div class="govuk-checkboxes__item">
+
+                <input id="radio-1" type="radio" name="radio-group" value="Dissatisfied" class='govuk-radios__input'>
+                <label class='govuk-label govuk-radios__label' for="radio-1">Dissatisfied</label>
+
+            </div>
+
+
+                <div class="govuk-checkboxes__item">
+
+                <input id="radio-1" type="radio" name="radio-group" value="Very dissatisfied" class='govuk-radios__input'>
+                <label class='govuk-label govuk-radios__label' for="radio-1">Very dissatisfied</label>
+
+            </div>
+
+        </div>
+
+        
+            <%= form_tag('/contact/thankyou',{:method => "get", :enforce_utf8 => false}) do %>
+               
+                <div class="govuk-form-group">
+
+                    <label class="govuk-label app-header-text-bold" for="message">
+                       How could we improve this service?
+                    </label>
+                    <%= text_area_tag(:message, "", rows: 5, class: 'govuk-textarea  govuk-!-width-two-thirds') %>
+                </div>
+
+                <p>
+                    <labelclass="govuk-label">(Limit is 12000 characters)</label>
+                </p>
+
+                <p>
+                    <labelclass="govuk-label">Your feedback is anonymous. Please don't include any personal information.</label>
+                </p>
+
+
+                <div id="supportError">
+                </div>
+
+                <p>
+                    <%= button_tag("Send Feedback", type: 'submit', class:'app-button-black app-button-finish-width', onclick:'return BtnClicked()') do %>Submit<% end %>
+                </p>
+               
+
+            <% end %>
+
+            </div>
+    </div>
+
+</div>

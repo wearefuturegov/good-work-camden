@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template ">
+
+
+<head>
+    <title>Good Work Camden Services Directory</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= canonical_tag %>
+    <%= tag :meta, name: 'viewport', content: 'width=device-width, initial-scale=1' %>
+    <%= tag :meta, property: 'og:image', content: asset_pack_path('media/images/govuk-opengraph-image.png') %>
+    <%= tag :meta, name: 'theme-color', content: '#0b0c0c' %>
+    <%= favicon_link_tag asset_pack_path('media/images/favicon.ico') %>
+    <%= favicon_link_tag asset_pack_path('media/images/govuk-mask-icon.svg'), rel: 'mask-icon', type: 'image/svg', color: "#0b0c0c" %>
+    <%= favicon_link_tag asset_pack_path('media/images/govuk-apple-touch-icon.png'), rel: 'apple-touch-icon', type: 'image/png' %>
+    <%= favicon_link_tag asset_pack_path('media/images/govuk-apple-touch-icon-152x152.png'), rel: 'apple-touch-icon', type: 'image/png', size: '152x152' %>
+    <%= favicon_link_tag asset_pack_path('media/images/govuk-apple-touch-icon-167x167.png'), rel: 'apple-touch-icon', type: 'image/png', size: '167x167' %>
+    <%= favicon_link_tag asset_pack_path('media/images/govuk-apple-touch-icon-180x180.png'), rel: 'apple-touch-icon', type: 'image/png', size: '180x180' %>
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload', media: 'all' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+
+    
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro" rel="stylesheet">
+
+    <style>
+      
+        .govuk-header__content {
+            float: right !important;
+        }
+        
+    </style>
+
+
+<script>
+    function HideWarningOnClick(){
+        var checkBox =  document.getElementById("cb");
+        if(checkBox.checked){
+            document.getElementById("warning").style.display = "block";
+        }
+         else{
+            document.getElementById("warning").style.display = "none";
+        }
+    }
+ 
+    var cookieName = 'cookieCamdenconsent';
+    var cookieValue = 'dismissed';
+
+    function dismiss() {
+
+        const date = new Date();
+        // Cookie is valid 1 year
+        date.setTime(date.getTime() + (365 * 24 * 60 * 60 * 1000));
+        document.cookie = `${cookieName}=${cookieValue};expires=${date.toUTCString()};path=/`;
+        document.getElementById("divCookie").style.display = "none";
+    }
+ 
+    function checkCookie(){
+        var myCookie = getCookie(cookieName);
+        if (myCookie == null) {
+        //Show Cookie Consent
+            document.getElementById("divCookie").style.display = "block";
+        }
+        else 
+        {
+            var cookieArr = myCookie.split(";");
+            var val = cookieArr[0];
+            if(val != undefined && val == cookieValue){
+                if(document.getElementById("divCookie")!= null){
+                    document.getElementById("divCookie").style.display = "none";
+                }
+            }
+                
+        }
+    }
+
+    function getCookie(name) {
+        var dc = document.cookie;
+        var prefix = name + "=";
+        var begin = dc.indexOf("; " + prefix);
+        if (begin == -1) {
+            begin = dc.indexOf(prefix);
+            if (begin != 0) return null;
+        }
+        else
+        {
+            begin += 2;
+            var end = document.cookie.indexOf(";", begin);
+            if (end == -1) {
+            end = dc.length;
+            }
+        }
+   
+        return decodeURI(dc.substring(begin + prefix.length, end));
+    } 
+
+
+</script>
+
+
+</head>
+
+<body onload="checkCookie()" class="govuk-template__body ">
+
+
+    <script>
+        document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
+    </script>
+
+    <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
+    
+
+    <div class="app-phase-banner">
+    <div class="app-phase-banner__content">
+    <strong class="govuk-tag app-tag govuk-phase-banner__content__tag">
+        beta
+    </strong>
+    <span>
+        This is a new service - your <a class='app-link-custom' href='/pages/feedback'>feedback</a> will help us to improve it.
+    </span>
+    </div>
+    </div>
+
+
+    <div class="govuk-width-container">
+
+
+    <header class="govuk-header" role="banner" data-module="govuk-header">
+        <div class="govuk-header__container app-width-container">
+
+            <div class="app-header__logo ">
+          
+            <%= link_to(image_tag("logo.svg", :alt => "Get Started", :title => "Camden - Home", :class=>"app-header__logo"), "/") %>
+      
+       
+        </div>
+
+
+
+            <div class="govuk-header__content">
+                <button type="button" role="button" data-module="govuk-button" class="govuk-header__menu-button js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
+                <nav>
+                    <ul id="navigation" class="app-header__navigation " aria-label="Top Level Navigation">
+                        <li class="govuk-header__navigation-item app-navigation-about-margin-right">
+                            <%= link_to "About", "/about", class: "app-nav_link" %>
+                        </li>
+                        
+                        <li class="govuk-header__navigation-item">
+                            <%= link_to "Contact", "/contact", class: "app-nav_link" %>
+                        </li>
+                    </ul>
+                </nav>
+
+              
+                
+            </div>
+
+         
+        </div>
+
+
+        <div class="govuk-header__container app-warning-container" >
+            <div class="app-covid-warning-container"><span class="app-covid-warning">Coronavirus (COVID-19) update</span></div>
+
+           
+            
+            <input type='checkbox' value=true style='display: none;' id='cb'  onclick="HideWarningOnClick()">
+            <label class="app-label-hideshow-warning" for=cb>Show Message</label>
+           
+
+            <div id="warning" style="display:none; background-color:#E0D6FF!important; z-index:10000; width:100%; height:490px;border:0px; padding: 0px; margin-bottom:5px;">
+
+                <div class="govuk-grid-row">
+
+                <div class="govuk-grid-column-two-thirds app-grid-column-padding-warning">
+
+
+                <div>
+
+                        <label class="govuk-label app-warning-label-larger">
+                            We know that coronavirus and the measures put in place to help address it are impacting Camden residents in many ways, 
+                            including around work and finances.
+                        </label>
+
+
+
+                        <ul>
+                            <li class="app-li-margin app-warning-ul">
+                            <label class="govuk-label">Camden is working with our local employment and skills services to provide support to residents during these confusing and challenging times.</label>
+                            </li>
+
+                            <li class="app-li-margin app-warning-ul">
+                            <label class="govuk-label"> We are adapting our employment support service to ensure that we continue to support Camden residents.</label>
+                            </li>
+
+                            <li class="app-li-margin app-warning-ul">
+                            <label class="govuk-label">Our service is currently delivered over the phone and online.</label>
+                            </li>
+
+                        </ul>
+
+
+                        <label class="govuk-label app-font-bold">We&#39;re here to help you.</label>
+
+                        </div>
+
+                </div>
+
+
+                    <div class="govuk-grid-column-one-third">
+
+
+                            <div class="app-warning-imformation-small-device-padding">
+
+                                <p><label class="govuk-label app-font-bold">More Information</label></p>
+
+                                <div class="app-panel-warning-information">
+                                    
+
+                                    <label class="govuk-label app-panel-warning-information-label">Coronavirus: The official UK government advice</label>
+                                </div>
+
+                                <div class="app-panel-warning-information">
+                                    
+
+                                    <label class="govuk-label app-panel-warning-information-label">If you&#39;re worried about your health or have coronavirus symptoms, call NHS 111 or check the NHS website.</label>
+                                </div>
+
+
+                                <div class="app-panel-warning-information">
+                                    
+
+                                    <label class="govuk-label app-panel-warning-information-label">Get help if you&#39;re staying at home because of coronavirus</label>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                </div>
+
+            </div>
+
+
+
+           
+            
+
+            
+
+        </div>
+
+
+    </header>
+
+    <div class="govuk-width-container">
+        <main class="govuk-main-wrapper " id="main-content" role="main">
+            <%= yield %>
+        </main>
+    </div>
+
+
+
+    </div>
+
+
+    <footer class="govuk-footer app-footer-bordernone" role="contentinfo">
+    <div class="govuk-width-container ">
+      <div class="govuk-footer__meta">
+        <div class="govuk-footer__meta-item govuk-footer__meta-item--grow app-footer__meta-item">
+          <h2 class="govuk-visually-hidden">Support links</h2>
+          <ul class="govuk-footer__inline-list  app_footer__inline-line">
+
+            <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="/pages/privacy">
+            Cookies and Privacy statement
+            </a>
+          </li>
+
+          <li class="govuk-footer__inline-list-item">
+          <a class="govuk-footer__link" href="/pages/accessibility">
+           Accessibility statement
+          </a>
+        </li>
+
+        <li class="govuk-footer__inline-list-item">
+        <a class="govuk-footer__link" href="/pages/statement">
+         Modern slavery statement
+        </a>
+      </li>
+          </ul>
+
+         <div class="govuk-footer__meta-custom app_meta-custom">
+          Built and maintained by Camden Council
+          </div>
+          
+
+          <svg aria-hidden="true" focusable="false" class="govuk-footer__licence-logo" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 483.2 195.7" height="17" width="41">
+          <path fill="currentColor" d="M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145" />
+        </svg>
+  
+       
+          <span class="govuk-footer__licence-description">
+            All content is available under the
+            <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence</a>
+          </span>
+        </div>
+        
+      </div>
+    </div>
+  </footer>
+
+  <div id="divCookie" class="cookie-banner js-cookie-banner start-hidden">
+  <p class="govuk-label">
+  We use cookies to collect information about how you use Good Work Camden. We use this information to make the website work as well as possible and improve our services.  
+  <a class="govuk-footer__link" href="/pages/privacy">Learn more about how we use cookies</a>
+  <button onclick="dismiss()" class="js-cookie-dismiss" >Accept all cookies</button>
+  </p>
+</div>
+
+</body>
+
+</html>

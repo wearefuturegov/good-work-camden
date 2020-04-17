@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  host: db
+  username: postgres
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
+  pool: 5
+  encoding: unicode
+
+development:
+  <<: *default
+  database: gwcamden_dev
+
+test:
+  <<: *default
+  database: gwcamden_tst
+
+production:
+  url: <%= ENV['DATABASE_URL'] %>
+  pool: 5
+  encoding: unicode

@@ -1,0 +1,156 @@
+ <%= link_to("Back", current_page_params.merge(step: '1'), class: "govuk-back-link") %>
+
+
+
+<h1 class="govuk-heading-l">Please tell us about your situation</h1>
+
+    <p class="app-hint-custom app-p-width-half">These quesitons are optional, but we still
+        want to ask them because they help us
+        understand your situation and give you better help.
+        All information is confidential.
+    </p>
+
+    <p class="govuk-label app-label-question">How would you describe your current work status? (optional)</p>
+    <p class="govuk-hint">You can select multiple options</p>
+
+    <%= form_tag('/services',{:method => "get", :enforce_utf8 => false}) do %>
+
+    <div class="govuk-checkboxes app-checkbox-wrapper">
+
+        <div class="app-checkbox-width_container">
+            <div class="govuk-checkboxes__item app-checkbox-width-third">
+
+                <%= check_box_tag("emp[]",value = "fte",checked = @employ.include?('fte') ? true : false , options = {:class=>'govuk-checkboxes__input'}) %>
+                <%= label_tag("emp[]", "Employed full-time", class:'govuk-label govuk-checkboxes__label' ) %>
+
+            </div>
+            <div class="govuk-checkboxes__item">
+
+                <%= check_box_tag("emp[]",value = "pte",checked = @employ.include?('pte') ? true : false, options = {:class=>'govuk-checkboxes__input'}) %>
+                <%= label_tag("emp[]", "Employed part-time", class:'govuk-label govuk-checkboxes__label' ) %>
+
+            </div>
+        </div>
+
+        <br>
+
+        <div class="app-checkbox-width_container">
+            <div class="govuk-checkboxes__item app-checkbox-width-third">
+
+                <%= check_box_tag("emp[]", value = "es",checked = @employ.include?('es') ? true : false, options = {:class=>'govuk-checkboxes__input'}) %>
+                <%= label_tag("emp[]", "Student and employed", class:'govuk-label govuk-checkboxes__label' ) %>
+
+            </div>
+            <div class="govuk-checkboxes__item">
+
+                <%= check_box_tag("emp[]", value = "st",checked = @employ.include?('st') ? true : false, options = {:class=>'govuk-checkboxes__input'}) %>
+                <%= label_tag("emp[]", "Student", class:'govuk-label govuk-checkboxes__label' ) %>
+
+            </div>
+        </div>
+
+        <br>
+
+        <div class="app-checkbox-width_container">
+            <div class="govuk-checkboxes__item app-checkbox-width-third">
+
+                <%= check_box_tag("emp[]",value = "se",checked = @employ.include?('se') ? true : false, options = {:class=>'govuk-checkboxes__input'}) %>
+                <%= label_tag("emp[]", "Self-employed", class:'govuk-label govuk-checkboxes__label' ) %>
+
+            </div>
+            <div class="govuk-checkboxes__item">
+
+                <%= check_box_tag("emp[]", value = "ue",checked = @employ.include?('ue') ? true : false, options = {:class=>'govuk-checkboxes__input'}) %>
+                <%= label_tag("emp[]", "Unemployed", class:'govuk-label govuk-checkboxes__label' ) %>
+
+            </div>
+        </div>
+
+        <br>
+        <div class="app-checkbox-width_container">
+            <div class="govuk-checkboxes__item app-checkbox-width-third">
+
+                <%= check_box_tag("emp[]", value ="pl",checked = @employ.include?('pl') ? true : false, options = {:class=>'govuk-checkboxes__input'}) %>
+                <%= label_tag("emp[]", "Parental leave", class:'govuk-label govuk-checkboxes__label' ) %>
+
+            </div>
+            <div class="govuk-checkboxes__item">
+
+                <%= check_box_tag("emp[]", value = "oe", checked = @employ.include?('oe') ? true : false, options = {:class=>'govuk-checkboxes__input'}) %>
+                <%= label_tag("emp[]", "Other", class:'govuk-label govuk-checkboxes__label' ) %>
+
+            </div>
+        </div>
+
+    </div>
+
+    <br>
+
+    <p class="govuk-label app-label-question">What is your housing situation? (optional)</p>
+
+    <div class="govuk-checkboxes app-checkbox-wrapper">
+
+        <div class="app-checkbox-width_container">
+            <div class="govuk-checkboxes__item app-checkbox-width-third">
+
+                <%= radio_button_tag("hou[]", 'ct', @house.include?('ct') ? true : false, class:'govuk-radios__input') %>
+                <%= label_tag("hou[]", "Council tenant", class:'govuk-label govuk-radios__label') %>
+
+            </div>
+            <div class="govuk-checkboxes__item">
+
+                <%= radio_button_tag("hou[]", 'at', @house.include?('at') ? true : false, class:'govuk-radios__input') %>
+                <%= label_tag("hou[]", "Housing association tenant", class:'govuk-label govuk-radios__label') %>
+
+            </div>
+        </div>
+
+        <br>
+
+        <div class="app-checkbox-width_container">
+            <div class="govuk-checkboxes__item app-checkbox-width-third">
+
+                <%= radio_button_tag("hou[]", 'pt', @house.include?('pt') ? true : false, class:'govuk-radios__input') %>
+                <%= label_tag("hou[]", "Private tenant", class:'govuk-label govuk-radios__label') %>
+
+            </div>
+            <div class="govuk-checkboxes__item">
+
+                <%= radio_button_tag("hou[]", 'op', @house.include?('op') ? true : false, class:'govuk-radios__input') %>
+                <%= label_tag("hou[]", "Own property", class:'govuk-label govuk-radios__label') %>
+
+            </div>
+        </div>
+
+        <br>
+
+        <div class="app-checkbox-width_container">
+            <div class="govuk-checkboxes__item app-checkbox-width-third">
+
+                <%= radio_button_tag("hou[]", 'fr', @house.include?('fr') ? true : false, class:'govuk-radios__input') %>
+                <%= label_tag("hou[]", "Living with friends or relatives", class:'govuk-label govuk-radios__label') %>
+
+            </div>
+            <div class="govuk-checkboxes__item">
+
+
+                <%= radio_button_tag("hou[]", 'oh', @house.include?('oh') ? true : false, class:'govuk-radios__input') %>
+                <%= label_tag("hou[]", "Other", class:'govuk-label govuk-radios__label') %>
+
+            </div>
+        </div>
+
+        <br>
+
+    </div>
+
+    <% @persist.except("emp","hou").each do |key,value| %>
+    <%= hidden_field_tag(key,value) %>
+    <% end %>
+
+  <br/>
+<p>
+  <%= button_tag("Continue", type: 'submit', name: 'step', value: '3', class:'app-button-black') do %><span class="app-button-text">Continue <i class="arrow right"></i></span><% end %>
+</p>
+  <% end %>
+
