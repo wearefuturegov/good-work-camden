@@ -30,9 +30,5 @@ yarn-debug.log*
 *.log
 
 .vscode
-/Gemfile.lock
-/yarn.lock
-/yarn.lock
-/Gemfile.lock
-/Gemfile.lock
+
 /yarn.lock
