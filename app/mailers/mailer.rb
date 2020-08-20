@@ -3,7 +3,7 @@ class Mailer < ApplicationMailer
    
     def adviser_email
       @user = params[:user]
-      mail(to: ENV.get('CAMDEN_ADVISOR_EMAIL'), subject: 'Good Work Camden')
+      mail(to: ENV['CAMDEN_ADVISOR_EMAIL'], subject: 'Good Work Camden')
     end
 
     def adviser_confirmation_email
@@ -19,7 +19,7 @@ class Mailer < ApplicationMailer
 
     def contact_email
       @user = params[:user]
-      mail(to: ENV.get('CAMDEN_CONTACT_EMAIL'), subject: 'Good Work Camden contact form message')
+      mail(to: ENV['CAMDEN_CONTACT_EMAIL'], subject: 'Good Work Camden contact form message')
     end
 
     def contact_confirmation_email
