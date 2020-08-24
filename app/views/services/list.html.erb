@@ -50,11 +50,12 @@
 
 <label class="govuk-label app-m-email-results">Email your results</label>
 <div class="app-panel-email-results">
-  <label class="govuk-label app-label-padding" for="email" >
+
     <h4 class="app-m-email-label">Email your results</h4>
-  </label>
+
     <%= form_tag('services/emailresults',{:method => "get", :enforce_utf8 => false}) do %>
-        <%= text_field_tag(:email, "", type:'email', autocomplete:'email', class: 'govuk-input movedinlinestyles app-m-small') %>
+        <label class="visually-hidden">Email address</label>
+        <%= text_field_tag(:email, "", type:'email', placeholder: "Email address", autocomplete:'email', class: 'govuk-input movedinlinestyles app-m-small') %>
           <% @persist.each do |key,value| %>
             <%= hidden_field_tag(key,value) %>
           <% end %>
