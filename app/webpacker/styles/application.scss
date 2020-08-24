@@ -13,6 +13,18 @@ $govuk-image-url-function: frontend-image-url;
 
 @import "./public/css/cbc-style";
 
+$black: #000000;
+$pink: #D31568;
+$bright-blue: #07A7E1;
+$dark-blue: #203C87;
+
+*{
+  font-family: Source Sans Pro, sans-serif;
+}
+
+a{
+  color: $dark-blue;
+}
 
 .visually-hidden {
   clip: rect(0 0 0 0);
@@ -24,17 +36,54 @@ $govuk-image-url-function: frontend-image-url;
   width: 1px;
 }
 
+.app-header{
+  padding: 25px 0px;
 
-.app-warning-container{
-  background-color: #E0D6FF;
+  &__masthead{
+    max-width: 380px;
+    margin-bottom: 15px;
+    display: block;
+    @media screen and (min-width: 600px){
+      margin-bottom: 0px;
+    }
+    img{
+      width: 100%;
+    }
+  }
+
+  &__navigation{
+    float: none;
+    text-align: left;
+    a{
+      font-weight: bold;
+      margin-right: 10px;
+      font-size: 1.2rem;
+      &:last-of-type{
+        margin-right: 0px;
+      }
+    }
+  }
+
+  @media screen and (min-width: 600px){
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.coronavirus-warning{
+  background-color: transparentize($bright-blue, 0.75);
   border: none;
   padding: 15px;
+  border-radius: 5px;
 
   summary{
-    color: black;
+    color: $black;
     font-weight: 700;
     text-decoration: underline;
     cursor: pointer;
+    font-size: 1.1rem;
     &:after{
       float: right;
       content: "Show message";

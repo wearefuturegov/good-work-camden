@@ -78,29 +78,23 @@
 	<div class="app-phase-banner">
 		<div class="app-phase-banner__content">
 			<strong class="govuk-tag app-tag govuk-phase-banner__content__tag">beta</strong> 
-			<span>This is a new service - your <a class='app-link-custom' href='#'>feedback</a> will help us to improve it.</span>
+			<span>This is a new service - <a class='app-link-custom' href='https://forms.gle/r5ZTh7Nqtib48jZW8'>your feedback</a> will help us to improve it.</span>
 		</div>
 	</div>
 
 	<div class="govuk-width-container">
-		<header class="govuk-header" data-module="govuk-header" role="banner">
-			<div class="govuk-header__container app-width-container">
-				<div class="app-header__logo">
-					<%= link_to(image_tag("logo.svg", :alt => "Get Started", :title => "Camden - Home", :class=>"app-header__logo"), "/") %>
-				</div>
-				<div class="govuk-header__content">
-					<button aria-controls="navigation" aria-label="Show or hide Top Level Navigation" class="govuk-header__menu-button js-header-toggle" data-module="govuk-button" role="button" type="button">Menu</button>
-					<nav>
-						<ul aria-label="Top Level Navigation" class="app-header__navigation" id="navigation">
-							<li class="govuk-header__navigation-item app-navigation-about-margin-right"><%= link_to "About", "/about", class: "app-nav_link" %></li>
-							<li class="govuk-header__navigation-item"><%= link_to "Contact", "/contact", class: "app-nav_link" %></li>
-						</ul>
-					</nav>
-				</div>
-			</div>
 
-			<%= render "shared/coronavirus.html.erb" %>
+		<header class="app-header">
+			<a class="app-header__masthead" href="/" role="banner">
+				<%= image_tag("logo.svg", alt: "Get Started") %>
+			</a>
+			<nav aria-label="Main navigation" class="app-header__navigation">
+				<%= link_to "About", "/about", class: "app-nav_link" %></li>
+				<%= link_to "Contact", "/contact", class: "app-nav_link" %></li>
+			</nav>
 		</header>
+
+		<%= render "shared/coronavirus.html.erb" %>
 
 		<div class="govuk-width-container">
 			<main class="govuk-main-wrapper" id="main-content" role="main">
