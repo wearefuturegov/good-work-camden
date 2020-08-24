@@ -1,34 +1,19 @@
+Dear Resident,
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <p>Dear Resident,</p>
+Here are your results:
+<% @services.each do |s| %>
+  -<%= s.name %>
+  <%= s.description %>
+  How they can help:
+  <% s.tags.each do |t| %>
+    <% if t.displayed == 1 then %>
+      <%= t.description %>
+    <% end %>
+  <% end %>
+  [View details](<%= s.website %>)
 
-    <p>Here are your results:</p>
+<% end %>
 
-    <ul>
-        <% @services.each do |s| %>
-            <li><b><%= s.name %></b>
-            <br/><%= s.description %>
-            <br/>How they can help:
-                <% s.tags.each do |t| %>
-                  <% if t.displayed == 1 then %>
-                    <br/>&nbsp;&nbsp;&nbsp;&nbsp;<%= t.description %>
-                  <% end %>
-                <% end %>
-             <br/><a alt="View details" href="<%= s.website %>">View details</a>
-             <br/><br/>
-            </li>
-        <% end %>
-    </ul>
+Best wishes,
 
-    <br/><br/>
-    <p>Best wishes,<br/>
-    Good Work Camden</p>
-
-
-  </body>
-</html>
+Good Work Camden

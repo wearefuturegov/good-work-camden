@@ -1,29 +1,49 @@
-class Mailer < ApplicationMailer
-    default from: 'mailgun@sandbox6843066e1d98469d80e6f6d909c01786.mailgun.org'
+class Mailer < Mail::Notify::Mailer
+    default from: ENV['FROM_EMAIL_ADDRESS']
    
     def adviser_email
       @user = params[:user]
-      mail(to: ENV['CAMDEN_ADVISOR_EMAIL'], subject: 'Good Work Camden')
+      view_mail(
+        ENV['GOVUK_NOTIFY_TEMPLATE_ID'],
+        to: ENV['CAMDEN_ADVISOR_EMAIL'],
+        subject: 'Good Work Camden'
+      )
     end
 
     def adviser_confirmation_email
       @user = params[:user]
-      mail(to: @user[:email], subject: 'Camden employment advisor contact')
+      view_mail(
+        ENV['GOVUK_NOTIFY_TEMPLATE_ID'],
+        to: @user[:email],
+        subject: 'Camden employment advisor contact'
+      )
     end
 
     def results_email
       @user = params[:user]
       @services = params[:services]
-      mail(to: @user[:email], subject: 'Good Work Camden')
+      view_mail(
+        ENV['GOVUK_NOTIFY_TEMPLATE_ID'],
+        to: @user[:email],
+        subject: 'Good Work Camden'
+      )
     end
 
     def contact_email
       @user = params[:user]
-      mail(to: ENV['CAMDEN_CONTACT_EMAIL'], subject: 'Good Work Camden contact form message')
+      view_mail(
+        ENV['GOVUK_NOTIFY_TEMPLATE_ID'],
+        to: ENV['CAMDEN_CONTACT_EMAIL'],
+        subject: 'Good Work Camden contact form message'
+      )
     end
 
     def contact_confirmation_email
       @user = params[:user]
-      mail(to: @user[:email], subject: "Your message to Camden's employment support service has been sent")
+      view_mail(
+        ENV['GOVUK_NOTIFY_TEMPLATE_ID'],
+        to: @user[:email],
+        subject: "Your message to Camden's employment support service has been sent"
+      )
     end
   end

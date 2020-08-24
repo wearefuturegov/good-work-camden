@@ -30,9 +30,8 @@ gem "foreman"
 gem "canonical-rails"
 
 gem 'activerecord-session_store'
-#Mailgun
 
-gem "mailgun_rails"
+gem "mail-notify"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

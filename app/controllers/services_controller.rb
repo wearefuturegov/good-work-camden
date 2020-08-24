@@ -1,4 +1,4 @@
-require 'date'
+brequire 'date'
 
 class ServicesController < ApplicationController
 
@@ -16,6 +16,7 @@ class ServicesController < ApplicationController
     if params[:loc].present? then
       postcode = params[:loc].upcase
       @ward = Postcode.where({"postcode3": postcode}).select("wardname").first
+
       if !@ward then
           @errors["loc"] = "Not a Camden postcode"
           @step = "1"

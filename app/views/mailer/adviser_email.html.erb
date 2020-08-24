@@ -1,57 +1,45 @@
+Dear Employment Adviser,
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <p>Dear Employment Adviser,</p>
+A Camden resident has requested to speak to an adviser. Review their details below and follow up with them to arrange an appointment.
 
-    <p> A Camden resident has requested to speak to an adviser. Review their details below and follow up with them to arrange an appointment.</p>
-    <hr/>
-    <p>Name: <%= sanitize @user[:name] %></p>
-    <p>Email: <%= sanitize @user[:email] %></p>
-    <p>Phone or mobile number: <%= sanitize @user[:phone] %></p>
-    <p>Postcode: <%= sanitize @user[:loc] %></p>
+Name: <%= sanitize @user[:name] %>
+Email: <%= sanitize @user[:email] %>
+Phone or mobile number: <%= sanitize @user[:phone] %>
+Postcode: <%= sanitize @user[:loc] %>
 
-    <p>Type of support they need: 
-        <%= @user[:sprt].include?('applying') ? "They need help looking and applying for jobs. " : "" %>
-        <%= @user[:sprt].include?('outofwork') ? "They have been out of work for a long time. " : "" %>
-        <%= @user[:sprt].include?('startbusiness') ? "They want to start their own business. " : "" %>
-        <%= @user[:sprt].include?('betterwork') ? "They want to find work better suited to their interests. " : "" %>
-        <%= @user[:sprt].include?('returning') ? "They are a parent returning to work. " : "" %>
-        <%= @user[:sprt].include?('finance') ? "They need help improving their financial situation. " : "" %>
-        <%= @user[:sprt].include?('schedule') ? "They want to find work that fits their schedule. " : "" %>
-        <%= @user[:sprt].include?('health') ? "They are dealing with health issues at work. " : "" %>
-        <%= @user[:sprt].include?('other') ? "They need some other form of support that is not listed. " : "" %>
-    </p>
-    <p>Work status: 
-        <%= @user[:emp].include?('fte') ? "Employed full-time. " : "" %>
-        <%= @user[:emp].include?('pte') ? "Employed part-time. " : "" %>
-        <%= @user[:emp].include?('es') ? "Student and employed. " : "" %>
-        <%= @user[:emp].include?('st') ? "Student. " : "" %>
-        <%= @user[:emp].include?('se') ? "Self-employed. " : "" %>
-        <%= @user[:emp].include?('ue') ? "Unemployed. " : "" %>
-        <%= @user[:emp].include?('pl') ? "Parental leave. " : "" %>
-        <%= @user[:emp].include?('oe') ? "Other employment (not listed). " : "" %>
-    </p>
-    <p>Housing situation: 
-      <%= @user[:hou].include?('ct') ? "Council tenant. " : "" %>
-      <%= @user[:hou].include?('at') ? "Housing association tenant. " : "" %>
-      <%= @user[:hou].include?('pt') ? "Private tenant. " : "" %>
-      <%= @user[:hou].include?('op') ? "Own property. " : "" %>
-      <%= @user[:hou].include?('fr') ? "Living with friends or relatives. " : "" %>
-      <%= @user[:hou].include?('oh') ? "Other housing situation (not listed). " : "" %>
-    </p>
-    <p>Date of birth: <%= sanitize @user[:dob_day] %>/<%= sanitize @user[:dob_month] %>/<%= sanitize @user[:dob_year] %></p>
-    <p>Gender: <%= sanitize @user[:gender] %></p>
-    <p>Ethnic group: <%= sanitize @user[:ethnic] %></p>
-    <br/><br/>
-    <hr/>
-    <br/><br/>
-    <p>Best wishes,<br/>
-    Good Work Camden</p>>
+Type of support they need:
+<%= @user[:sprt].include?('applying') ? "They need help looking and applying for jobs. " : "" %>
+<%= @user[:sprt].include?('outofwork') ? "They have been out of work for a long time. " : "" %>
+<%= @user[:sprt].include?('startbusiness') ? "They want to start their own business. " : "" %>
+<%= @user[:sprt].include?('betterwork') ? "They want to find work better suited to their interests. " : "" %>
+<%= @user[:sprt].include?('returning') ? "They are a parent returning to work. " : "" %>
+<%= @user[:sprt].include?('finance') ? "They need help improving their financial situation. " : "" %>
+<%= @user[:sprt].include?('schedule') ? "They want to find work that fits their schedule. " : "" %>
+<%= @user[:sprt].include?('health') ? "They are dealing with health issues at work. " : "" %>
+<%= @user[:sprt].include?('other') ? "They need some other form of support that is not listed. " : "" %>
 
+Work status:
+<%= @user[:emp].include?('fte') ? "Employed full-time. " : "" %>
+<%= @user[:emp].include?('pte') ? "Employed part-time. " : "" %>
+<%= @user[:emp].include?('es') ? "Student and employed. " : "" %>
+<%= @user[:emp].include?('st') ? "Student. " : "" %>
+<%= @user[:emp].include?('se') ? "Self-employed. " : "" %>
+<%= @user[:emp].include?('ue') ? "Unemployed. " : "" %>
+<%= @user[:emp].include?('pl') ? "Parental leave. " : "" %>
+<%= @user[:emp].include?('oe') ? "Other employment (not listed). " : "" %>
 
-  </body>
-</html>
+Housing situation:
+<%= @user[:hou].include?('ct') ? "Council tenant. " : "" %>
+<%= @user[:hou].include?('at') ? "Housing association tenant. " : "" %>
+<%= @user[:hou].include?('pt') ? "Private tenant. " : "" %>
+<%= @user[:hou].include?('op') ? "Own property. " : "" %>
+<%= @user[:hou].include?('fr') ? "Living with friends or relatives. " : "" %>
+<%= @user[:hou].include?('oh') ? "Other housing situation (not listed). " : "" %>
+
+Date of birth: <%= sanitize @user[:dob_day] %>/<%= sanitize @user[:dob_month] %>/<%= sanitize @user[:dob_year] %>
+Gender: <%= sanitize @user[:gender] %>
+Ethnic group: <%= sanitize @user[:ethnic] %>
+
+Best wishes,
+
+Good Work Camden
