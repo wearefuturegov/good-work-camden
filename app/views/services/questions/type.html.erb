@@ -46,8 +46,8 @@
   <div class="app-checkbox-width_container">
       <div class="govuk-checkboxes__item app-checkbox-width-third">
 
-          <%= radio_button_tag('type', 'adviser', false, class:'govuk-radios__input') %>
-          <%= label_tag("type", "I want to contact an adviser now to find the support that is right for me (recommended)", class:'govuk-label govuk-radios__label') %>
+          <%= radio_button_tag('type', 'adviser', false, class:'govuk-radios__input', id: "adviser") %>
+          <%= label_tag("adviser", "I want to contact an adviser now to find the support that is right for me (recommended)", class:'govuk-label govuk-radios__label') %>
 
       </div>
    </div>
@@ -57,8 +57,8 @@
     <div class="app-checkbox-width_container">
       <div class="govuk-checkboxes__item app-checkbox-width-third">
 
-          <%= radio_button_tag('type', 'search', false, class:'govuk-radios__input') %>
-          <%= label_tag("type", "I'd like to select a local service myself instead", class:'govuk-label govuk-radios__label') %>
+          <%= radio_button_tag('type', 'search', false, class:'govuk-radios__input', id: "search") %>
+          <%= label_tag("search", "I'd like to select a local service myself instead", class:'govuk-label govuk-radios__label') %>
 
     </div>
    </div>

@@ -57,23 +57,23 @@
     <div class="app-checkbox-width_container">
      
     <div class="govuk-checkboxes__item">
-        <%= radio_button_tag('gender', 'female', @persist[:gender] == "female", class:'govuk-radios__input') %>
-        <%= label_tag("gender", "Female", class:'govuk-label govuk-radios__label') %>
+        <%= radio_button_tag('gender', 'female', @persist[:gender] == "female", class:'govuk-radios__input', id: "female") %>
+        <%= label_tag("female", "Female", class:'govuk-label govuk-radios__label') %>
     </div>
      
     <div class="govuk-checkboxes__item">
-      <%= radio_button_tag('gender', 'male', @persist[:gender] == "male", class:'govuk-radios__input') %>
-      <%= label_tag("gender", "Male", class:'govuk-label govuk-radios__label') %>
+      <%= radio_button_tag('gender', 'male', @persist[:gender] == "male", class:'govuk-radios__input', id: "male") %>
+      <%= label_tag("male", "Male", class:'govuk-label govuk-radios__label') %>
     </div>
     
     <div class="govuk-checkboxes__item">
-       <%= radio_button_tag('gender', 'othergen', @persist[:gender] == "othergen", class:'govuk-radios__input') %>
-       <%= label_tag("gender", "Other", class:'govuk-label govuk-radios__label') %>
+       <%= radio_button_tag('gender', 'othergen', @persist[:gender] == "othergen", class:'govuk-radios__input', id: "other") %>
+       <%= label_tag("other", "Other", class:'govuk-label govuk-radios__label') %>
     </div>
      
     <div class="govuk-checkboxes__item">
-       <%= radio_button_tag('gender', 'privategen', @persist[:gender] == "privategen", class:'govuk-radios__input') %>
-       <%= label_tag("gender", "Prefer not to say", class:'govuk-label govuk-radios__label') %>
+       <%= radio_button_tag('gender', 'privategen', @persist[:gender] == "privategen", class:'govuk-radios__input', id: "private") %>
+       <%= label_tag("private", "Prefer not to say", class:'govuk-label govuk-radios__label') %>
     </div>
 
   </div>
@@ -90,8 +90,8 @@
     <div class="app-checkbox-width_container">
       <div class="govuk-checkboxes__item app-checkbox-width-third">
 
-        <%= radio_button_tag('ethnic', 'asian', @persist[:ethnic] == "asian", class:'govuk-radios__input') %>
-        <%= label_tag("ethnic[]", "Asian or Asian British", class:'govuk-label govuk-radios__label') %>
+        <%= radio_button_tag('ethnic', 'asian', @persist[:ethnic] == "asian", class:'govuk-radios__input', id: "asian") %>
+        <%= label_tag("asian", "Asian or Asian British", class:'govuk-label govuk-radios__label') %>
         <label class="govuk-hint app-hint-include-label" >
               Includes any Asian background, for example, Bangladeshi, Chinese, Indian, Pakistani
         </label>
@@ -99,8 +99,8 @@
       </div>
     <div class="govuk-checkboxes__item">
 
-      <%= radio_button_tag('ethnic', 'white', @persist[:ethnic] == "white", class:'govuk-radios__input') %>
-      <%= label_tag("ethnic", "White", class:'govuk-label govuk-radios__label') %>
+      <%= radio_button_tag('ethnic', 'white', @persist[:ethnic] == "white", class:'govuk-radios__input', id: "white") %>
+      <%= label_tag("white", "White", class:'govuk-label govuk-radios__label') %>
       <label class="govuk-hint app-hint-include-label" >
             Includes any White background
       </label>
@@ -113,8 +113,8 @@
     <div class="app-checkbox-width_container">
       <div class="govuk-checkboxes__item app-checkbox-width-third">
 
-        <%= radio_button_tag('ethnic', 'black', @persist[:ethnic] == "black", class:'govuk-radios__input') %>
-        <%= label_tag("ethnic", "Black, African, Black British or Caribbean", class:'govuk-label govuk-radios__label') %>
+        <%= radio_button_tag('ethnic', 'black', @persist[:ethnic] == "black", class:'govuk-radios__input', id: "black") %>
+        <%= label_tag("black", "Black, African, Black British or Caribbean", class:'govuk-label govuk-radios__label') %>
         <label class="govuk-hint app-hint-include-label" >
               Includes any Black background
         </label>
@@ -122,8 +122,8 @@
       </div>
     <div class="govuk-checkboxes__item">
 
-      <%= radio_button_tag('ethnic', 'othereth', @persist[:ethnic] == "othereth", class:'govuk-radios__input') %>
-      <%= label_tag("ethnic", "Another ethnic group", class:'govuk-label govuk-radios__label') %>
+      <%= radio_button_tag('ethnic', 'othereth', @persist[:ethnic] == "othereth", class:'govuk-radios__input', id: "othereth") %>
+      <%= label_tag("othereth", "Another ethnic group", class:'govuk-label govuk-radios__label') %>
       <label class="govuk-hint app-hint-include-label" >
             Includes any other ethnic group, for example Arab
       </label>
@@ -136,8 +136,8 @@
     <div class="app-checkbox-width_container">
       <div class="govuk-checkboxes__item app-checkbox-width-third">
 
-      <%= radio_button_tag('ethnic', 'mixedeth', @persist[:ethnic] == "mixedeth", class:'govuk-radios__input') %>
-      <%= label_tag("ethnic", "Mixed or multiple ethnic groups", class:'govuk-label govuk-radios__label') %>
+      <%= radio_button_tag('ethnic', 'mixedeth', @persist[:ethnic] == "mixedeth", class:'govuk-radios__input', id: "mixedeth") %>
+      <%= label_tag("mixedeth", "Mixed or multiple ethnic groups", class:'govuk-label govuk-radios__label') %>
       <label class="govuk-hint app-hint-include-label" >
             Includes any Mixed background
       </label>
@@ -145,8 +145,8 @@
     </div>
    <div class="govuk-checkboxes__item">
 
-     <%= radio_button_tag('ethnic', 'privateth', @persist[:ethnic] == "privateth", class:'govuk-radios__input') %>
-     <%= label_tag("ethnic", "Prefer not to say", class:'govuk-label govuk-radios__label') %>
+     <%= radio_button_tag('ethnic', 'privateth', @persist[:ethnic] == "privateth", class:'govuk-radios__input', id: "privateeth") %>
+     <%= label_tag("privateeth", "Prefer not to say", class:'govuk-label govuk-radios__label') %>
     
     </div>
   </div>
