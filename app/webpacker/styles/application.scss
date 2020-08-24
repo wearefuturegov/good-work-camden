@@ -12,3 +12,38 @@ $govuk-image-url-function: frontend-image-url;
 @import "~govuk-frontend/govuk/all";
 
 @import "./public/css/cbc-style";
+
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+
+.app-warning-container{
+  background-color: #E0D6FF;
+  border: none;
+  padding: 15px;
+
+  summary{
+    color: black;
+    font-weight: 700;
+    text-decoration: underline;
+    cursor: pointer;
+    &:after{
+      float: right;
+      content: "Show message";
+      font-weight: normal;
+    }
+  }
+
+  &[open] summary:after{
+    content: "Close";
+    font-weight: normal;
+  }
+}

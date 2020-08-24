@@ -1,4 +1,4 @@
-
+/* 
 /*   Public   */
 
 
@@ -9,7 +9,8 @@
     --main-border-alert-color: #6633FF; /* Dark Purple */
     --main-bg-beta-color: #F3F3F3; /* Light Grey */
     --main-txt-hint-color: #8C8C8C; /* Light Grey */
-    --main-bg-button-color: #2B292D; /* Black */
+    /* --main-bg-button-color: #2B292D; Black */
+    --main-bg-button-color: #203C87;
     --main-bg-footer-color: #F7F7F7; /* Light Grey */
     --main-bg-email-results-color: #BFDBE2; /* Light Blue */
     --main-border-results-color: #BFDBE2; /* Light Blue */
@@ -40,7 +41,6 @@
    /* body {background-color: lightblue !important; }*/
 
     #warning{height: 920px !important;}
-    .app-warning-container{display:grid;height: 100px!important; }
     .app-warning-imformation-small-device-padding{padding-left:20px;}
     .app-label-hideshow-warning{padding-left: 20px;}
     .app-covid-warning{border-bottom: Solid 0px #6633FF !important;}
@@ -236,17 +236,6 @@
     /*width:1020px;*/
 }
 
-/*    Warning Styles             */
-.app-warning-container{
-    font-family: Source Sans Pro;
-    margin-top: 10px !important; /*  Distance from Menu  */
-    padding-top: 20px !important;
-    /* Problem with colour after hide with CSS Var  */
-    background-color: #E0D6FF !important; /* Light Purple   */
-    border-bottom: solid 2px #E0D6FF !important;
-    height: 50px;
-}
-
 .app-grid-column-padding-warning{
     padding:30px 120px 5px 50px;
 }
@@ -373,7 +362,7 @@ input:checked + label:after { content: " - Hide"; }
 .app-button-black {
 	background-color: var(--main-bg-button-color);
 	border-radius:30px;
-	border:1px solid #000000;
+	border: none;
 	display:inline;
 	cursor:pointer;
     color:var( --main-bg-white-color);
@@ -458,7 +447,7 @@ i {
   /*  Answers location   */
  
   .app-panel-postcode-sidebar{
-    padding-left: 10px;;
+    padding-left: 15px;
     border-left: solid rgba(102, 51, 255, 0.2) 8px; /*  Purple side bar - Postcode   */
   }
 
@@ -738,21 +727,3 @@ i {
     font-size: 14px;
     margin-top:10px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  .test{
-      background-color: red;;
-  }
