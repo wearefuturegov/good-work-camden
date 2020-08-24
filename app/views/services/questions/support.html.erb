@@ -50,17 +50,35 @@
 
         <div class="app-checkbox-width_container">
             <div class="govuk-checkboxes__item app-checkbox-width-third">
-
-                <%= check_box_tag("sprt[]", value = "applying", checked = @sprt.include?('applying') ? true : false , options = {:class=>'govuk-checkboxes__input'}) %>
-                <%= label_tag("sprt[]", "I need help looking and applying for jobs" , class:'govuk-label govuk-checkboxes__label' ) %>
-
+                <%= check_box_tag("sprt[]", value = "applying", checked = @sprt.include?('applying') ? true : false , options = {
+                    class: 'govuk-checkboxes__input',
+                    id: "support-applying"
+                }) %>
+                <%= label_tag("support-applying", "I need help looking and applying for jobs" , class:'govuk-label govuk-checkboxes__label' ) %>
             </div>
 
+            <div class="govuk-checkboxes__item">
+                <%= check_box_tag("sprt[]", value = "outofwork", checked = @sprt.include?('outofwork') ? true : false , options = {
+                    class: 'govuk-checkboxes__input',
+                    id: "out-of-work"
+                    }) %>
+                <%= label_tag("out-of-work", "I have been out of work for a long time" , class:'govuk-label govuk-checkboxes__label') %>
+            </div>
+        </div>
 
+        <br>
+
+        <div class="app-checkbox-width_container">
+            <div class="govuk-checkboxes__item app-checkbox-width-third">
+
+                <%= check_box_tag("sprt[]", value = "startbusiness", checked = @sprt.include?('startbusiness') ? true : false, options = {class: 'govuk-checkboxes__input', id: "start-business"}) %>
+                <%= label_tag("start-business", "I want to start my own business" , class:'govuk-label govuk-checkboxes__label' ) %>
+
+            </div>
             <div class="govuk-checkboxes__item">
 
-                <%= check_box_tag("sprt[]", value = "outofwork", checked = @sprt.include?('outofwork') ? true : false , options = {:class=>'govuk-checkboxes__input'}) %>
-                <%= label_tag("sprt[]", "I have been out of work for a long time" , class:'govuk-label govuk-checkboxes__label') %>
+                <%= check_box_tag("sprt[]", value = "betterwork", checked = @sprt.include?('betterwork') ? true : false, options = {class: 'govuk-checkboxes__input', id: "betterwork"}) %>
+                <%= label_tag("betterwork", "I want to find work better suited to my interests"  , class:'govuk-label govuk-checkboxes__label' ) %>
 
             </div>
         </div>
@@ -70,14 +88,15 @@
         <div class="app-checkbox-width_container">
             <div class="govuk-checkboxes__item app-checkbox-width-third">
 
-                <%= check_box_tag("sprt[]", value = "startbusiness", checked = @sprt.include?('startbusiness') ? true : false, options = {:class=>'govuk-checkboxes__input'}) %>
-                <%= label_tag("sprt[]", "I want to start my own business" , class:'govuk-label govuk-checkboxes__label' ) %>
+                <%= check_box_tag("sprt[]", value = "returning", checked = @sprt.include?('returning') ? true : false, options = {class: 'govuk-checkboxes__input', id: "returning"}) %>
+                <%= label_tag("returning", "I am a parent returning to work" , class:'govuk-label govuk-checkboxes__label' ) %>
 
             </div>
+
             <div class="govuk-checkboxes__item">
 
-                <%= check_box_tag("sprt[]", value = "betterwork", checked = @sprt.include?('betterwork') ? true : false, options = {:class=>'govuk-checkboxes__input'}) %>
-                <%= label_tag("sprt[]", "I want to find work better suited to my interests"  , class:'govuk-label govuk-checkboxes__label' ) %>
+                <%= check_box_tag("sprt[]", value = "finance", checked = @sprt.include?('finance') ? true : false, options = {class: 'govuk-checkboxes__input', id: "finance"}) %>
+                <%= label_tag("finance", "I need help improving my financial situation" , class:'govuk-label govuk-checkboxes__label' ) %>
 
             </div>
         </div>
@@ -87,15 +106,14 @@
         <div class="app-checkbox-width_container">
             <div class="govuk-checkboxes__item app-checkbox-width-third">
 
-                <%= check_box_tag("sprt[]", value = "returning", checked = @sprt.include?('returning') ? true : false, options = {:class=>'govuk-checkboxes__input'}) %>
-                <%= label_tag("sprt[]", "I am a parent returning to work" , class:'govuk-label govuk-checkboxes__label' ) %>
+                <%= check_box_tag("sprt[]", value = "schedule", checked = @sprt.include?('schedule') ? true : false, options = {class: 'govuk-checkboxes__input', id: "schedule"}) %>
+                <%= label_tag("schedule", "I want to find work that fits my schedule" , class:'govuk-label govuk-checkboxes__label' ) %>
 
             </div>
-
             <div class="govuk-checkboxes__item">
 
-                <%= check_box_tag("sprt[]", value = "finance", checked = @sprt.include?('finance') ? true : false, options = {:class=>'govuk-checkboxes__input'}) %>
-                <%= label_tag("sprt[]", "I need help improving my financial situation" , class:'govuk-label govuk-checkboxes__label' ) %>
+                <%= check_box_tag("sprt[]", value = "health", checked = @sprt.include?('health') ? true : false, options = {class: 'govuk-checkboxes__input', id: "health"}) %>
+                <%= label_tag("health", "I am dealing with health issues at work"  , class:'govuk-label govuk-checkboxes__label' ) %>
 
             </div>
         </div>
@@ -105,25 +123,8 @@
         <div class="app-checkbox-width_container">
             <div class="govuk-checkboxes__item app-checkbox-width-third">
 
-                <%= check_box_tag("sprt[]", value = "schedule", checked = @sprt.include?('schedule') ? true : false, options = {:class=>'govuk-checkboxes__input'}) %>
-                <%= label_tag("sprt[]", "I want to find work that fits my schedule" , class:'govuk-label govuk-checkboxes__label' ) %>
-
-            </div>
-            <div class="govuk-checkboxes__item">
-
-                <%= check_box_tag("sprt[]", value = "health", checked = @sprt.include?('health') ? true : false, options = {:class=>'govuk-checkboxes__input'}) %>
-                <%= label_tag("sprt[]", "I am dealing with health issues at work"  , class:'govuk-label govuk-checkboxes__label' ) %>
-
-            </div>
-        </div>
-
-        <br>
-
-        <div class="app-checkbox-width_container">
-            <div class="govuk-checkboxes__item app-checkbox-width-third">
-
-                <%= check_box_tag("sprt[]", value = "othersprt", checked = @sprt.include?('othersprt') ? true : false, options = {:class=>'govuk-checkboxes__input'}) %>
-                <%= label_tag("sprt[]", "Other" , class:'govuk-label govuk-checkboxes__label' ) %>
+                <%= check_box_tag("sprt[]", value = "othersprt", checked = @sprt.include?('othersprt') ? true : false, options = {class:'govuk-checkboxes__input', id: "othersprt"}) %>
+                <%= label_tag("othersprt", "Other" , class:'govuk-label govuk-checkboxes__label' ) %>
 
             </div>
         </div>
