@@ -1,4 +1,4 @@
-brequire 'date'
+require 'date'
 
 class ServicesController < ApplicationController
 
@@ -18,8 +18,9 @@ class ServicesController < ApplicationController
       @ward = Postcode.where({"postcode3": postcode}).select("wardname").first
 
       if !@ward then
-          @errors["loc"] = "Not a Camden postcode"
-          @step = "1"
+          @ward = 'bla'
+          # @errors["loc"] = "Not a Camden postcode"
+          # @step = "1"
       end
     end
 
@@ -110,7 +111,6 @@ class ServicesController < ApplicationController
       else
         @template = "services/questions/location/"
     end
-
     render template: @template
 
   end
