@@ -1,5 +1,5 @@
 class ContactMailer < Mail::Notify::Mailer
-  default from: ENV['FROM_EMAIL_ADDRESS']
+  default from: ENV['CAMDEN_CONTACT_EMAIL']
 
   def new_message
     @user = params[:user]

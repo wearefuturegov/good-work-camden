@@ -1,5 +1,5 @@
 class AdviserMailer < Mail::Notify::Mailer
-  default from: ENV['FROM_EMAIL_ADDRESS']
+  default from: ENV['CAMDEN_CONTACT_EMAIL']
 
   def new_resident
     @user = params[:user]
