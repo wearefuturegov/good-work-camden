@@ -39,7 +39,7 @@ Rails.application.configure do
   config.action_mailer.preview_path = "#{Rails.root}/test/mailers/previews"
   config.action_mailer.delivery_method = :notify
   config.action_mailer.notify_settings = {
-    api_key: ENV['NOTIFY_API_KEY']
+    api_key: ENV['GOVUK_NOTIFY_API_KEY']
   }
 
   # Print deprecation notices to the Rails logger.
