@@ -16,9 +16,11 @@ class ServicesController < ApplicationController
     if params[:loc].present? then
       postcode = params[:loc].upcase
       @ward = Postcode.where({"postcode3": postcode}).select("wardname").first
+
       if !@ward then
-          @errors["loc"] = "Not a Camden postcode"
-          @step = "1"
+          @ward = 'bla'
+          # @errors["loc"] = "Not a Camden postcode"
+          # @step = "1"
       end
     end
 
@@ -109,20 +111,19 @@ class ServicesController < ApplicationController
       else
         @template = "services/questions/location/"
     end
-
     render template: @template
 
   end
 
   def thankyou
-    email1 = Mailer.with(user: params).adviser_email.deliver_now
-    email2 = Mailer.with(user: params).adviser_confirmation_email.deliver_now
+    email1 = AdviserMailer.with(user: params).new_resident.deliver_now
+    email2 = ResidentMailer.with(user: params).confirmation_of_adviser.deliver_now
     render template: "services/thankyou"
   end 
 
   def emailresults
     services = session[:services]
-    email = Mailer.with(user: params, services: services).results_email.deliver_now
+    email = ResidentMailer.with(user: params, services: services).results.deliver_now
     render template: "services/complete"
   end 
 

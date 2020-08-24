@@ -4,8 +4,8 @@ class ContactController < ApplicationController
   end
 
   def thankyou
-    email1 = Mailer.with(user: params).contact_email.deliver_now
-    email = Mailer.with(user: params).contact_confirmation_email.deliver_now
+    email1 = ContactMailer.with(user: params).new_message.deliver_now
+    email = ResidentMailer.with(user: params).contact_confirmation.deliver_now
     render template: "contact/thankyou"
   end 
 end

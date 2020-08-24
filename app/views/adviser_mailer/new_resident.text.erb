@@ -1,0 +1,81 @@
+Dear Employment Advisor,
+
+A Camden resident has requested to speak to an adviser. Review their details below and follow up with them to arrange an appointment.
+
+---
+
+#Name
+<%= sanitize @user[:name] || "Not provided" %>
+
+---
+
+#Email
+<%= sanitize @user[:email] || "Not provided" %>
+
+---
+
+#Phone or mobile number
+<%= sanitize @user[:phone] || "Not provided" %>
+
+---
+
+#Postcode
+<%= sanitize @user[:loc] || "Not provided" %>
+
+---
+
+#Date of birth
+<%= sanitize @user[:dob_day] %>/<%= sanitize @user[:dob_month] %>/<%= sanitize @user[:dob_year]  || "Not provided"%>
+
+---
+
+#Gender
+<%= sanitize @user[:gender]  || "Not provided"%>
+
+---
+
+#Ethnic group
+<%= sanitize @user[:ethnic]  || "Not provided"%>
+
+---
+
+#Type of support they need:
+<%= @user[:sprt].include?('applying') ? "- They need help looking and applying for jobs. " : "" %>
+<%= @user[:sprt].include?('outofwork') ? "- They have been out of work for a long time. " : "" %>
+<%= @user[:sprt].include?('startbusiness') ? "- They want to start their own business. " : "" %>
+<%= @user[:sprt].include?('betterwork') ? "- They want to find work better suited to their interests. " : "" %>
+<%= @user[:sprt].include?('returning') ? "- They are a parent returning to work. " : "" %>
+<%= @user[:sprt].include?('finance') ? "- They need help improving their financial situation. " : "" %>
+<%= @user[:sprt].include?('schedule') ? "- They want to find work that fits their schedule. " : "" %>
+<%= @user[:sprt].include?('health') ? "- They are dealing with health issues at work. " : "" %>
+<%= @user[:sprt].include?('other') ? "- They need some other form of support that is not listed. " : "" %>
+<%= "Not provided" if @user[:sprt].empty? %>
+
+---
+
+#Work status:
+<%= @user[:emp].include?('fte') ? "- Employed full-time. " : "" %>
+<%= @user[:emp].include?('pte') ? "- Employed part-time. " : "" %>
+<%= @user[:emp].include?('es') ? "- Student and employed. " : "" %>
+<%= @user[:emp].include?('st') ? "- Student. " : "" %>
+<%= @user[:emp].include?('se') ? "- Self-employed. " : "" %>
+<%= @user[:emp].include?('ue') ? "- Unemployed. " : "" %>
+<%= @user[:emp].include?('pl') ? "- Parental leave. " : "" %>
+<%= @user[:emp].include?('oe') ? "- Other employment (not listed). " : "" %>
+<%= "Not provided" if @user[:emp].empty? %>
+---
+
+#Housing situation:
+<%= @user[:hou].include?('ct') ? "- Council tenant. " : "" %>
+<%= @user[:hou].include?('at') ? "- Housing association tenant. " : "" %>
+<%= @user[:hou].include?('pt') ? "- Private tenant. " : "" %>
+<%= @user[:hou].include?('op') ? "- Own property. " : "" %>
+<%= @user[:hou].include?('fr') ? "- Living with friends or relatives. " : "" %>
+<%= @user[:hou].include?('oh') ? "- Other housing situation (not listed). " : "" %>
+<%= "Not provided" if @user[:hou].empty? %>
+
+---
+
+Best wishes,
+
+Good Work Camden
