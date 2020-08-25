@@ -38,23 +38,26 @@
     &__selling-points{
         list-style: none;
         padding-left: 0;
-        margin-bottom: 25px;
+        margin-bottom: calc(25px - 7px);
         @media screen and (min-width: 500px){
             font-size: 1.1rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 25px;
         }
 
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        column-gap: 25px;
-
-        li:before {
-            content: "\2713\0020";
-            padding-right:2px;
-            font-size: 1.3em;
-            line-height: 0.8;
-            color: $pink;
-            font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', Arial;
+        li{
+            margin-bottom: 7px;
+            &:before {
+                content: "\2713\0020";
+                padding-right:2px;
+                font-size: 1.3em;
+                line-height: 0.8;
+                color: $pink;
+                font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', Arial;
+            }
         }
+
     }
 
     &__button{
