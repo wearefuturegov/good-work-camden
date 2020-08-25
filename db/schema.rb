@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_25_205036) do
+ActiveRecord::Schema.define(version: 2020_08_25_211115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,11 +56,13 @@ ActiveRecord::Schema.define(version: 2020_08_25_205036) do
     t.integer "ward"
   end
 
-  create_table "service_tags", primary_key: ["service_id", "tag_id"], force: :cascade do |t|
-    t.integer "service_id", null: false
-    t.integer "tag_id", null: false
-    t.integer "required"
-    t.integer "excluded"
+  create_table "service_tags", force: :cascade do |t|
+    t.bigint "service_id", null: false
+    t.bigint "tag_id", null: false
+    t.boolean "required"
+    t.boolean "excluded"
+    t.index ["service_id"], name: "index_service_tags_on_service_id"
+    t.index ["tag_id"], name: "index_service_tags_on_tag_id"
   end
 
   create_table "services", force: :cascade do |t|
