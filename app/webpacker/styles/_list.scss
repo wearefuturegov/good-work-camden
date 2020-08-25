@@ -1,0 +1,109 @@
+.services-list{
+    list-style: none;
+    padding-left: 0;
+
+    &__result{
+        box-sizing: border-box;
+        width: 100%;
+        border-bottom: 1px solid transparentize($black, 0.5);
+        padding: 25px 0px;
+
+        &:first-child{
+            border-radius: 5px;
+            border: 3px solid transparentize($bright-blue, 0.75);
+            padding: 25px;
+        }
+    }
+
+    &__name{
+        margin-top: 0px;
+        margin-bottom: 10px;
+    }
+
+    &__location{
+        margin: 10px 0px;
+        color: $grey;
+        @media screen and (min-width: 500px){
+            font-size: 1.1rem;
+        }
+    }
+
+    &__summary{
+        margin: 20px 0px;
+        @media screen and (min-width: 500px){
+            font-size: 1.1rem;
+        }
+    }
+
+    &__selling-points{
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 25px;
+        @media screen and (min-width: 500px){
+            font-size: 1.1rem;
+        }
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 25px;
+
+        li:before {
+            content: "\2713\0020";
+            padding-right:2px;
+            font-size: 1.3em;
+            line-height: 0.8;
+            color: $pink;
+            font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', Arial;
+        }
+    }
+
+    &__button{
+        margin-left: auto;
+        display: table;
+        background: $dark-blue;
+        border-radius: 200px;
+        font-weight: bold;
+        color: white;
+        padding: 15px 30px;
+        text-decoration: none;
+        font-size: 1.1rem;
+        &:hover{
+            background-color: darken($dark-blue, 5);
+        }
+        &:active{
+            background-color: darken($dark-blue, 10);
+        }
+        &:focus{
+            outline: none;
+            box-shadow: 0px 0px 0px 3px $focus;
+        }
+    }
+}
+
+
+
+.email-to-me{
+    button{
+        margin-top: 15px;
+        cursor: pointer;
+        display: inline-block;
+        border: none;
+        background: $dark-blue;
+        border-radius: 5px;
+        font-weight: bold;
+        color: white;
+        padding: 12px 25px;
+        text-decoration: none;
+        font-size: 1rem;
+        &:hover{
+            background-color: darken($dark-blue, 5);
+        }
+        &:active{
+            background-color: darken($dark-blue, 10);
+        }
+        &:focus{
+            outline: none;
+            box-shadow: 0px 0px 0px 3px $focus;
+        }
+    }
+}

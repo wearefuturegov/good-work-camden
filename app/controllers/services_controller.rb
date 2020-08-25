@@ -116,6 +116,27 @@ class ServicesController < ApplicationController
   end
 
   def thankyou
+    response = HTTParty.post("https://api.airtable.com/v0/#{ENV["AIRTABLE_BASE_ID"]}/Applications", 
+      body: {
+        records: [
+          fields: params.permit(
+            :name,
+            :email,
+            :phone,
+            :type,
+            :dob_day,
+            :dob_month,
+            :dob_year,
+            :sprt,
+            :loc
+          )
+        ]
+      }.to_json,
+      headers: {
+        "Authorization": "Bearer #{ENV["AIRTABLE_API_KEY"]}",
+        "Content-Type": "application/json"
+      }
+    )
     email1 = AdviserMailer.with(user: params).new_resident.deliver_now
     email2 = ResidentMailer.with(user: params).confirmation_of_adviser.deliver_now
     render template: "services/thankyou"

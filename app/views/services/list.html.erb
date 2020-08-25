@@ -21,37 +21,47 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <ul id="servicelist" class="app-list-details-custom">
+      <ul id="servicelist" class="services-list">
         <% @services.each do |s| %>    
-          <li class="govuk-body">
-            <%= label_tag('', s.name , class:'govuk-label app-label-li-name' ) %>
-            <%= label_tag('', s.description , class:'govuk-label app-label-li-description' ) %>
-            <% s.tags.each do |t| %>
-                <% if t.displayed == 1 then %>
-                    <%= label_tag('', t.description , class:'govuk-label app-label-li-tags' ) %>
-                <% end %>
-            <% end %>
-            <div class="app-div-button">
-              <%= link_to(label_tag('', "View Details", class: 'app-button-black app-button-li-details app-button-details'),  {:action => 'details', :id => s.id } ) %>
-            </div>
+          <li class="services-list__result">
+
+            <h2 class="services-list__name"><%= s.name %></h2>
+            <p class="services-list__location"><%= s.wards %></p>
+
+            <p class="services-list__summary"><%= s.summary %></p>
+
+            <ul class="services-list__selling-points">
+              <% s.tags.each do |t| %>
+                  <% if t.displayed == 1 then %>
+                      <li><%= t.description %></li>
+                  <% end %>
+              <% end %>
+            </ul>
+
+
+            <%= link_to "View details", {:action => 'details', :id => s.id }, class: "services-list__button" %>
+
           </li>
         <% end %>
       </ul>
 
     </div>
 
-    <div class="govuk-grid-column-one-third">
+    <div class="govuk-grid-column-one-third email-to-me">
       <h4 class="app-m-email-label">Email your results</h4>
+
+      <p>Send these results in a handy email to yourself or a friend.</p>
+
       <%= form_tag('services/emailresults',{:method => "get", :enforce_utf8 => false}) do %>
         
         <label class="visually-hidden">Email address</label>
-        <%= text_field_tag(:email, "", type:'email', placeholder: "Email address", autocomplete:'email', class: 'govuk-input movedinlinestyles app-m-small') %>
+        <%= text_field_tag(:email, "", type:'email', placeholder: "Email address", autocomplete: 'email', required: true, class: 'govuk-input app-m-small') %>
           
         <% @persist.each do |key,value| %>
           <%= hidden_field_tag(key,value) %>
         <% end %>
 
-        <%= button_tag("Send", type: 'submit', id: 'btnSend', name: 'send', value: '1') do %>Send<% end %>
+        <%= button_tag("Send", type: 'submit', id: 'btnSend', name: 'send', value: '1') %>
       
       <% end %>
     </div>
