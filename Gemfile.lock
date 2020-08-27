@@ -92,6 +92,7 @@ GEM
     erubi (1.9.0)
     ffi (1.12.2)
     foreman (0.87.1)
+    geocoder (1.6.3)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     httparty (0.18.1)
@@ -283,6 +284,7 @@ DEPENDENCIES
   capybara (~> 3.31)
   dotenv-rails
   foreman
+  geocoder
   httparty
   listen (>= 3.0.5, < 3.3)
   mail-notify
