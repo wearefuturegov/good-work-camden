@@ -18,7 +18,7 @@ class ServicesController < ApplicationController
       if postcode.valid?
         url = URI.encode("https://api.postcodes.io/postcodes/#{postcode}")
         response = HTTParty.get(url)
-        if response["result"]["admin_district"] == "Camden"
+        if response["status"] == 200 && response["result"]["admin_district"] == "Camden"
         else
           @errors["loc"] = "Not a Camden postcode"
           @step = "1"
@@ -109,7 +109,7 @@ class ServicesController < ApplicationController
             end
 
             @excludes = Service.joins(:tags).where({"tags.tag": @filters, "service_tags.excluded": 1}).distinct
-            @services = Service.joins(:tags).where.not({"id": @excludes.ids}).distinct.limit(5)
+            @services = Service.joins(:tags).where.not({"id": @excludes.ids}).distinct.limit(5).near(params[:loc])
             reset_session
             session[:services] = @services
             @template = "services/list/"
