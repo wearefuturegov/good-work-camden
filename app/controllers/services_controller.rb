@@ -14,14 +14,19 @@ class ServicesController < ApplicationController
 
     # Check we have a valid postcode
     if params[:loc].present? then
-      postcode = params[:loc].upcase
-      url = URI.encode("https://api.postcodes.io/postcodes/#{postcode}")
-      response = HTTParty.get(url)
-      if response["result"]["admin_district"] == "Camden"
+      postcode = UKPostcode.parse(params[:loc].upcase)
+      if postcode.valid?
+        url = URI.encode("https://api.postcodes.io/postcodes/#{postcode}")
+        response = HTTParty.get(url)
+        if response["result"]["admin_district"] == "Camden"
+        else
+          @errors["loc"] = "Not a Camden postcode"
+          @step = "1"
+        end
       else
-         @errors["loc"] = "Not a Camden postcode"
-         @step = "1"
-       end
+        @errors["loc"] = "Not a Camden postcode"
+        @step = "1"
+      end
     end
 
 
