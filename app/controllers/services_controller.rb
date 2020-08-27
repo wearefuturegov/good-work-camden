@@ -15,19 +15,19 @@ class ServicesController < ApplicationController
     # Check we have a valid postcode
     if params[:loc].present? then
       postcode = params[:loc].upcase
-      @ward = Postcode.where({"postcode3": postcode}).select("wardname").first
-
-      if !@ward then
-          @ward = 'bla'
-          # @errors["loc"] = "Not a Camden postcode"
-          # @step = "1"
-      end
+      url = URI.encode("https://api.postcodes.io/postcodes/#{postcode}")
+      response = HTTParty.get(url)
+      if response["result"]["admin_district"] == "Camden"
+      else
+         @errors["loc"] = "Not a Camden postcode"
+         @step = "1"
+       end
     end
 
 
 
     @persist = params.except('step')
-    
+
     #Check question pre-requistes have been met
     case @step
       when "3"
@@ -65,13 +65,13 @@ class ServicesController < ApplicationController
         @template = "services/questions/additional/"
       when "5"
         @template = "services/questions/type/"
-      when "6"
+      when "6"  
         case params[:type]
           when "adviser"
             @template = "services/adviser/"
           when "search"
             @filters = []
-            
+
             # ADD SUPPORT TO FILTERS
             if params[:sprt].present? then
               f = params[:sprt].split(' ')
@@ -102,6 +102,7 @@ class ServicesController < ApplicationController
                 @filters.append(s)
               end
             end
+
             @excludes = Service.joins(:tags).where({"tags.tag": @filters, "service_tags.excluded": 1}).distinct
             @services = Service.joins(:tags).where.not({"id": @excludes.ids}).distinct.limit(5)
             reset_session
