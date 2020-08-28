@@ -55,6 +55,7 @@ a {
 }
 
 @import "04-elements/root";
+@import "04-elements/a";
 @import "04-elements/i";
 
 
@@ -85,8 +86,8 @@ a {
 @import "06-components/key-point";
 @import "06-components/map";
 @import "06-components/cookie-banner";
-@import "06-components/govuk-phase-banner";
 @import "06-components/govuk-footer";
+@import "06-components/govuk-tag";
 @import "06-components/primary-navigation";
 @import "06-components/component-panel";
 @import "06-components/panel";
@@ -101,6 +102,7 @@ a {
 //
 
 
+@import "07-trumps/govuk-phase-banner";
 @import "07-trumps/visually-hidden";
 @import "07-trumps/start-hidden";
 
