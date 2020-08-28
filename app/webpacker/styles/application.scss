@@ -1,4 +1,18 @@
-@import "vars";
+// ITCSS Structure
+// ---------------
+//  ______
+//  \    /
+//   \  /
+//    \/
+//
+//
+
+// 1. Settings
+// ------------
+// Settings that need to be accessed everywhere, think of these as global variables
+//
+@import "01-settings/vars";
+
 
 @function frontend-font-url($filename) {
   @return url("~assets/fonts/" + $filename);
@@ -6,36 +20,96 @@
 @function frontend-image-url($filename) {
   @return url("~assets/images/" + $filename);
 }
+
 $govuk-font-url-function: frontend-font-url;
 $govuk-image-url-function: frontend-image-url;
 
+// 2. Tools
+// ---------
+// Any functions or mixins
+//
+@import "02-tools/breakpoints";
+
+// 3. Generic
+// -----------
+// Global styles, e.g. normalize/reset/box-sizing
+// If you're including 3rd-party code, pull it in from the vendor folder
+// the first actual css in the file starts here
+//
 @import "~govuk-frontend/govuk/all";
-@import "cbc-style";
+@import "03-generic/layout";
+
+// 4. Elements
+// ------------
+// Element selectors, use sparingly, changes to these will have wide ranging impact. e.g. h1, ul, li
+//
 
 *, 
-.govuk-input{
+.govuk-input {
   font-family: Source Sans Pro, sans-serif;
 }
 
-a{
+
+a {
   color: $dark-blue;
 }
 
-.visually-hidden {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-}
+@import "04-elements/root";
+@import "04-elements/i";
 
-@import "header";
-@import "alert";
-@import "list";
 
-.app-button-black{
+// 5. Objects
+// -----------
+// Common generic re-usable objects using the BEMIT naming convention, e.g. .o-media, .o-inline-list
+// Prefix class names with 'o-'  
+//
+
+@import "05-objects/alert";
+@import "05-objects/list";
+@import "05-objects/headings";
+@import "05-objects/forms";
+@import "05-objects/lists";
+@import "05-objects/typography";
+@import "05-objects/button";
+@import "05-objects/icons";
+
+
+// 6. Components
+// --------------
+// Specific component styles using the BEMIT naming convention
+// Prefix class names with 'c-'
+//
+@import "06-components/header";
+@import "06-components/footer";
+@import "06-components/homepage";
+@import "06-components/key-point";
+@import "06-components/map";
+@import "06-components/cookie-banner";
+@import "06-components/govuk-phase-banner";
+@import "06-components/govuk-footer";
+@import "06-components/primary-navigation";
+@import "06-components/component-panel";
+@import "06-components/panel";
+
+
+
+
+// 7. Trumps
+// ----------
+// Overrides and utility functions required to override any inherited styles
+// Use sparingly
+//
+
+
+@import "07-trumps/visually-hidden";
+@import "07-trumps/start-hidden";
+
+
+
+@import "unused"; 
+
+
+.app-button-black {
   border: none;
   &:focus{
     outline: none;

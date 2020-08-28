@@ -1,0 +1,22 @@
+@include screen-max-width-600() {
+
+
+    /* Used for debugging styling */
+ /* body {background-color: lightblue !important; }*/
+
+
+
+  .app-label-small-device{padding-bottom: 15px;}
+
+}
+
+.app-grid-column-one-quarter{
+  text-align: center;
+  float: right;
+}
+
+/*  Spacing under start button  */
+.app-grid-row-images{
+  padding-top: 60px;
+  font-family: 'Source Sans Pro', sans-serif;
+}

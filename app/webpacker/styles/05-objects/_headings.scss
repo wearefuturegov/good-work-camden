@@ -1,0 +1,22 @@
+@include screen-min-width-600-max-width-960() {
+  
+
+    .app-m-email-label{display:none!important;}
+
+}
+
+@include screen-max-width-600() {
+
+
+   .app-m-email-label{display:none!important;}
+
+}
+
+.govuk-heading-l{
+    font-family: 'Source Sans Pro', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 60px;
+    margin-bottom:0px;
+}

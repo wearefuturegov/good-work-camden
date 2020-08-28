@@ -20,7 +20,7 @@
         }
       }
 
-      @media screen and (min-width: 500px){
+      @include screen-min-width-500() {
         &:after{
           float: right;
           content: "Show message";
@@ -29,7 +29,7 @@
       }
     }
   
-    @media screen and (min-width: 500px){
+    @include screen-min-width-500() {
       &[open] summary:after{
         content: "Close";
         font-weight: normal;
@@ -48,4 +48,46 @@
         text-decoration: none;
       }
     }
+}
+
+@include screen-max-width-600() {
+
+
+  /* Used for debugging styling */
+/* body {background-color: lightblue !important; }*/
+
+.app-warning-imformation-small-device-padding{padding-left:20px;}
+}
+
+
+.app-grid-column-padding-warning{
+  padding:30px 120px 5px 50px;
+}
+
+
+.app-warning-label-larger{
+  font-size: 24px;
+}
+
+.app-warning-ul{
+  margin-left: -20px;
+}
+
+
+.app-panel-warning-information{
+  font-family: Source Sans Pro;
+  padding: 10px;
+  margin-top: 10px;
+  border-top: solid 2px  #203C87;
+  width:80%;
+  color: var(--main-txt-color);
+}
+.app-panel-warning-information-label{
+  color: var(--main-txt-color);
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 22px;
+  text-decoration: underline;
 }

@@ -1,0 +1,28 @@
+.app-panel-details-width{
+    width:55%;
+    display: inline-block;
+}
+
+
+@include screen-max-width-600() {
+
+
+    .govuk-width-container{max-width: 100% !important;}
+
+}
+
+
+@include screen-min-width-724-max-width-1020() {
+   
+    /* Used for debugging styling */
+   /*body {background-color: yellow !important;}*/
+
+
+   .govuk-width-container{max-width: 100% !important;} 
+
+}
+
+
+.app-panel-padding{
+    padding-right: 50px;
+}

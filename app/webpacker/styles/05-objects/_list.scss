@@ -23,14 +23,14 @@
     &__location{
         margin: 10px 0px;
         color: $grey;
-        @media screen and (min-width: 500px){
+        @include screen-min-width-500() {
             font-size: 1.1rem;
         }
     }
 
     &__summary{
         margin: 20px 0px;
-        @media screen and (min-width: 500px){
+        @include screen-min-width-500() {
             font-size: 1.1rem;
         }
     }
@@ -39,7 +39,7 @@
         list-style: none;
         padding-left: 0;
         margin-bottom: calc(25px - 7px);
-        @media screen and (min-width: 500px){
+        @include screen-min-width-500() {
             font-size: 1.1rem;
             display: grid;
             grid-template-columns: 1fr 1fr;

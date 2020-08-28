@@ -1,0 +1,341 @@
+// So far as I can tell - unused
+
+@include screen-min-width-600-max-width-960() {
+
+    .app-button-send{width:70px !important;}
+    
+
+}
+
+@include screen-max-width-600() {
+
+   .app-button-send{width:70px !important;}
+}
+
+.app-button-send{
+    background: #1E2428;
+    border-radius: 0px 50px 50px 0px;
+    width: 100.82px;
+    height: 44px;
+    color:White;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 19px;
+    line-height: 24px;
+    margin-left:-10px;
+ }
+
+/////
+
+
+@include screen-min-width-600-max-width-960() {
+    #warning{height: 750px !important;}
+}
+
+@include screen-max-width-600() {
+  #warning{height: 920px !important;}
+}
+
+
+@include screen-min-width-724-max-width-1020() {
+   
+
+
+   #warning{height: 650px !important;}
+
+
+/* End 1020 */
+ }
+
+ #warning { margin-top: 10px; border: 1px solid #000000; width: 200px; height: 100px;
+    padding: 5px;
+}
+
+
+/////
+
+
+@include screen-max-width-600() {
+
+
+    /* Used for debugging styling */
+ /* body {background-color: lightblue !important; }*/
+
+
+  .app-label-hideshow-warning{padding-left: 20px;}
+
+}
+
+.app-label-hideshow-warning{
+    font-family: Source Sans Pro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 19px;
+    line-height: 24px;
+    float:right; 
+    padding-right:40px; /* Margin right for Show Message */
+    color: var(--main-txt-color);
+    text-decoration: underline;
+ }
+
+
+ /////
+
+
+ @include screen-max-width-600() {
+
+
+  .app-covid-warning{border-bottom: Solid 0px #6633FF !important;}
+
+ }
+ .app-covid-warning{
+    font-family: Source Sans Pro;
+    margin: 15px;  /*  Left Margin  */
+    color: var(--main-txt-color);
+    font-style: normal;
+    font-weight: bold;
+    font-size: 19px;
+    line-height: 26px;
+    border-bottom: solid 2px #000000; /* Underline warning  */
+}
+.app-covid-warning-container{
+    height:30px;
+    width:290px;
+    display: contents;
+}
+.app-covid-warning-container-message{
+    color: var(--main-txt-color);
+    text-decoration: underline;
+    float: right;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+///
+
+
+@include screen-min-width-600-max-width-960() {
+    .app-m-email-results{display:block!important;}
+}
+
+@include screen-max-width-600() {
+   .app-m-email-results{display:block!important;}
+}
+
+
+.app-m-email-results{display:none;}
+
+
+////
+
+@include screen-min-width-600-max-width-960() {
+    .app-label-padding{padding-left:5px!important;}
+}
+
+
+@include screen-max-width-600() {
+
+
+   .app-label-padding{padding-left:5px!important;}
+
+}
+
+
+
+.app-label-padding{
+    padding-left:15px;
+    padding-right:15px;;
+}
+
+
+///
+
+@include screen-max-width-600() {
+
+    .app-div-button{padding-top:15px;}
+
+}
+
+.app-div-button{
+    display: inline-block; width:100%;
+  }
+
+
+
+/////
+
+
+
+.govuk-header__navigation {
+	text-align: right;
+}
+.govuk-header__navigation-item{
+    font-family: Source Sans Pro;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 19px;
+    line-height: 26px;
+}
+
+
+
+  //////
+
+
+  .govuk-header{
+    font-family: 'Source Sans Pro', sans-serif;
+	background-color: white !important;
+}
+
+
+
+
+.app-header__content {
+    width:100% ;
+    padding-left: 15px;
+	float: left;	
+}
+
+
+
+
+
+
+
+.app-header__logo {
+    padding-top: 10px;
+    height: 40px;
+}
+
+
+
+.app-header__container {
+    position: relative;
+    margin-bottom: 5px;
+    padding-top: 30px;
+	border-bottom: 0px;
+	color: var(--main-txt-color);
+}
+
+
+
+
+.app-header__link--homepage:hover{
+    cursor: pointer;
+}
+
+
+
+
+.app_link{
+	color: var(--main-txt-color) !important;
+}
+
+
+.app-height-container{
+    height: 500px;
+}
+
+
+
+.app-width-container {
+    border-bottom-color: white !important;
+    /*width:1020px;*/
+}
+
+
+.app_footer__inline-line-line{
+    text-align: left;
+    margin-bottom: 200px;
+}
+
+.app-h1_home{
+    font-size: 50px;
+}
+
+
+
+.list_button{
+    font-size: 30px;
+}
+
+
+.app-p-margin-bottom{
+    margin-bottom: 30px;
+}
+
+
+/*  Results page */
+.app-panel-result-text{
+    padding: 10px;
+    text-align: left;
+}
+
+
+.app-panel-email-results {
+    background-color: #BFDBE2; /* lightblue;*/
+    display: inline-flex;
+    height: 70px;
+    width: 100%;
+    align-items: center;
+}
+
+
+/*  Service results page   */
+
+.app-link-details{
+    text-decoration: none;
+    color: var(--main-txt-color);
+}
+
+
+
+/*   Details Panel    */
+.app-list-details-custom li:first-child {
+    border: 4px solid #BFDBE2;  /*  Lightblue   */
+    border-radius: 15px;
+  }
+
+  .app-list-details-custom li {
+    width: 75%;
+    border-bottom: 1px solid #C4C4C4; /* Grey  */
+  }
+
+  .app-label-li-description{
+    width: 90%;
+  }
+
+  .app-label-li-name{
+      font-weight: bold;
+      padding-bottom: 25px;
+  }
+
+  .app-button-li-details{
+    float:right;
+  }
+ 
+
+  .app-label-li-tags{
+    padding-top: 30px;
+  }
+
+  .app-label-li-tags::before {
+    content: "\2713\0020";
+    padding-right:2px;
+    font-size: 1.3em;
+    line-height: 0.8;
+    color: var(--main-tick-results-color);
+    font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', Arial;
+  }
+
+
+ /*  Purple tick on details page   */
+ .app-label-tags::before {
+    content: "\2713\0020";
+    padding-right:2px;
+    font-size: 1.3em;
+    line-height: 0.8;
+    color: var(-main-tick-results-color);
+    font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', Arial;
+  }
