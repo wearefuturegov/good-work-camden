@@ -1,11 +1,11 @@
 .coronavirus-warning{
-    background-color: transparentize($bright-blue, 0.75);
+    background-color: transparentize($bg-bright-blue, 0.75);
     border: none;
     padding: 15px;
     border-radius: 5px;
   
     summary{
-      color: $black;
+      color: $text-black;
       font-weight: 700;
       text-decoration: underline;
       cursor: pointer;
@@ -14,8 +14,8 @@
       &:focus{
         outline: none;
         &:after{
-          background-color: $focus;
-          box-shadow: 0 -2px $focus, 0 4px $black;
+          background-color: $govuk-focus-colour;
+          box-shadow: 0 -2px $govuk-focus-colour, 0 4px $bg-black;
           text-decoration: none;
         }
       }
@@ -43,8 +43,8 @@
       }
       &:focus{
         outline: none;
-        background-color: $focus;
-        box-shadow: 0 -2px $focus, 0 4px $black;
+        background-color: $govuk-focus-colour;
+        box-shadow: 0 -2px $govuk-focus-colour, 0 4px $bg-black;
         text-decoration: none;
       }
     }

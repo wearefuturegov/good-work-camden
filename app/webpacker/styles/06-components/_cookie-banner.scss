@@ -1,5 +1,14 @@
-.cookie-banner {
-    background-color: var(--main-bg-footer-color);
+.gwc-cookie-banner {
+    background-color: $govuk-canvas-background-colour;
     padding: 20px;
-    border-top: solid 2px var(--main-bg-button-color);
+
+    border-bottom: solid 2px $bg-dark-blue;
+    text-align: center;
+
+    @include govuk-font($size: 19);
+    @include govuk-text-colour;
+
+    display: block;
+
+    margin-bottom: govuk-spacing(1);
 }

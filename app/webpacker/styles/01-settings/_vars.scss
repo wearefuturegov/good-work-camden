@@ -1,24 +1,44 @@
-$black: #000000;
-$pink: #D31568;
-$bright-blue: #07A7E1;
-$dark-blue: #203C87;
-$focus: #ffdd00;
-$grey: #505a5f;
+
+// Colours from designs
+
+    /// background colours
+    $bg-black: $black;
+    $bg-pink: $red-violet;
+    $bg-bright-blue: $cerulean;
+    $bg-green: $la-rioja;
+    $bg-light-grey: $iron;
+    $bg-dark-blue: $bay-of-many;
+
+
+    /// text colours
+    $text-black: $black;
+    $text-white: $white;
+    $text-dark-blue: $bay-of-many;
+    $text-pink: $red-violet;
+    $text-blue: $blue-ribbon; // link colour
 
 
 
+// Global colour variables applied to things (can be overwritten in components
 
-$concrete: #F3F3F3;
-$cerulean: #07A7E1; //blue
-$blue-ribbon: #0340F0; //linky blue
+$text-color: $shark !default;
+$link-color: $text-blue !default;
+
+$page-bg-color: $wild-sand;
+
+// typography
+
+$sans-serif-font: "Source Sans Pro", "Open Sans", "Segoe UI", Tahoma, sans-serif;
+
+$headings-font: $sans-serif-font;
+
+// gov uk
+
+$govuk-use-legacy-font: false;
+$govuk-font-family: $sans-serif-font;
 
 
-
-$brand-color-1: $cerulean; 
-
-
-$grey-lightest: $concrete;
-
-
-$link-color: $blue-ribbon;
 $govuk-link-colour: $link-color;
+$govuk-text-colour: $text-color;
+
+$govuk-canvas-background-colour: $page-bg-color;

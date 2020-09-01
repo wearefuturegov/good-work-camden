@@ -15,3 +15,10 @@
     --main-bg-white-color: #E5E5E5; /* White */
     --main-bg-puple-color: #6633FF; /* Purple */
   }
+
+
+  *, 
+  html,
+  body {
+    font-family: $sans-serif-font;
+  }

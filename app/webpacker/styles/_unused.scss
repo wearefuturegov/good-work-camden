@@ -1,3 +1,18 @@
+// whatI think should be not used:
+
+*, 
+.govuk-input {
+  font-family: Source Sans Pro, sans-serif;
+}
+
+
+a {
+  color: $text-dark-blue;
+}
+
+
+
+
 // So far as I can tell - unused
 
 @include screen-min-width-600-max-width-960() {

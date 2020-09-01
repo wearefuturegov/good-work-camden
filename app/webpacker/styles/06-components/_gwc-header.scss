@@ -1,0 +1,30 @@
+.gwc-header {
+  &__container {
+    @include govuk-clearfix;
+    @include govuk-width-container();
+  }
+
+
+  &__logo {
+    float: left;
+    margin-bottom: 15px;
+  }
+  
+  &__nav {
+    float: right;
+  }
+
+
+  @include govuk-media-query ($until: tablet) {
+    &__logo {
+      float: none;
+      text-align: center;
+    }
+    
+    &__nav {
+      float: none;
+      text-align: center;
+    }     
+  }
+
+}

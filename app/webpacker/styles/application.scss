@@ -11,24 +11,19 @@
 // ------------
 // Settings that need to be accessed everywhere, think of these as global variables
 //
+@import "01-settings/colours";
 @import "01-settings/vars";
 
 
-@function frontend-font-url($filename) {
-  @return url("~assets/fonts/" + $filename);
-}
-@function frontend-image-url($filename) {
-  @return url("~assets/images/" + $filename);
-}
 
-$govuk-font-url-function: frontend-font-url;
-$govuk-image-url-function: frontend-image-url;
 
 // 2. Tools
 // ---------
 // Any functions or mixins
 //
+@import "02-tools/url-functions";
 @import "02-tools/breakpoints";
+@import "02-tools/typography"; 
 
 // 3. Generic
 // -----------
@@ -43,16 +38,6 @@ $govuk-image-url-function: frontend-image-url;
 // ------------
 // Element selectors, use sparingly, changes to these will have wide ranging impact. e.g. h1, ul, li
 //
-
-*, 
-.govuk-input {
-  font-family: Source Sans Pro, sans-serif;
-}
-
-
-a {
-  color: $dark-blue;
-}
 
 @import "04-elements/root";
 @import "04-elements/a";
@@ -80,7 +65,11 @@ a {
 // Specific component styles using the BEMIT naming convention
 // Prefix class names with 'c-'
 //
-@import "06-components/header";
+@import "06-components/gwc-header";
+@import "06-components/gwc-logo";
+@import "06-components/gwc-navigation";
+
+
 @import "06-components/footer";
 @import "06-components/homepage";
 @import "06-components/key-point";
@@ -91,6 +80,7 @@ a {
 @import "06-components/primary-navigation";
 @import "06-components/component-panel";
 @import "06-components/panel";
+@import "06-components/govuk-phase-banner";
 
 
 
@@ -102,19 +92,10 @@ a {
 //
 
 
-@import "07-trumps/govuk-phase-banner";
+
 @import "07-trumps/visually-hidden";
 @import "07-trumps/start-hidden";
 
 
 
-@import "unused"; 
-
-
-.app-button-black {
-  border: none;
-  &:focus{
-    outline: none;
-    box-shadow: 0 0 0 3px $focus;
-  }
-}
+// @import "unused"; 

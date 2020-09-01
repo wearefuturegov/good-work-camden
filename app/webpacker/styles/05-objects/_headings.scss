@@ -1,3 +1,5 @@
+
+
 @include screen-min-width-600-max-width-960() {
   
 
@@ -19,4 +21,34 @@
     font-size: 48px;
     line-height: 60px;
     margin-bottom:0px;
+}
+
+
+//
+
+// internal mixin
+
+
+
+.gwc-h1 {
+    @include gwc-heading();
+    @include gwc-h1();
+}
+
+
+.gwc-h2 {
+    @include gwc-heading();
+    @include gwc-h2();
+}
+
+
+.gwc-h3 {
+    @include gwc-heading();
+    @include gwc-h3();
+}
+
+
+.gwc-h4 {
+    @include gwc-heading();
+    @include gwc-h4();
 }
