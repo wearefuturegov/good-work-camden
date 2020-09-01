@@ -41,14 +41,24 @@
     <div class="govuk-checkboxes app-checkbox-wrapper">
 
 
-    <h1 class="govuk-heading-l">Which type of support<br>do you need?</h1>
-    <p class="govuk-label app-label-question">Which of the following apply to you?</p>
-    <p class="govuk-hint">Please select a maximum of two:</p>
+    <h1 class="govuk-heading-l"><%= @questions["type_of_support"]["title"] %></h1>
+    <p class="govuk-label app-label-question"><%= @questions["type_of_support"]["subtitle"] %></p>
+    <p class="govuk-hint"><%= @questions["type_of_support"]["hint"] %></p>
     <br>
-    
 
+    <% @questions["type_of_support"]["answers"].each do |answer| %>
+      <div class="app-checkbox-width_container">
+        <div class="govuk-checkboxes__item app-checkbox-width-third">
+          <%= check_box_tag("sprt[]", value = answer["value"], checked = @sprt.include?(answer["value"]) ? true : false , options = {
+              class: 'govuk-checkboxes__input',
+              id: "support-#{answer["value"]}"
+          }) %>
+          <%= label_tag("support-#{answer["value"]}", answer["title"] , class:'govuk-label govuk-checkboxes__label' ) %>
+        </div>
+      </div>
+    <% end %>
 
-        <div class="app-checkbox-width_container">
+       <!--  <div class="app-checkbox-width_container">
             <div class="govuk-checkboxes__item app-checkbox-width-third">
                 <%= check_box_tag("sprt[]", value = "applying", checked = @sprt.include?('applying') ? true : false , options = {
                     class: 'govuk-checkboxes__input',
@@ -127,7 +137,7 @@
                 <%= label_tag("othersprt", "Other" , class:'govuk-label govuk-checkboxes__label' ) %>
 
             </div>
-        </div>
+        </div> -->
 
         <% @persist.except("sprt").each do |key,value| %>
         <%= hidden_field_tag(key,value) %>

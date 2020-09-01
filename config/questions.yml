@@ -1,0 +1,9 @@
+type_of_support:
+  title: Which type of support do you need?
+  subtitle: Which of the following apply to you?
+  hint: "Please select a maximum of two:"
+  answers:
+    - title: I need help looking and applying for jobs
+      value: support-applying
+    - title: I have been out of work for a long time
+      value: outofwork

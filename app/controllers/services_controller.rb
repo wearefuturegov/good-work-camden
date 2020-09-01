@@ -7,7 +7,7 @@ class ServicesController < ApplicationController
     #REMEMBER - Step is a string in the URL params so needs quotes or .to_s whenever you assign to it
     @step = "1"
     @errors = Hash.new
-
+    @questions = YAML.load_file('config/questions.yml')
     if params[:step].present?
         @step = (params[:step].to_i + 1).to_s
     end
@@ -107,7 +107,6 @@ class ServicesController < ApplicationController
                 @filters.append(s)
               end
             end
-
             @excludes = Service.joins(:tags).where({"tags.tag": @filters, "service_tags.excluded": 1}).distinct
             @services = Service.joins(:tags).where.not({"id": @excludes.ids}).distinct.limit(5).near(params[:loc])
             reset_session
