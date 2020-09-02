@@ -16,7 +16,7 @@
     color: $bay-of-many;
 
     @include screen-min-width-600 {
-        display: inline;
+        display: inline-block;
     }
 
     &:hover{

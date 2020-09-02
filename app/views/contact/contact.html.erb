@@ -1,25 +1,25 @@
-<div class="govuk-breadcrumbs">
+<div class="govuk-breadcrumbs ">
   <ol class="govuk-breadcrumbs__list">
     <li class="govuk-breadcrumbs__list-item">
       <a class="govuk-breadcrumbs__link" href="/">Home</a>
     </li>
-    <li class="govuk-breadcrumbs__list-item" aria-current="page">Contact</li>
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" aria-current="page">Contact</a>
+    </li>
   </ol>
 </div>
 
 
-<div class="govuk-width-container">
 
-    <div class="govuk-grid-row">
-
-        <div class="column-full">
-            <h1 class="govuk-heading-l app-heading-additional-padding">Contact</h1>
-        </div>
+<main class="govuk-main-wrapper" id="main-content" role="main">
 
 
-        <div class="govuk-grid-column-two-thirds">
 
-            <%= form_tag('/contact/thankyou',{:method => "get", :enforce_utf8 => false}) do %>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Contact</h1>
+
+        <%= form_tag('/contact/thankyou',{:method => "get", :enforce_utf8 => false}) do %>
                 <div class="govuk-form-group">
 
                     <label class="govuk-label" for="name">
@@ -48,8 +48,6 @@
                     <%= button_tag("Submit", type: 'submit', class:'app-button app-button--start', onclick:'return BtnClicked()') %>
                 </p>
             <% end %>
-            
-        </div>
 
 
 
@@ -57,31 +55,49 @@
 
 
 
-        <div class="govuk-grid-column-one-third app-panel-blog-margin">
-            <div class="app-panel-contact-right">
+    
+  </div>
 
-                <p><label class="govuk-label app-header-text-bold">Related content</label></p>
 
-                <p class="govuk-label app-about-link-blog"><a href="#">Get employment support in camden</a></p>
-
-                <p>
-
-                    <p class="app-p-contact"><label class="govuk-label app-header-text-bold">Contact Details</label></p>
-
-                    <label class="app-contact-address-label">Good Work Camden</label><br>
-                    <label class="app-contact-address-label">5 Pancras Square</label><br>
-                    <label class="app-contact-address-label">London</label><br>
-                    <label class="app-contact-address-label">N1C 4AG</label><br><br>
-
-                    <label class="app-contact-address-label">Email: </label><a href="mailto:gwc@camden.gov.uk">gwc@camden.gov.uk</a><br>
-                    <label class="app-contact-address-label">Phone: 020 7974 4444</label><br>
-
-                </p>
+  <div class="govuk-grid-column-one-third">
+    <div class="gwc-side-content gwc-side-content--blue">
+        <div class="gwc-side-content__heading">Related content</div>
+        <ul class="gwc-side-content__list">
+            <li><a href="#">Get employment support in camden</a></li>
+        </ul>
 
 
 
-            </div>
-        </div>
+        
+        <div class="gwc-side-content__heading">Contact Details</div>
+        <div class="gwc-side-content__divider"></div>
+        <p class="govuk-body">
+        Good Work Camden<br />
+        5 Pancras Square<br />
+        London<br />
+        N1C 4AG
+        </p>
+
+        <p class="govuk-body"><span class="govuk-!-font-weight-bold">Email:</span> <a class="govuk-link" href="mailto:gwc@camden.gov.uk">gwc@camden.gov.uk</a>
+        <br />
+        <span class="govuk-!-font-weight-bold">Phone:</span> 020 7974 4444</p>
     </div>
-
+  </div>
 </div>
+
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
