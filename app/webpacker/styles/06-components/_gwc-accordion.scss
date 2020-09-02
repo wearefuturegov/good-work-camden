@@ -30,6 +30,7 @@ $classname: gwc-accordion;
         background: none;
         border: 0;
         display: inline-block;
+        cursor: pointer;
 
         @include govuk-font($size: 19);
         @include govuk-text-colour;
