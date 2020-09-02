@@ -1,0 +1,33 @@
+@mixin gwc-heading {
+    font-family: $headings-font;
+    font-style: normal;
+    font-weight: bold;
+}
+
+
+@mixin gwc-h1 {
+    @include gwc-heading();
+    font-size: 48px;
+    line-height: 60px;
+}
+
+
+@mixin gwc-h2 {
+    @include gwc-heading();
+    font-size: 36px;
+    line-height: 45px;
+}
+
+
+@mixin gwc-h3 {
+    @include gwc-heading();
+    font-size: 24px;
+    line-height: 30px;
+}
+
+
+@mixin gwc-h4 {
+    @include gwc-heading();
+    font-size: 19px;
+    line-height: 24px;
+}

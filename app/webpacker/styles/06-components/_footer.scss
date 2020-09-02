@@ -1,0 +1,11 @@
+// dirty overrides because we cant overwrite component variables in ukgov frontend ?
+
+// $govuk-footer-text: $nevada !default; 
+
+.govuk-footer__link:link, .govuk-footer__link:visited, .govuk-footer__link:hover, .govuk-footer__link:active {
+    color: $nevada;
+}
+
+.gwc-footer, .gwc-footer p {
+    color: $nevada;
+}

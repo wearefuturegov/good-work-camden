@@ -1,0 +1,24 @@
+:root {
+    --main-tag-color: #05B7AC; /* Header Beta Colour  */
+    --main-txt-color: #000000; /* Black */
+    --main-bg-alert-color: #E0D6FF; /* Purple */
+    --main-border-alert-color: #6633FF; /* Dark Purple */
+    --main-bg-beta-color: #F3F3F3; /* Light Grey */
+    --main-txt-hint-color: #8C8C8C; /* Light Grey */
+    /* --main-bg-button-color: #2B292D; Black */
+    --main-bg-button-color: #203C87;
+    --main-bg-footer-color: #F7F7F7; /* Light Grey */
+    --main-bg-email-results-color: #BFDBE2; /* Light Blue */
+    --main-border-results-color: #BFDBE2; /* Light Blue */
+    --main-tick-results-color: #6633FF; /* Purple */
+    --main-txt-about-color: #1E2428; /* Black */
+    --main-bg-white-color: #E5E5E5; /* White */
+    --main-bg-puple-color: #6633FF; /* Purple */
+  }
+
+
+  *, 
+  html,
+  body {
+    font-family: $sans-serif-font;
+  }

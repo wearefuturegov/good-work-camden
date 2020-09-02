@@ -1,0 +1,15 @@
+.gwc-logo {
+
+    display: block;
+
+    &:focus{
+        outline: none;
+        box-shadow: 0 0 0 3px $govuk-focus-colour;
+    }
+
+
+    img {
+      max-width: 380px;
+    }
+
+  }

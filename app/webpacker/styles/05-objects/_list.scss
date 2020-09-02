@@ -5,12 +5,12 @@
     &__result{
         box-sizing: border-box;
         width: 100%;
-        border-bottom: 1px solid transparentize($black, 0.5);
+        border-bottom: 1px solid transparentize($bg-black, 0.5);
         padding: 25px 0px;
 
         &:first-child{
             border-radius: 5px;
-            border: 3px solid transparentize($bright-blue, 0.75);
+            border: 3px solid transparentize($bg-bright-blue, 0.75);
             padding: 25px;
         }
     }
@@ -22,15 +22,15 @@
 
     &__location{
         margin: 10px 0px;
-        color: $grey;
-        @media screen and (min-width: 500px){
+        color: #505a5f;
+        @include screen-min-width-500() {
             font-size: 1.1rem;
         }
     }
 
     &__summary{
         margin: 20px 0px;
-        @media screen and (min-width: 500px){
+        @include screen-min-width-500() {
             font-size: 1.1rem;
         }
     }
@@ -39,7 +39,7 @@
         list-style: none;
         padding-left: 0;
         margin-bottom: calc(25px - 7px);
-        @media screen and (min-width: 500px){
+        @include screen-min-width-500() {
             font-size: 1.1rem;
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -53,7 +53,7 @@
                 padding-right:2px;
                 font-size: 1.3em;
                 line-height: 0.8;
-                color: $pink;
+                color: $text-pink;
                 font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', Arial;
             }
         }
@@ -63,7 +63,7 @@
     &__button{
         margin-left: auto;
         display: table;
-        background: $dark-blue;
+        background: $bg-dark-blue;
         border-radius: 200px;
         font-weight: bold;
         color: white;
@@ -71,14 +71,14 @@
         text-decoration: none;
         font-size: 1.1rem;
         &:hover{
-            background-color: darken($dark-blue, 5);
+            background-color: darken($bg-dark-blue, 5);
         }
         &:active{
-            background-color: darken($dark-blue, 10);
+            background-color: darken($bg-dark-blue, 10);
         }
         &:focus{
             outline: none;
-            box-shadow: 0px 0px 0px 3px $focus;
+            box-shadow: 0px 0px 0px 3px $govuk-focus-colour;
         }
     }
 }
@@ -91,7 +91,7 @@
         cursor: pointer;
         display: inline-block;
         border: none;
-        background: $dark-blue;
+        background: $bg-dark-blue;
         border-radius: 5px;
         font-weight: bold;
         color: white;
@@ -99,14 +99,14 @@
         text-decoration: none;
         font-size: 1rem;
         &:hover{
-            background-color: darken($dark-blue, 5);
+            background-color: darken($bg-dark-blue, 5);
         }
         &:active{
-            background-color: darken($dark-blue, 10);
+            background-color: darken($bg-dark-blue, 10);
         }
         &:focus{
             outline: none;
-            box-shadow: 0px 0px 0px 3px $focus;
+            box-shadow: 0px 0px 0px 3px $govuk-focus-colour;
         }
     }
 }

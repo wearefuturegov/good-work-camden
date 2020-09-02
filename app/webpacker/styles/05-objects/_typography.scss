@@ -1,0 +1,90 @@
+.app-home-p-padding{
+    padding-top:28px;
+}
+
+
+
+.app-home-p-padding-top{
+    padding-top:20px;
+    padding-bottom:20px;
+}
+
+.app-list--bullet{
+    font-size: 30px;
+}
+
+.app-body-l{
+    /*  Smaller margin for bullets   */
+    margin-left: -10px;
+  }
+
+
+  .app-li-home-font{
+    font-family: Source Sans Pro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 19px;
+    line-height: 24px;
+  }
+
+
+  .app-label-title{ 
+    font-family: Source Sans Pro;
+    font-weight: bold;
+    font-size: 12px;
+ }
+
+
+ .app-label-text{
+    font-family: Source Sans Pro;
+    font-size: 12px;
+ }
+
+
+ .app-div-details-missing-text{
+    width:60%;
+    padding-top: 50px;
+ }
+
+ .app-li-margin{
+    padding-bottom: 20px;;
+    color: var(--main-txt-color);
+}
+.app-ul-margin{
+    margin-top: 40px;
+    margin-left: -20px;
+}
+
+.app-about-link-blog{
+    /* This will be links. TODO  */
+    color: var(--main-tick-results-color);
+    font-family: Source Sans Pro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.app-heading-additional-padding{
+    padding-left: 10px;;
+}
+
+.app-about-hint-larger{
+    font-size: 24px;
+    line-height: 30px;
+    color: var(--main-txt-hint-color);
+    width:80%;
+}
+
+
+.app-font-bold{
+    font-family: Source Sans Pro;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 19px;
+    line-height: 26px;
+}
+
+.app-header-text-bold{
+    font-weight: bold;
+}

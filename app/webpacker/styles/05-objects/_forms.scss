@@ -1,0 +1,138 @@
+// css that relates to anything currently displayed in forms 
+
+@include screen-min-width-600-max-width-960() {
+    
+    .app-m-small{width:220px !important;}
+
+}
+
+
+@include screen-max-width-600() {
+
+   .app-m-small{width:220px !important;}
+
+}
+
+
+
+
+ /*   Radio Buttons   */
+
+ .app-radios-height{
+    height:200px;
+}
+
+
+.govuk-radios__item input:checked + label:after {
+    content: ""; 
+}
+
+
+  /*  Answers location   */
+ 
+  .app-panel-postcode-sidebar{
+    padding-left: 15px;
+    border-left: solid rgba(7, 167, 225, 0.25) 8px; /*  Purple side bar - Postcode   */
+  }
+
+
+
+
+
+
+/*   Checkboxes   */
+.app-checkbox-width_container{ 
+    display:inline-flex;
+    width:100%
+}
+
+.app-checkbox-width-third{ 
+    width:40%
+}
+
+.app-checkbox-wrapper input:checked + label:after {
+    content: ""; 
+}
+
+.app-checkbox-wrapper{
+    margin-top: 30px;;
+}
+
+
+
+
+
+
+/*  Support Page label   */
+.app-label-question{
+    font-weight: 600;
+    font-size: 20px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+
+
+/*  About you Page   */
+.app-hint-custom{ 
+    font-family: 'Source Sans Pro', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 30px;
+    color: #8C8C8C;
+}
+
+.app-hint-include-label{
+    padding-left: 14px;
+}
+
+.app-p-width-half{
+    width:50%;
+
+}
+
+
+
+/* Type of help - Page  */
+.app-label-margin-bottom{
+    margin-bottom: 15px;
+}
+.app-heading-margin-top-bottom{
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+
+
+
+.govuk-hint{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+
+
+.govuk-label{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+/*   Location Validation Panel  */
+.app-options-validation{
+    border-left: solid 8px red;
+    padding-left: 10px;
+    font-family: Source Sans Pro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    margin-top:10px;
+}
+
+
+
+
+
+// suspect unused
+
+
+/*  Used for Show Message Covid 19 */
+input:not(:checked) + label + div { visibility:hidden }
+input + label:after { content: ""; }
+input:checked + label:after { content: " - Hide"; }
