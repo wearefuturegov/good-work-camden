@@ -12,6 +12,8 @@ jobs:
       postgres:
         image: postgres:11.7-alpine
         env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
           POSTGRES_DB: gwcamden_tst
         ports:
           - 5432:5432
