@@ -36,3 +36,5 @@ yarn-debug.log*
 
 latest.dump
 .env.development
+
+.DS_Store
