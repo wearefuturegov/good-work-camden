@@ -11,6 +11,7 @@ development:
 test:
   <<: *default
   database: gwcamden_tst
+  username: <%= ENV['POSTGRES_USER'] %>
   password: <%= ENV['POSTGRES_PASSWORD'] %>
 production:
   url: <%= ENV['DATABASE_URL'] %>

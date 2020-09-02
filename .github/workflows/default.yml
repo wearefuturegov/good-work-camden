@@ -29,6 +29,8 @@ jobs:
       - name: Setup database
         env:
           RAILS_ENV: test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
           AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
           AIRTABLE_BASE_ID: ${{ secrets.AIRTABLE_BASE_ID }}
         run: |
