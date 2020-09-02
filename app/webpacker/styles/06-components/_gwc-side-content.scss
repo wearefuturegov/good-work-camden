@@ -41,12 +41,12 @@ $side-content-class: gwc-side-content;
 
         .#{$side-content-class}__list {
             li {
-                border-top-color: $bg-bright-blue;
+                border-top-color: $bg-bright-blue-half;
             }
         }
 
         .#{$side-content-class}__divider {
-            background: $bg-bright-blue;
+            background: $bg-bright-blue-half;
         }
 
     }

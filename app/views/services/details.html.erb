@@ -16,113 +16,57 @@
 
 
 <main class="govuk-main-wrapper" id="main-content" role="main">
-<h1 class="govuk-heading-xl"><%= @service.name %></h1>
-<p class="govuk-body-l"><%= @service.description %></p>
-
-
-<div class="govuk-inset-text govuk-inset-text--blue">
-COVID-19 information
-  Despite the current situation with COVID-19, the service is working hard to continue to support Camden residents. 
-  Information, advice and guidance is currently available over the phone and via email. 
-</div>
-
-
-</main>
 
 
 
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="app-panel-details-width govuk-body">
-
-    <h1 class="govuk-heading-l"><%= @service.name %></h1>
-
-    <h2 class="govuk-hint"><%= @service.description %></h2>
-
-    <p>
-        <div class="govuk-body app-panel-covid-information"> 
-        <label class="app-label-title"> COVID-19 information</label><br>
-        Despite the current situation with COVID-19, 
-        the service is working hard to continue to support Camden residents. 
-        Information, advice and guidance is currently available over the 
-        phone and via email. 
+        <h1 class="govuk-heading-xl"><%= @service.name %></h1>
+        <p class="govuk-body-l"><%= @service.description %></p>
+        <div class="govuk-inset-text govuk-inset-text--blue">
+            <p class="govuk-body govuk-!-font-weight-bold">
+            COVID-19 information
+            </p>
+            <p>Despite the current situation with COVID-19, the service is working hard to continue to support Camden residents. 
+            Information, advice and guidance is currently available over the phone and via email. </p>
         </div>
-    </p>
 
-    <p>
-    
-        <label class="govuk-label-title">How they can help</label><br>
-        <p>
-        </p>
-    
-  
-    </p>
-
+</div>
 </div>
 
 
-<div class=" app-panel-contact govuk-body">
 
-<h3>Contact details</>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+  <h2 class="govuk-heading-m">How they can help</h2>
 
-<p>
+  <ul class="govuk-list gwc-list-icon">
+    <!--<li class="gwc-list-icon--check">Careers advice</li>-->
+  </ul>
+    
+  </div>
+  <div class="govuk-grid-column-one-third">
+  <h2 class="govuk-heading-m">Who is it for?</h2>
 
-    <label class="app-label-title">Location</label><br>
-    <label class="app-label-text"><%= @service.address -%></label>
+   <ul class="govuk-list gwc-list-icon">
+     <!--<li class="gwc-list-icon--check">Careers advice</li>-->
+  </ul>
+    
+  </div>
+  <div class="govuk-grid-column-one-third">
+  <h2 class="govuk-heading-m">Accessibility</h2>
 
-</p>
-
-
-
-<p>
-
-    <label class="app-label-title">Get in touch</label><br>
-    <label class="app-label-text"><%= @service.phone -%></label>
-    <label class="app-label-text"><%= @service.email -%></label>
-
-</p>
-
-<p>
-
-    <label class="app-label-title">Opening hours</label><br>
-    <label class="app-label-text"><%= @service.hours -%></label>
-
-</p>
-
-
-<p>
-
-    <label class="app-label-title">Website</label><br>
-    <label class="app-label-text"><%= @service.website -%></label>
-
-</p>
-
+   <ul class="govuk-list gwc-list-icon">
+     <!--<li class="gwc-list-icon--check">Careers advice</li>-->
+  </ul>
+    
+  </div>
 </div>
 
-<div>
+
+
 
 
 <p>
@@ -130,32 +74,54 @@ COVID-19 information
 
 </p>
 
-</div>
 
-<div class="app-map">
+<div class="gwc-camden-divider"></div>
 
-    <iframe id="iframe-Mapp" width="600"     
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    
+    <h2 class="govuk-heading-m">Location</h2>
+    <p class="govuk-body"><%= @service.address -%></p>
+
+
+    <h2 class="govuk-heading-m">Opening hours</h2>
+    <p class="govuk-body"><%= @service.hours -%></p>
+
+    <h2 class="govuk-heading-m">Get in touch</h2>
+    <p class="govuk-body"><%= @service.phone -%><br />
+    <a href="mailto:<%= @service.email -%>" class="govuk-link"><%= @service.email -%></a></p>
+    
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+
+   <iframe width="600"     
         height="450" 
         frameborder="0" 
         style="border:0"
         src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAKrLiNDnAI-f3rTVW7ZIYvixNNKfLGP_0&q=<%= @service.address %>&zoom=18&" allowfullscreen>
     </iframe>
 
+  </div>
 </div>
 
 
-<div class="app-div-details-missing-text">
-
-    <p>
-
-        <h3 class="govuk-heading-m">Is anything missing?</>
-
-    <p/>
-  
-        <p class="govuk-hint">If there's anything out of date or missing from this service, you can request it to be updated.</p>
+<div class="gwc-camden-divider"></div>
 
 
-</div>
 
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+  <h2 class="govuk-heading-m">Is anything missing?</h2>
+    <p class="govuk-body">If there's anything out of date or missing from this service, you can <a href="#" class="govuk-link">request it to be updated</a>.</p>
 
 </div>
+</div>
+
+</main>
+
