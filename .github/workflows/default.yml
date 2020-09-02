@@ -12,8 +12,6 @@ jobs:
       postgres:
         image: postgres:11.7-alpine
         env:
-          POSTGRES_USER: gwcamden
-          POSTGRES_PASSWORD: password
           POSTGRES_DB: gwcamden_tst
         ports:
           - 5432:5432
@@ -23,10 +21,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@v1
-      - run: bundle install
-
-
-
+        with:
+          bundler-cache: true
 
       - name: Setup database
         env:
@@ -39,11 +35,6 @@ jobs:
           bundle exec rails db:migrate
           bundle exec rails db:seed
 
-      - name: Compile assets
-        env:
-          RAILS_ENV: test
-        run: |
-          bundle exec rails assets:precompile
       - name: Run cucumber tests
         env:
           RAILS_ENV: test
