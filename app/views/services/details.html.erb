@@ -4,13 +4,57 @@
       <a class="govuk-breadcrumbs__link" href="/">Home</a>
     </li>
     <li class="govuk-breadcrumbs__list-item">
-        Results
+        Your results
     </li>
     <li class="govuk-breadcrumbs__list-item" aria-current="page">
-        Service details
+        <%= @service.name %>
     </li>
   </ol>
 </div>
+
+
+
+
+<main class="govuk-main-wrapper" id="main-content" role="main">
+<h1 class="govuk-heading-xl"><%= @service.name %></h1>
+<p class="govuk-body-l"><%= @service.description %></p>
+
+
+<div class="govuk-inset-text govuk-inset-text--blue">
+COVID-19 information
+  Despite the current situation with COVID-19, the service is working hard to continue to support Camden residents. 
+  Information, advice and guidance is currently available over the phone and via email. 
+</div>
+
+
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <div class="app-panel-details-width govuk-body">
 

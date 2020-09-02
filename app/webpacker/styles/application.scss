@@ -11,7 +11,6 @@
 // ------------
 // Settings that need to be accessed everywhere, think of these as global variables
 //
-@import "01-settings/colours";
 @import "01-settings/vars";
 
 
@@ -50,7 +49,6 @@
 // Prefix class names with 'o-'  
 //
 
-@import "05-objects/alert";
 @import "05-objects/list";
 @import "05-objects/headings";
 @import "05-objects/forms";
@@ -71,16 +69,18 @@
 @import "06-components/gwc-accordion";
 @import "06-components/gwc-footer";
 @import "06-components/gwc-image-desc";
+@import "06-components/gwc-cookie-banner";
+@import "06-components/govuk-phase-banner";
+@import "06-components/govuk-inset-text";
+
+
 
 
 @import "06-components/map";
-@import "06-components/cookie-banner";
-
 @import "06-components/govuk-tag";
 @import "06-components/primary-navigation";
 @import "06-components/component-panel";
 @import "06-components/panel";
-@import "06-components/govuk-phase-banner";
 
 
 
