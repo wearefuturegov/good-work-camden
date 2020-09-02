@@ -8,18 +8,15 @@
 
 .gwc-footer {
     color: $nevada;
-
-
-
+    
     p {
         color: $nevada;
     }
 
     img{
         height: 25px;
+        &:last-of-type{
+            margin-left: 10px;
+        }
     }
-    
-    
-
-
 }
