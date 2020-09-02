@@ -109,8 +109,6 @@ class ServicesController < ApplicationController
             end
             @excludes = Service.joins(:tags).where({"tags.tag": @filters, "service_tags.excluded": 1}).distinct
             @services = Service.joins(:tags).where.not({"id": @excludes.ids}).distinct.limit(5).near(params[:loc])
-            reset_session
-            session[:services] = @services
             @template = "services/list/"
         end  
       else
@@ -148,7 +146,7 @@ class ServicesController < ApplicationController
   end 
 
   def emailresults
-    services = session[:services]
+    # TODO: refactor this to use URL query rather than session data
     email = ResidentMailer.with(user: params, services: services).results.deliver_now
     render template: "services/complete"
   end 

@@ -29,8 +29,6 @@ gem "foreman"
 # Canonical meta tag
 gem "canonical-rails"
 
-gem 'activerecord-session_store'
-
 gem "mail-notify"
 gem "httparty"
 gem "uk_postcode"
