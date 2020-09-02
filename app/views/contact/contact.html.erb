@@ -1,33 +1,3 @@
-
-
-<script>
-
-function BtnClicked(){
-
-    var nameEntered = HasValue('name');
-    var emailEntered = HasValue('email');
-
-    if(nameEntered != '' && emailEntered != ''){
-        return true;
-    }
-    else{
-        document.getElementById("supportError").style.visibility = "visible";
-        document.getElementById("supportError").classList.add("app-options-validation");
-        document.getElementById("supportError").innerHTML = "Please enter your full name and <br>a valid email address in the correct format, like name@example.com";
-
-    return false;
-    }
-}
-
-function HasValue(id){
-    var val = '';
-    val = document.getElementById(id).value;
-    return val;
-}
-
-</script>
-
-
 <div class="govuk-breadcrumbs">
   <ol class="govuk-breadcrumbs__list">
     <li class="govuk-breadcrumbs__list-item">
@@ -40,12 +10,10 @@ function HasValue(id){
 
 <div class="govuk-width-container">
 
-
     <div class="govuk-grid-row">
 
         <div class="column-full">
             <h1 class="govuk-heading-l app-heading-additional-padding">Contact</h1>
-            <br>
         </div>
 
 
@@ -57,7 +25,7 @@ function HasValue(id){
                     <label class="govuk-label" for="name">
                         Full name
                     </label>
-                    <%= text_field_tag(:name, "", class: 'govuk-input govuk-!-width-one-half') %>
+                    <%= text_field_tag(:name, "", class: 'govuk-input govuk-!-width-one-half', required: true) %>
                 </div>
 
                 <div class="govuk-form-group">
@@ -65,7 +33,7 @@ function HasValue(id){
                     <label class="govuk-label" for="email">
                         Email address
                     </label>
-                    <%= text_field_tag(:email, "", type: 'email', class: 'govuk-input govuk-!-width-one-half') %>
+                    <%= text_field_tag(:email, "", type: 'email', class: 'govuk-input govuk-!-width-one-half', required: true) %>
 
                 </div>
                 <div class="govuk-form-group">
@@ -73,11 +41,7 @@ function HasValue(id){
                     <label class="govuk-label" for="message">
                         Your message
                     </label>
-                    <%= text_area_tag(:message, "", rows: 5, class: 'govuk-textarea  govuk-!-width-two-thirds') %>
-                </div>
-
-
-                <div id="supportError">
+                    <%= text_area_tag(:message, "", rows: 5, class: 'govuk-textarea  govuk-!-width-two-thirds', required: true) %>
                 </div>
 
                 <p>
