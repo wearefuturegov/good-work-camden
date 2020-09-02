@@ -24,17 +24,22 @@ jobs:
       - uses: actions/checkout@v2
       - name: Set up Ruby 2.6.5
         uses: actions/setup-ruby@v1
-      - name: Ruby gem cache
-        uses: actions/cache@v1
         with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems1-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gems1-
-      - name: Install gems
-        run: |
-          bundle config path vendor/bundle
-          bundle install --jobs 4 --retry 3
+          bundler-cache: true
+
+      # - name: Ruby gem cache
+      #   uses: actions/cache@v1
+      #   with:
+      #     path: vendor/bundle
+      #     key: ${{ runner.os }}-gems1-${{ hashFiles('**/Gemfile.lock') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-gems1-
+
+      # - name: Install gems
+      #   run: |
+      #     bundle config path vendor/bundle
+      #     bundle install --jobs 4 --retry 3
+
       - name: Setup database
         env:
           RAILS_ENV: test
@@ -45,6 +50,7 @@ jobs:
           bundle exec rails db:create
           bundle exec rails db:migrate
           bundle exec rails db:seed
+
       - name: Compile assets
         env:
           RAILS_ENV: test
