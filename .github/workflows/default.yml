@@ -36,7 +36,7 @@ jobs:
       run: |
         sudo apt-get -yqq install libpq-dev
         yarn
-        rails db:create
-        rails db:migrate
-        rails db:seed
+        bundle exec rails db:create
+        bundle exec rails db:migrate
+        bundle exec rails db:seed
         bundle exec rake
