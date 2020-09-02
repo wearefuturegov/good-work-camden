@@ -17,6 +17,7 @@ type_of_support:
       value: learn-new-skills
       tags:
         - tag: training-and-education
+        - tag: volunteering
     - title: I am interested in apprenticeships
       value: apprenticeships
     - title: I want to start my own business

@@ -63,60 +63,58 @@ class ServicesController < ApplicationController
         @sprt = params[:sprt].present? ? params[:sprt] : []
         @template = "services/questions/support/"
       when "3"
-        @employ = params[:emp].present? ? params[:emp] : []
-        @house = params[:hou].present? ? params[:hou] : []
-        @template = "services/questions/about_you/"
-      when "4"
-        @template = "services/questions/additional/"
-      when "5"
-        @template = "services/questions/type/"
-      when "6"  
-        case params[:type]
-          when "adviser"
-            @template = "services/adviser/"
-          when "search"
-            @filters = []
+      #   @employ = params[:emp].present? ? params[:emp] : []
+      #   @house = params[:hou].present? ? params[:hou] : []
+      #   @template = "services/questions/about_you/"
+      # when "4"
+      #   @template = "services/questions/additional/"
+      # when "5"
+      #   @template = "services/questions/type/"
+      # when "6"  
+      #   case params[:type]
+      #     when "adviser"
+      #       @template = "services/adviser/"
+      #     when "search"
+        @filters = []
 
-            # ADD SUPPORT TO FILTERS
-            if params[:sprt].present? then
-              f = params[:sprt].split(' ')
-              f.each do |s|
-                @filters.append(s)
-              end
-            end
+        # ADD SUPPORT TO FILTERS
+        if params[:sprt].present? then
+          f = params[:sprt].split(' ')
+          f.each do |s|
+            @filters.append(s)
+          end
+        end
 
-            # ADD GENDER TO FILTERS
-            if params[:gender].present? then
-                @filters.append(params[:gender])
-            end
-            # ADD ETHNICITY TO FILTERS
-            if params[:ethnic].present? then
-                @filters.append(params[:ethnic])
-            end
-            # ADD EMPLOYMENT TO FILTERS
-            if params[:emp].present? then
-              f = params[:emp].split(' ')
-              f.each do |s|
-                @filters.append(s)
-              end
-            end
-            # ADD HOUSING TO FILTERS
-            if params[:hou].present? then
-              f = params[:hou].split(' ')
-              f.each do |s|
-                @filters.append(s)
-              end
-            end
+        # ADD GENDER TO FILTERS
+        if params[:gender].present? then
+            @filters.append(params[:gender])
+        end
+        # ADD ETHNICITY TO FILTERS
+        if params[:ethnic].present? then
+            @filters.append(params[:ethnic])
+        end
+        # ADD EMPLOYMENT TO FILTERS
+        if params[:emp].present? then
+          f = params[:emp].split(' ')
+          f.each do |s|
+            @filters.append(s)
+          end
+        end
+        # ADD HOUSING TO FILTERS
+        if params[:hou].present? then
+          f = params[:hou].split(' ')
+          f.each do |s|
+            @filters.append(s)
+          end
+        end
 
-            # Ignore exludes for now
-            # @excludes = Service.joins(:tags).where({"tags.tag": @filters, "service_tags.excluded": 1}).distinct
-            # @services = Service.joins(:tags).where.not({"id": @excludes.ids}).distinct.limit(5).near(params[:loc])
+        # Ignore exludes for now
+        # @excludes = Service.joins(:tags).where({"tags.tag": @filters, "service_tags.excluded": 1}).distinct
+        # @services = Service.joins(:tags).where.not({"id": @excludes.ids}).distinct.limit(5).near(params[:loc])
+        tags =  @questions["type_of_support"]["answers"].select{|answer| params[:sprt].include? answer["value"]}.map{|answer| answer["tags"].map{|tag| tag["tag"]}}.flatten
+        @services = Service.where.not(postcode: nil).joins(:tags).where("tags.tag": tags).distinct.near(params[:loc]).limit(5)
 
-            tags = @questions["type_of_support"]["answers"].select{|answer| answer["value"] == params[:sprt]}.first["tags"].map{|tag| tag["tag"]}
-            @services = Service.where.not(postcode: nil).joins(:tags).where("tags.tag": tags).distinct.near(params[:loc]).limit(5)
-
-            @template = "services/list/"
-        end  
+        @template = "services/list/"
       else
         @template = "services/questions/location/"
     end
