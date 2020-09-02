@@ -2,7 +2,7 @@
     background-color: $govuk-canvas-background-colour;
     padding: 20px;
 
-    border-bottom: solid 2px $bg-dark-blue;
+    border-top: solid 2px $bg-dark-blue;
     text-align: center;
 
     @include govuk-font($size: 19);
