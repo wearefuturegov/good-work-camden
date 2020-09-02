@@ -4,30 +4,30 @@ type_of_support:
   hint: "Please select a maximum of two:"
   answers:
     - title: I need help looking and applying for jobs
-      value: support-applying
+      value: applying
       tags:
         - tag: cv-and-application-support
         - tag: job-broker
         - tag: job-hub
     - title: I need support to stay or progress in my current job
-      value: support-progress-job
+      value: progress-current-job
       tags:
         - tag: career-support
     - title: I want to learn new skills
-      value: 
+      value: learn-new-skills
+      tags:
+        - tag: training-and-education
     - title: I am interested in apprenticeships
-      value: 
+      value: apprenticeships
     - title: I want to start my own business
-      value: 
+      value: start-own-business
     - title: I want to find better job suited to my interests
-      value: 
+      value: find-interesting-job
     - title: I want to find work that fits my schedule
-      value: 
-    - title: I want to find work that fits my schedule
-      value: 
+      value: work-to-fit-schedule
+    - title: I need childcare support while I work or look for work
+      value: childcare-support
     - title: I need help improving my financial situation
-      value: 
+      value: financial-support
     - title: I need support with my health and wellbeing
-      value: 
-    - title: I am dealing with health issues at work
-      value: 
+      value: health-and-wellbeing
