@@ -110,3 +110,17 @@
         }
     }
 }
+
+@include screen-min-width-600-max-width-960() {
+  
+
+    .app-m-email-label{display:none!important;}
+
+}
+
+@include screen-max-width-600() {
+
+
+   .app-m-email-label{display:none!important;}
+
+}

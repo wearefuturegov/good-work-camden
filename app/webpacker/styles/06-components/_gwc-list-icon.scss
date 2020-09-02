@@ -1,0 +1,7 @@
+.gwc-list-icon {
+    margin-left: 25px;
+    
+    &--check {
+        list-style-image: frontend-image-url('checkmark.svg');
+    }
+}

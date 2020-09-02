@@ -1,7 +1,4 @@
-.app-panel-details-width {
-    width:55%;
-    display: inline-block;
-}
+
 
 
 @include screen-max-width-600() {
@@ -20,9 +17,4 @@
 
    .govuk-width-container{max-width: 100% !important;} 
 
-}
-
-
-.app-panel-padding {
-    padding-right: 50px;
 }
