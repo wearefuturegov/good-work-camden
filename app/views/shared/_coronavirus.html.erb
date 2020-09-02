@@ -1,37 +1,63 @@
 
 
-<details class="coronavirus-warning">
 
-    <summary>
-        Coronavirus (COVID-19) update
-    </summary>
-    
-    <div>
+
+<div class="gwc-accordion">
+    <div class="gwc-accordion__header">
+        <div class="gwc-accordion__title">Coronavirus (COVID-19) update</div>
+        <div class="gwc-accordion__controls"><button aria-expanded="false" id="accordion1id" aria-controls="accordion1" class="gwc-accordion__button">Show message</button></div>
+    </div>
+    <div class="gwc-accordion__body" id="accordion0" role="region" aria-labelledby="accordion0id">
         <div class="govuk-grid-row">
-            <div class="govuk-grid-column-two-thirds app-grid-column-padding-warning">
-                <div>
-                    <label class="govuk-label app-warning-label-larger">We know that coronavirus and the measures put in place to help address it are impacting Camden residents in many ways, including around work and finances.</label>
-                    <ul>
-                        <li class="app-li-margin app-warning-ul">Camden is working with our local employment and skills services to provide support to residents during these confusing and challenging times.</li>
-                        <li class="app-li-margin app-warning-ul">We are adapting our employment support service to ensure that we continue to support Camden residents.</li>
-                        <li class="app-li-margin app-warning-ul">Our service is currently delivered over the phone and online.</li>
-                    </ul><label class="govuk-label app-font-bold">We&#39;re here to help you.</label>
-                </div>
+            <div class="govuk-grid-column-two-thirds">
+                <p class="govuk-body govuk-!-font-size-24">We know that coronavirus and the measures put in place to help address it are impacting Camden residents in many ways, including around work and finances.</p>
+                <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+                    <li>Camden is working with our local employment and skills services to provide support to residents during these confusing and challenging times.</li>
+                    <li>We are adapting our employment support service to ensure that we continue to support Camden residents.</li>
+                    <li>Our service is currently delivered over the phone and online.</li>
+                </ul>
+                <p class="govuk-body govuk-!-font-weight-bold">We&#39;re here to help you.</p>
             </div>
             <div class="govuk-grid-column-one-third">
-                <div class="app-warning-imformation-small-device-padding">
-                    <p><label class="govuk-label app-font-bold">More Information</label></p>
-                    <div class="app-panel-warning-information">
-                        <a href="https://www.gov.uk/coronavirus" class="govuk-label app-panel-warning-information-label">Coronavirus: The official UK government advice</a>
-                    </div>
-                    <div class="app-panel-warning-information">
-                        <a href="https://www.nhs.uk/conditions/coronavirus-covid-19/" class="govuk-label app-panel-warning-information-label">If you&#39;re worried about your health or have coronavirus symptoms, call NHS 111 or check the NHS website.</a>
-                    </div>
-                    <div class="app-panel-warning-information">
-                        <a href="https://camden.gov.uk/coronavirus" class="govuk-label app-panel-warning-information-label">Get help if you&#39;re staying at home because of coronavirus</a>
-                    </div>
+                <div class="gwc-side-content">
+                    <div class="gwc-side-content__heading">More Information</div>
+                    <ul class="gwc-side-content__list">
+                        <li><a href="https://www.gov.uk/coronavirus">Coronavirus: The official UK government advice</a></li>
+                        <li><a href="https://www.nhs.uk/conditions/coronavirus-covid-19/">If you&#39;re worried about your health or have coronavirus symptoms, call NHS 111 or check the NHS website.</a></li>
+                        <li><a href="https://camden.gov.uk/coronavirus">Get help if you&#39;re staying at home because of coronavirus</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
-</details>
+</div>
+
+
+
+<script>
+// todo - move this into proper js file
+var accordions = document.querySelectorAll('.gwc-accordion');
+
+var toggleAccordion = function(e) {
+    e.preventDefault();
+    
+    var text = e.target.innerText;
+    e.target.innerText = (text === 'Close') ? 'Show message' : 'Close';
+
+    var aria = e.target.getAttribute('aria-expanded');
+    var isExpanded = (aria === 'true');
+    e.target.setAttribute('aria-expanded', !isExpanded)
+
+
+    var body = e.target.closest('.gwc-accordion').querySelector('.gwc-accordion__body');
+    body.style.display = (body.style.display === 'none' ) ? 'block' : 'none';
+
+}
+
+for (var i = 0; i < accordions.length; ++i) {
+  accordions[i].classList.add('js-enabled');
+  accordions[i].querySelector('.gwc-accordion__body').style.display = 'none';
+  accordions[i].querySelector('.gwc-accordion__button').addEventListener('click', toggleAccordion);
+}
+
+</script>

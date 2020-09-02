@@ -1,0 +1,69 @@
+$classname: gwc-accordion;
+
+.gwc-accordion {
+
+    border: 3px solid $bg-pink;
+    border-radius: 9px;
+
+    &__header {
+        padding: 20px;
+        @include govuk-clearfix;
+    }
+    &__title {
+        @include govuk-font($size: 19, $weight: bold);
+        @include govuk-text-colour;
+        display: block;
+        margin-bottom: govuk-spacing(1);
+        float: left;
+    }
+    &__controls {
+        float: right;
+        text-align: right;
+
+    }
+
+
+
+    &__button {
+        margin: 0;
+        padding: 0;
+        background: none;
+        border: 0;
+        display: inline-block;
+
+        @include govuk-font($size: 19);
+        @include govuk-text-colour;
+
+        margin-bottom: govuk-spacing(1);
+        text-decoration: underline;
+
+        &:focus {
+            outline: none;
+            background-color: $govuk-focus-colour;
+            box-shadow: 0 -2px $govuk-focus-colour, 0 4px $bg-black;
+            text-decoration: none;
+        }
+
+
+    }
+
+    &__body {
+        padding: 20px 40px;
+    }
+
+
+
+    @include govuk-media-query ($until: tablet) {
+        &__title {
+          float: none;
+          text-align: center;
+        }
+        
+        &__controls {
+          float: none;
+          text-align: center;
+        }     
+      }
+
+
+}
