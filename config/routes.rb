@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get "/", to: "pages#show", page: "home"
   get "/home", to: "pages#show", page: "home"
   get "/about", to: "pages#show", page: "about"
+  get "/statement", to: "pages#show", page: "statement"
   get "/services/details/:id", to: "services#details"
   get "/services/list", to: "services#list"
   get "/services/thankyou", to: "services#thankyou"
