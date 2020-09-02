@@ -11,8 +11,7 @@ development:
 test:
   <<: *default
   database: gwcamden_tst
-  username: postgres
-  password: password
+
 production:
   url: <%= ENV['DATABASE_URL'] %>
   pool: 5
