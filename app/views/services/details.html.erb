@@ -3,20 +3,20 @@
     <li class="govuk-breadcrumbs__list-item">
       <a class="govuk-breadcrumbs__link" href="/">Home</a>
     </li>
-    <li class="govuk-breadcrumbs__list-item">Results</li>
-    <li class="govuk-breadcrumbs__list-item" aria-current="page">Service</li>
+    <li class="govuk-breadcrumbs__list-item">
+        Results
+    </li>
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">
+        Service details
+    </li>
   </ol>
 </div>
 
 <div class="app-panel-details-width govuk-body">
 
+    <h1 class="govuk-heading-l"><%= @service.name %></h1>
 
-
-
-
-    <h1 class="govuk-heading-l"><%= @service.name -%></h1>
-
-    <h2 class="govuk-hint"><%= @service.description -%></h2>
+    <h2 class="govuk-hint"><%= @service.description %></h2>
 
     <p>
         <div class="govuk-body app-panel-covid-information"> 
