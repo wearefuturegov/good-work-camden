@@ -107,8 +107,14 @@ class ServicesController < ApplicationController
                 @filters.append(s)
               end
             end
-            @excludes = Service.joins(:tags).where({"tags.tag": @filters, "service_tags.excluded": 1}).distinct
-            @services = Service.joins(:tags).where.not({"id": @excludes.ids}).distinct.limit(5).near(params[:loc])
+
+            # Ignore exludes for now
+            # @excludes = Service.joins(:tags).where({"tags.tag": @filters, "service_tags.excluded": 1}).distinct
+            # @services = Service.joins(:tags).where.not({"id": @excludes.ids}).distinct.limit(5).near(params[:loc])
+
+            tags = @questions["type_of_support"]["answers"].select{|answer| answer["value"] == params[:sprt]}.first["tags"].map{|tag| tag["tag"]}
+            @services = Service.where.not(postcode: nil).joins(:tags).where("tags.tag": tags).distinct.near(params[:loc]).limit(5)
+
             @template = "services/list/"
         end  
       else
