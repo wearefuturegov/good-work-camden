@@ -10,51 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_27_154531) do
+ActiveRecord::Schema.define(version: 2020_09_02_103513) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "postcodes", id: false, force: :cascade do |t|
-    t.text "postcode1"
-    t.text "postcode2"
-    t.text "postcode3"
-    t.text "dateintroduced"
-    t.integer "usertype"
-    t.integer "easting"
-    t.integer "northing"
-    t.integer "positionalquality"
-    t.text "countycode"
-    t.text "countyname"
-    t.text "localauthoritycode"
-    t.text "localauthorityname"
-    t.text "wardcode"
-    t.text "wardname"
-    t.text "countrycode"
-    t.text "countryname"
-    t.text "regioncode"
-    t.text "regionname"
-    t.text "parliamentaryconstituencycode"
-    t.text "parliamentaryconstituencyname"
-    t.text "europeanelectoralregioncode"
-    t.text "europeanelectoralregionname"
-    t.text "primarycaretrustcode"
-    t.text "primarycaretrustname"
-    t.text "lowersuperoutputareacode"
-    t.text "lowersuperoutputareaname"
-    t.text "middlesuperoutputareacode"
-    t.text "middlesuperoutputareaname"
-    t.text "outputareaclassificationcode"
-    t.text "outputareaclassificationname"
-    t.decimal "longitude"
-    t.decimal "latitude"
-    t.text "spatialaccuracy"
-    t.text "lastuploaded"
-    t.text "location"
-    t.integer "socrataid"
-    t.integer "lowerlayersuperoutputarea"
-    t.integer "ward"
-  end
 
   create_table "service_tags", force: :cascade do |t|
     t.bigint "service_id", null: false
