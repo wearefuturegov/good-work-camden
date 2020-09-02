@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   get "/services/details/:id", to: "services#details"
   get "/services/list", to: "services#list"
   get "/services/thankyou", to: "services#thankyou"
-  get "/services/emailresults", to: "services#emailresults"
   get "/services", to: "services#show"
+
+  post "/services/emailresults", to: "services#emailresults"
 
   get "/contact", to: "contact#show", page: "contact"
   get "/contact/thankyou", to: "contact#thankyou"

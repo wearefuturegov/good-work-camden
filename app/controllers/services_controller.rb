@@ -146,8 +146,10 @@ class ServicesController < ApplicationController
   end 
 
   def emailresults
-    # TODO: refactor this to use URL query rather than session data
-    email = ResidentMailer.with(user: params, services: services).results.deliver_now
+    email = ResidentMailer.with(
+      user: params, 
+      referer: request.referer
+    ).results.deliver_now
     render template: "services/complete"
   end 
 

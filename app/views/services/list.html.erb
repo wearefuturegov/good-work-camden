@@ -26,9 +26,7 @@
           <li class="services-list__result">
 
             <h2 class="services-list__name"><%= s.name %></h2>
-            <p><%= s.distance_to(params[:loc], :mi).round(1) %> miles away</p>
-            <p class="services-list__location"><%= s.wards %></p>
-
+            <p class="services-list__location"><%= s.wards %> (<%= s.distance_to(params[:loc], :mi).round(1) %> miles away)</p>
             <p class="services-list__summary"><%= s.summary %></p>
 
             <ul class="services-list__selling-points">
@@ -53,10 +51,10 @@
 
       <p>Send these results in a handy email to yourself or a friend.</p>
 
-      <%= form_tag('services/emailresults',{:method => "get", :enforce_utf8 => false}) do %>
+      <%= form_tag('services/emailresults') do %>
         
-        <label class="visually-hidden">Email address</label>
-        <%= text_field_tag(:email, "", type:'email', placeholder: "Email address", autocomplete: 'email', required: true, class: 'govuk-input app-m-small') %>
+        <label class="visually-hidden" for="email">Email address</label>
+        <%= text_field_tag(:email, "", id: "email", type:'email', placeholder: "Email address", autocomplete: 'email', required: true, class: 'govuk-input app-m-small') %>
           
         <% @persist.each do |key,value| %>
           <%= hidden_field_tag(key,value) %>

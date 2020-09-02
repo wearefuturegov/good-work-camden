@@ -21,7 +21,7 @@ class ResidentMailer < Mail::Notify::Mailer
 
   def results
     @user = params[:user]
-    @services = params[:services]
+    @referer = params[:referer]
     view_mail(
       ENV['GOVUK_NOTIFY_TEMPLATE_ID'],
       to: @user[:email],
