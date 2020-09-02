@@ -110,20 +110,21 @@ function HasValue(id){
     <div id = "postcode-box" class="start-hidden">
     <div class="app-panel-postcode-sidebar">
         <p>
-          <label class="govuk-label app-label-question">
+          <label for="loc" class="govuk-label app-label-question">
               Please enter your postcode
           </label>
         </p>
-      <p>
+
           <p class="govuk-hint">
               We use this to recommend you services that are close to you.
           </p>
-      </p>
+
 
   
       <div class="govuk-form-group">
 
-          <%= text_field_tag(:loc, "", type:'text', autocomplete:'postal-code', class: 'govuk-input govuk-input--width-10') %>
+          <%= text_field_tag(:loc, "", id: "loc", type:'text', autocomplete:'postal-code', class: 'govuk-input govuk-input--width-10') %>
+          
           <% @persist.except('res','loc').each do |key,value| %>
             <%= hidden_field_tag(key,value) %>
           <% end %>
