@@ -26,7 +26,7 @@ jobs:
       - name: Set up Ruby 2.6.5
         uses: actions/setup-ruby@v1
         with:
-          ruby-version: 2.6.5
+          ruby-version: ruby-2.6.5
           bundler-cache: true
 
       # - name: Ruby gem cache
