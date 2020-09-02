@@ -1,0 +1,30 @@
+.gwc-side-content {
+
+&__heading {
+    @include govuk-font($size: 19, $weight: bold);
+    @include govuk-text-colour;
+
+    display: block;
+
+    margin-bottom: govuk-spacing(1);
+
+}
+
+&__list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    li {
+        border-top: 2px solid $bg-pink;
+        padding: 10px;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    a {
+        color: $text-color;
+    }
+}
+
+}
