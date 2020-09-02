@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
   get "/pages/:page", to: "pages#show"
-  get "/", to: "pages#show", page: "home"
-  get "/home", to: "pages#show", page: "home"
+
   get "/about", to: "pages#show", page: "about"
-  get "/statement", to: "pages#show", page: "statement"
+
   get "/services/details/:id", to: "services#details"
   get "/services/list", to: "services#list"
   get "/services/thankyou", to: "services#thankyou"
   get "/services/emailresults", to: "services#emailresults"
   get "/services", to: "services#show"
+
   get "/contact", to: "contact#show", page: "contact"
   get "/contact/thankyou", to: "contact#thankyou"
 
