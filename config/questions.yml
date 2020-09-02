@@ -20,15 +20,31 @@ type_of_support:
         - tag: volunteering
     - title: I am interested in apprenticeships
       value: apprenticeships
+      tags:
+        - tag: apprenticeships
     - title: I want to start my own business
       value: start-own-business
+      tags:
+        - tag: self-employment
     - title: I want to find better job suited to my interests
       value: find-interesting-job
+      tags:
+        - tag: career-support
+        - tag: job-hub
     - title: I want to find work that fits my schedule
       value: work-to-fit-schedule
+      tags:
+        - tag: career-support
+        - tag: job-hub
     - title: I need childcare support while I work or look for work
-      value: childcare-support
+      value: childcare
+      tags:
+        - tag: childcare
     - title: I need help improving my financial situation
-      value: financial-support
+      value: financial
+      tags:
+        - tag: benefits-and-finance-advice
     - title: I need support with my health and wellbeing
       value: health-and-wellbeing
+      tags:
+        - tag: mental-health
