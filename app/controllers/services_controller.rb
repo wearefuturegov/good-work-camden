@@ -9,7 +9,7 @@ class ServicesController < ApplicationController
     @errors = Hash.new
     @questions = YAML.load_file('config/questions.yml')
     if params[:step].present?
-        @step = (params[:step].to_i + 1).to_s
+      @step = (params[:step].to_i + 1).to_s
     end
 
     # Check we have a valid postcode
@@ -35,11 +35,11 @@ class ServicesController < ApplicationController
 
     #Check question pre-requistes have been met
     case @step
-      when "3"
-        if !params[:sprt].present? then
-          @errors["sprt"] = "Support requirements not specified"
-          @step = "2"
-        end
+    when "3"
+      if !params[:sprt].present? then
+        @errors["sprt"] = "Support requirements not specified"
+        @step = "2"
+      end
     end
 
     #Check DOB is valid
@@ -59,22 +59,21 @@ class ServicesController < ApplicationController
     end
 
     case @step
-      when "2"
-        @sprt = params[:sprt].present? ? params[:sprt] : []
-        @template = "services/questions/support/"
-      when "3"
-      #   @employ = params[:emp].present? ? params[:emp] : []
-      #   @house = params[:hou].present? ? params[:hou] : []
-      #   @template = "services/questions/about_you/"
-      # when "4"
-      #   @template = "services/questions/additional/"
-      # when "5"
-      #   @template = "services/questions/type/"
-      # when "6"  
-      #   case params[:type]
-      #     when "adviser"
-      #       @template = "services/adviser/"
-      #     when "search"
+    when "2"
+      @sprt = params[:sprt].present? ? params[:sprt] : []
+      @template = "services/questions/support/"
+    when "3"
+    #   @employ = params[:emp].present? ? params[:emp] : []
+    #   @house = params[:hou].present? ? params[:hou] : []
+    #   @template = "services/questions/about_you/"
+    # when "4"
+    #   @template = "services/questions/additional/"
+    # when "5"
+      @template = "services/questions/type/"
+    when "4"
+      if params[:type] == "adviser"
+        @template = "services/adviser/"
+      elsif params[:type] == "search"
         @filters = []
 
         # ADD SUPPORT TO FILTERS
@@ -115,11 +114,11 @@ class ServicesController < ApplicationController
         @services = Service.where.not(postcode: nil).joins(:tags).where("tags.tag": tags).distinct.near(params[:loc]).limit(5)
 
         @template = "services/list/"
-      else
-        @template = "services/questions/location/"
+      end
+    else
+      @template = "services/questions/location/"
     end
     render template: @template
-
   end
 
   def thankyou
