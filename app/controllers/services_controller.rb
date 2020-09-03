@@ -162,6 +162,12 @@ class ServicesController < ApplicationController
     if params[:id].present?
       @id = params[:id]
       @service = Service.find(@id)
+
+      @how_we_can_help = @service.tags.where(displayed: true)
+
+      @who_is_it_for = @service.service_tags.where(required: true)
+
+
       render template: "services/details/"
     else
       redirect_to :action=>'show'
