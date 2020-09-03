@@ -43,3 +43,5 @@ type_of_support:
       value: health-and-wellbeing
       tags:
         - tag: mental-health
+        - tag: disability-and-long-term-physical-conditions
+        - tag: health-and-wellbeing
