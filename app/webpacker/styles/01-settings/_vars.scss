@@ -58,7 +58,8 @@ $govuk-use-legacy-font: false;
 $govuk-font-family: $sans-serif-font;
 
 
-$govuk-link-colour: darken($cerulean, 11);
+// $govuk-link-colour: darken($cerulean, 11);
+$govuk-link-colour: $blue-ribbon;
 $govuk-text-colour: $text-color;
 
 $govuk-canvas-background-colour: $page-bg-color;
