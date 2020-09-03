@@ -68,6 +68,18 @@
 }
 
 
+.app-checkboxes{
+    .app-checkbox-width_container{
+        margin-bottom: 10px;
+    }
+
+    @include screen-min-width-600() {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 25px;
+    }
+}
+
 
 
 

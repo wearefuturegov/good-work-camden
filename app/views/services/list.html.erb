@@ -25,68 +25,56 @@
       </div>
     </div>
 <% else %>
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-xl">Your results</h1>
-    <p class="govuk-body-l">Based on your answers, we think you might find these services near you helpful. We can email this list to you for future reference. We don't view or store your details.</p>
-    <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" data-turbolinks="false" href="#email-page">Email these results to yourself</a></p>
-    <p class="govuk-body">Showing <%= @services.length %> services for your answers and location</p>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">Your results</h1>
+      <p class="govuk-body-l">Based on your answers, we think you might find these services near you helpful. We can email this list to you for future reference. We don't view or store your details.</p>
+      <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" data-turbolinks="false" href="#email-page">Email these results to yourself</a></p>
+      <p class="govuk-body">Showing <%= @services.length %> services for your answers and location</p>
 
+    </div>
   </div>
- 
-</div>
-
-
-<br />
-<br />
-
 
   <% @services.each do |s| %>   
 
 
-  <div class="gwc-camden-divider"></div>
+    <div class="gwc-camden-divider"></div>
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-
-
-    <h2 class="govuk-heading-l"><%= s.name %></h2>
-    <p class="govuk-body"><%= s.wards %> (<%= s.distance_to(params[:loc], :mi).round(1) %> miles away)</p>
-    <p class="govuk-body"><%= s.summary %></p>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
 
 
-
-    <h2 class="govuk-heading-m">How they can help</h2>
-    <ul class="govuk-list gwc-list-icon">
-      <% s.tags.each do |t| %>
-          <% if t.displayed == 1 then %>
-              <li class="gwc-list-icon--check"><%= t.description %></li> 
-          <% end %>
-      <% end %>
-    </ul>
+      <h2 class="govuk-heading-l"><%= s.name %></h2>
+      <p class="govuk-body"><%= s.wards %> (<%= s.distance_to(params[:loc], :mi).round(1) %> miles away)</p>
+      <p class="govuk-body"><%= s.summary %></p>
 
 
+
+      <h2 class="govuk-heading-m">How they can help</h2>
+      <ul class="govuk-list gwc-list-icon">
+        <% s.tags.each do |t| %>
+            <% if t.displayed == 1 then %>
+                <li class="gwc-list-icon--check"><%= t.description %></li> 
+            <% end %>
+        <% end %>
+      </ul>
+
+
+      </div>
+      
+      <div class="govuk-grid-column-one-third">
+        <%= link_to "View details", {:action => 'details', :id => s.id }, class: "app-button app-button--start" %>
+      </div>
     </div>
-    
-    <div class="govuk-grid-column-one-third">
-      <%= link_to "View details", {:action => 'details', :id => s.id }, class: "app-button app-button--start" %>
-    </div>
-  </div>
+
+
+    <% end %>
+
 
 
   <% end %>
 
-
-
-<% end %>
-
-
-
   <div class="gwc-camden-divider"></div>
-
-
-
-
 
 <div class="govuk-grid-row" id="email-page">
   <div class="govuk-grid-column-two-thirds">
