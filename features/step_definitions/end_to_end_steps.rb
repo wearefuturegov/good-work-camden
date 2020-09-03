@@ -27,7 +27,7 @@ When("I can select two kinds of support") do
 end
 
 Then("I choose to see my results") do
-    choose("I'd like to select a local service myself instead")
+    choose("I'd like to see a list of local services")
 end
 
 Then("I can see my results") do
