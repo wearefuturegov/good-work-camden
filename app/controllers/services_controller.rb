@@ -71,6 +71,7 @@ class ServicesController < ApplicationController
     # when "5"
       @template = "services/questions/type/"
     when "4"
+      params[:sprt] = params[:sprt].split(" ")
       if params[:type] == "adviser"
         @template = "services/adviser/"
       elsif params[:type] == "search"
@@ -122,6 +123,7 @@ class ServicesController < ApplicationController
   end
 
   def thankyou
+    params[:sprt] = params[:sprt].split(" ")
     response = HTTParty.post("https://api.airtable.com/v0/#{ENV["AIRTABLE_BASE_ID"]}/Applications", 
       body: {
         records: [
