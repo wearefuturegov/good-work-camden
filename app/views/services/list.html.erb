@@ -27,9 +27,11 @@
 <% else %>
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-xl">Your results</h1>
-        <p class="govuk-body-l">Based on your answers, we think you might find these services near you helpful. We can email this list to you for future reference. We don't view or store your details.</p>
-        <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" href="#email-page">Email these results to yourself</a></p>
+    <h1 class="govuk-heading-xl">Your results</h1>
+    <p class="govuk-body-l">Based on your answers, we think you might find these services near you helpful. We can email this list to you for future reference. We don't view or store your details.</p>
+    <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" data-turbolinks="false" href="#email-page">Email these results to yourself</a></p>
+    <p class="govuk-body">Showing <%= @services.length %> services for your answers and location</p>
+
   </div>
  
 </div>
@@ -37,9 +39,6 @@
 
 <br />
 <br />
-
-
-<p class="govuk-body-l"><%= @services.length %> most relevant services matched to your answers and location</p>
 
 
   <% @services.each do |s| %>   
@@ -51,7 +50,7 @@
     <div class="govuk-grid-column-two-thirds">
 
 
-    <h2 class="govuk-heading-m"><%= s.name %></h2>
+    <h2 class="govuk-heading-l"><%= s.name %></h2>
     <p class="govuk-body"><%= s.wards %> (<%= s.distance_to(params[:loc], :mi).round(1) %> miles away)</p>
     <p class="govuk-body"><%= s.summary %></p>
 
