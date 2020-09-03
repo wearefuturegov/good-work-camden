@@ -36,7 +36,7 @@
 
 <%= link_to("Back", current_page_params.merge(step: '3'), class: "govuk-back-link") %>
 
-<h1 class="govuk-heading-l app-heading-margin-top-bottom">Select the type of help you prefer</h1>
+<h1 class="govuk-heading-l app-heading-margin-top-bottom">What kind of help do you need?</h1>
 
 
 <%= form_tag('/services',{:method => "get", :enforce_utf8 => false}) do %>
@@ -45,24 +45,27 @@
 
   <div class="app-checkbox-width_container">
       <div class="govuk-checkboxes__item app-checkbox-width-third">
-
-          <%= radio_button_tag('type', 'adviser', false, class:'govuk-radios__input', id: "adviser") %>
-          <%= label_tag("adviser", "I want to contact an advisor now to find the support that is right for me (recommended)", class:'govuk-label govuk-radios__label') %>
-
+          <%= radio_button_tag('type', 'adviser', false, class:'govuk-radios__input', id: "advisor") %>
+          <%= label_tag("adviser", "", class:'govuk-label govuk-radios__label') do %>
+          <strong>I want to talk to an employment advisor</strong>
+          <% end %>
+          <label for="advisor" class="govuk-hint app-hint-include-label" >
+                We'll share your answers with an employment advisor, who'll contact you to give personalised support.
+          </label>
       </div>
    </div>
 
-    <p class="govuk-label app-label-margin-bottom">or</p>
-
     <div class="app-checkbox-width_container">
       <div class="govuk-checkboxes__item app-checkbox-width-third">
-
           <%= radio_button_tag('type', 'search', false, class:'govuk-radios__input', id: "search") %>
-          <%= label_tag("search", "I'd like to select a local service myself instead", class:'govuk-label govuk-radios__label') %>
-
+          <%= label_tag("search", "", class:'govuk-label govuk-radios__label') do %>
+          <strong>I'd like to see a list of local services</strong>
+          <% end %>
+          <label for="search" class="govuk-hint app-hint-include-label" >
+                We'll give you a list of services in your area to contact based on your answers
+          </label>
     </div>
    </div>
-
 
   <% @persist.except("type").each do |key,value| %>
     <%= hidden_field_tag(key,value) %>
