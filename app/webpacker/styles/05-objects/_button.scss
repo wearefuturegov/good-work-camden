@@ -20,7 +20,7 @@
 
     &:hover{
         border-color: darken($bay-of-many, 10);
-        color: darken($bay-of-many, 10);
+        color: lighten($bay-of-many, 10);
     }
     &:focus{
         outline: none;
@@ -28,7 +28,7 @@
     }
     &:active{
         border-color: darken($bay-of-many, 20);
-        color: darken($bay-of-many, 20);
+        color: darken($bay-of-many, 40);
     }
 
     &--start{
@@ -37,11 +37,13 @@
 
         &:hover{
             color: white;
-            background-color: darken($bay-of-many, 10);
+            background-color: lighten($bay-of-many, 10);
+            border-color: lighten($bay-of-many, 10);
         }
         &:active{
             color: white;
-            background-color: darken($bay-of-many, 20);
+            background-color: darken($bay-of-many, 40);
+            border-color: darken($bay-of-many, 40);
         }
 
         &:after{
