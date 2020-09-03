@@ -45,7 +45,7 @@
 
 
       <h2 class="govuk-heading-l"><%= s.name %></h2>
-      <p class="govuk-body"><%= s.wards %> (<%= s.distance_to(params[:loc], :mi).round(1) %> miles away)</p>
+      <p class="govuk-body"><%= s.wards %> (<%= s.distance_to(@postcode.to_s, :mi).round(1) %> miles away)</p>
       <p class="govuk-body"><%= s.summary %></p>
 
 

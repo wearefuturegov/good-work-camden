@@ -14,9 +14,9 @@ class ServicesController < ApplicationController
 
     # Check we have a valid postcode
     if params[:loc].present? then
-      postcode = UKPostcode.parse(params[:loc].upcase)
-      if postcode.valid?
-        url = URI.encode("https://api.postcodes.io/postcodes/#{postcode}")
+      @postcode = UKPostcode.parse(params[:loc].upcase)
+      if @postcode.valid?
+        url = URI.encode("https://api.postcodes.io/postcodes/#{@postcode}")
         response = HTTParty.get(url)
         if response["status"] == 200 && response["result"]["admin_district"] == "Camden"
         else
@@ -112,7 +112,7 @@ class ServicesController < ApplicationController
         # @excludes = Service.joins(:tags).where({"tags.tag": @filters, "service_tags.excluded": 1}).distinct
         # @services = Service.joins(:tags).where.not({"id": @excludes.ids}).distinct.limit(5).near(params[:loc])
         tags =  @questions["type_of_support"]["answers"].select{|answer| params[:sprt].include? answer["value"]}.map{|answer| answer["tags"].map{|tag| tag["tag"]}}.flatten
-        @services = Service.where.not(postcode: nil).joins(:tags).where("tags.tag": tags).distinct.near(postcode.to_s).limit(5)
+        @services = Service.where.not(postcode: nil).joins(:tags).where("tags.tag": tags).distinct.near(@postcode.to_s).limit(5)
 
         @template = "services/list/"
       end
