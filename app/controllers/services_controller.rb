@@ -114,6 +114,12 @@ class ServicesController < ApplicationController
         tags =  @questions["type_of_support"]["answers"].select{|answer| params[:sprt].include? answer["value"]}.map{|answer| answer["tags"].map{|tag| tag["tag"]}}.flatten
         @services = Service.where.not(postcode: nil).joins(:tags).where("tags.tag": tags).distinct.near(@postcode.to_s).limit(5)
 
+        if @services.size < 5
+          national_services = Service.where(postcode: nil).joins(:tags).where("tags.tag": tags).distinct
+          @services = @services + national_services
+          @services = @services.take(5)
+        end
+
         @template = "services/list/"
       end
     else
