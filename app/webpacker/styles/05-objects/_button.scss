@@ -19,7 +19,7 @@
     }
 
     &:hover{
-        border-color: darken($bay-of-many, 10);
+        border-color: lighten($bay-of-many, 10);
         color: lighten($bay-of-many, 10);
     }
     &:focus{
@@ -27,7 +27,7 @@
         box-shadow: 0px 0px 0px 3px $govuk-focus-colour;
     }
     &:active{
-        border-color: darken($bay-of-many, 20);
+        border-color: darken($bay-of-many, 40);
         color: darken($bay-of-many, 40);
     }
 
