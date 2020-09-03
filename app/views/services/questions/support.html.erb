@@ -36,7 +36,7 @@
 <%= link_to("Back", current_page_params.merge(step: '0'), class: "govuk-back-link") %>
 
 
-    <%= form_tag('/services',{:method => "get", :enforce_utf8 => true}) do %>
+    <%= form_tag('/services',{:method => "get"}) do %>
 
     <div class="govuk-checkboxes app-checkbox-wrapper">
 
