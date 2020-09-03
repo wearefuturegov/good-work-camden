@@ -77,6 +77,16 @@
 
             </div>
 
+            <div class="govuk-form-group ">
+
+                <label class="govuk-label" for="comments">
+                    Do you have any comments for the advisor? (optional)
+                </label>
+
+                <%= text_field_tag(:comments, "", class: 'govuk-input govuk-input--width-20') %>
+
+            </div>
+
             <% @persist.except('name','email','phone').each do |key,value| %>
             <%= hidden_field_tag(key,value) %>
             <% end %>

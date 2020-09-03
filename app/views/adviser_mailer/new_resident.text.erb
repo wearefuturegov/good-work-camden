@@ -24,6 +24,11 @@ A Camden resident has requested to speak to an adviser. Review their details bel
 
 ---
 
+#Comments
+<%= sanitize @user[:comments] || "Not provided" %>
+
+---
+
 #Type of support they need:
 
 <% @user[:sprt].each do |support_type| %>
