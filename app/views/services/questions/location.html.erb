@@ -21,15 +21,33 @@
   function SetDefaultDisplayOption(){
       var message = "<%= @errors['loc']%>";
       if(message.includes('Not a Camden postcode')){
-          document.getElementById("locError").style.visibility = "visible";
-          document.getElementById("locError").classList.add("app-options-validation");
-          document.getElementById("locError").innerText = "That is not a Camden postcode, please try again";
+          // document.getElementById("locError").style.visibility = "visible";
+          // document.getElementById("locError").classList.add("app-options-validation");
+          // document.getElementById("locError").innerText = "That is not a Camden postcode, please try again";
+
+
+      document.getElementById("postcode-box").style.display = "block";
+      document.getElementById("eligible-box").style.display = "none";
+      document.getElementById("btnContinue").style.display = "block";
+
+
+
+          document.querySelector('.postcode-invalid').classList.remove('start-hidden');
+          document.querySelector('.form-postcode').classList.add('govuk-form-group--error');
+          document.querySelector('.form-postcode').querySelector('.govuk-input').classList.add('govuk-input--error');
+
+
       }
       else{
         if(document.getElementById("locError")!= null){
             document.getElementById("locError").style.visibility = "hidden";
             document.getElementById("locError").innerText = "";
         }
+
+
+          document.querySelector('.postcode-invalid').classList.add('start-hidden');
+          document.querySelector('.form-postcode').classList.remove('govuk-form-group--error');
+          document.querySelector('.form-postcode').querySelector('.govuk-input').classList.remove('govuk-input--error');
       }
   }
 
@@ -48,10 +66,13 @@
     if(nameEntered.length > 2){
         return true;
     }
-    else{
-      document.getElementById("locError").style.visibility = "visible";
-      document.getElementById("locError").classList.add("app-options-validation");
-      document.getElementById("locError").innerText = "Please enter a post code";
+    else {
+      document.querySelector('.postcode-empty').classList.remove('start-hidden');
+      document.querySelector('.form-postcode').classList.add('govuk-form-group--error');
+      document.querySelector('.form-postcode').querySelector('.govuk-input').classList.add('govuk-input--error');
+      // document.getElementById("locError").style.visibility = "visible";
+      // document.getElementById("locError").classList.add("app-options-validation");
+      // document.getElementById("locError").innerText = "Please enter a post code";
 
     return false;
     }
@@ -76,87 +97,99 @@ function HasValue(id){
   </ol>
 </div>
 
-<div id="locError"><label></label>
-</div>
-
-<div class="govuk-width-container govuk-body">
-  <p>
-    <h1 class="govuk-heading-l">Are you a Camden resident?</h1>
-  </p>
 
 
-    <div class="govuk-radios govuk-radios--inline">
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="changed-name" name="changed-name" type="radio" value="yes"  onclick="RadioOnClick('y')">
-        <label class="govuk-label govuk-radios__label" for="changed-name">
-          Yes
-        </label>
-      </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="changed-name-2" name="changed-name" type="radio" value="no"  onclick="RadioOnClick('n')">
-        <label class="govuk-label govuk-radios__label" for="changed-name-2">
-          No
-        </label>
-      </div>
-    </div>
 
-<%= form_tag('/services',{:method => "get"}) do %>
 
-<div class="app-radios-height">
-    <div id = "postcode-box" class="start-hidden">
-    <div class="app-panel-postcode-sidebar">
-        <p>
-          <label for="loc" class="govuk-label app-label-question">
+<main class="govuk-main-wrapper" id="main-content" role="main">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-xl">Are you a Camden resident?</h1>
+
+          <div class="govuk-radios govuk-radios--inline">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="changed-name" name="changed-name" type="radio" value="yes"  onclick="RadioOnClick('y')">
+              <label class="govuk-label govuk-radios__label" for="changed-name">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="changed-name-2" name="changed-name" type="radio" value="no"  onclick="RadioOnClick('n')">
+              <label class="govuk-label govuk-radios__label" for="changed-name-2">
+                No
+              </label>
+            </div>
+          </div>
+
+
+
+          <div id="eligible-box" class="start-hidden">
+           <div class="govuk-inset-text govuk-inset-text--blue">
+            <p class="govuk-body govuk-!-font-weight-bold">
+            Sorry, you can&#39;t use this service
+            </p>
+            <p>Unfortunately we can only support Camden residents.
+            We suggest that you contact your local authority or get
+            in touch with <a href="#" class="govuk-link">National Careers Centre</a> to see what help is available.</p>
+            </div>
+          </div>
+
+
+
+
+
+  <div id="postcode-box" class="start-hidden">
+
+      <br /><br />
+
+      <%= form_tag('/services',{:method => "get"}) do %>
+
+        <div class="govuk-form-group form-postcode">
+          <label for="loc" class="govuk-label">
               Please enter your postcode
           </label>
-        </p>
-
           <p class="govuk-hint">
               We use this to recommend you services that are close to you.
           </p>
 
+          <span class="govuk-error-message start-hidden postcode-empty">
+              <span class="govuk-visually-hidden">Postcode:</span> Please enter a post code
+            </span>
 
-  
-      <div class="govuk-form-group">
+            <span class="govuk-error-message start-hidden postcode-invalid">
+              <span class="govuk-visually-hidden">Postcode:</span> That is not a Camden postcode, please try again
+            </span>
 
-          <%= text_field_tag(:loc, "", id: "loc", type:'text', autocomplete:'postal-code', class: 'govuk-input govuk-input--width-10') %>
-          
-          <% @persist.except('res','loc').each do |key,value| %>
-            <%= hidden_field_tag(key,value) %>
-          <% end %>
 
-      </div>
+
+          <%= text_field_tag(:loc, "", id: "loc", type:'text', autocomplete:'postal-code', class: 'govuk-input govuk-input--width-10') %>   
+        </div>
+
+        <% @persist.except('res','loc').each do |key,value| %>
+          <%= hidden_field_tag(key,value) %>
+        <% end %>
+
+        <%= button_tag("Continue", type: 'submit', id: 'btnContinue', name: 'step', value: '1', class:'app-button app-button--start start-hidden',  onclick:'return BtnClicked()') %>
+
+      <% end %>
+
     </div>
+
+
+
+
+
+        </div>
     </div>
+</main>
 
 
-    <div id = "eligible-box" class="start-hidden">
-    <div class="app-panel-postcode-sidebar app-width-one-third">
-      <p>
-      
-        <h3>Sorry, you can&#39;t use this service
-
-      </p>
-      <p>
-      <p class="govuk-hint">
-          Unfortunately we can only support Camden residents.
-          We suggest that you contact your local authority or get
-          in touch with <a href="#">National Careers Centre</a> to see what help is available.
-        </p>
-        </p>
-       </div>
-    </div>
-    
-
-      <%= button_tag("Continue", type: 'submit', id: 'btnContinue', name: 'step', value: '1', class:'app-button app-button--start start-hidden',  onclick:'return BtnClicked()') %>
-    
-
-  </div>
 
 
-  </div>
- 
-<% end %>
+
+
+
+
 
 
 

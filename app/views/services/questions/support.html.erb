@@ -15,6 +15,11 @@
             document.getElementById("supportError").classList.add("app-options-validation");
             document.getElementById("supportError").innerText = "Please select at least one option and a maximum of two.";
 
+
+          document.getElementById('service-error').classList.remove('start-hidden');
+          document.querySelector('.form-service').classList.add('govuk-form-group--error');
+        //   document.querySelector('.form-service').querySelector('.govuk-input').classList.add('govuk-input--error');
+
         return false;
         }
     }
@@ -36,20 +41,36 @@
 <%= link_to("Back", current_page_params.merge(step: '0'), class: "govuk-back-link") %>
 
 
-    <%= form_tag('/services',{:method => "get"}) do %>
 
-    <div class="govuk-checkboxes app-checkbox-wrapper">
+<main class="govuk-main-wrapper" id="main-content" role="main">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-xl"><%= @questions["type_of_support"]["title"] %></h1>
 
 
-    <h1 class="govuk-heading-l"><%= @questions["type_of_support"]["title"] %></h1>
-    <p class="govuk-label app-label-question"><%= @questions["type_of_support"]["subtitle"] %></p>
-    <p class="govuk-hint"><%= @questions["type_of_support"]["hint"] %></p>
+          <div class="govuk-form-group form-service">
+          <label for="" class="govuk-label">
+              <%= @questions["type_of_support"]["subtitle"] %>
+          </label>
+          <p class="govuk-hint">
+              <%= @questions["type_of_support"]["hint"] %>
+          </p>
 
-    <br/>
-    <div class="app-checkboxes app-checkboxes--two-columns">
+          <span id="service-error" class="govuk-error-message start-hidden">
+            <span class="govuk-visually-hidden">Error:</span> Please select at least one option and a maximum of two.
+          </span>
+
+          </div>
+
+
+        </div>
+    </div>
+
+ <%= form_tag('/services',{:method => "get"}) do %>
+    <div class="app-checkboxes app-checkboxes--two-columns app-checkbox-wrapper">
 
         <% @questions["type_of_support"]["answers"].each do |answer| %>
-        <div class="app-checkbox-width_container">
+        <div class="app-checkbox-width_container ">
             <div class="govuk-checkboxes__item">
             <%= check_box_tag("sprt[]", value = answer["value"], checked = @sprt.include?(answer["value"]) ? true : false , options = {
                 class: 'govuk-checkboxes__input',
@@ -61,25 +82,16 @@
         <% end %>
 
     </div>
-    
-        <% @persist.except("sprt").each do |key,value| %>
+
+      <% @persist.except("sprt").each do |key,value| %>
         <%= hidden_field_tag(key,value) %>
 
 
         <% end %>
 
-    </div>
+        <p><%= button_tag("Continue", type: 'submit', name: 'step', value: '2', class:'app-button app-button--start', onclick:'return BtnClicked()') %></p>
 
-
-<div id="supportError">
-</div>
-
-  <br/>
-  <p>
-    <%= button_tag("Continue", type: 'submit', name: 'step', value: '2', class:'app-button app-button--start', onclick:'return BtnClicked()') %>
-  </p>
 <% end %>
 
-
-
+</main>
 
