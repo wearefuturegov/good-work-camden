@@ -26,13 +26,8 @@ type_of_support:
       value: start-own-business
       tags:
         - tag: self-employment
-    - title: I want to find better job suited to my interests
-      value: find-interesting-job
-      tags:
-        - tag: career-support
-        - tag: job-hub
-    - title: I want to find work that fits my schedule
-      value: work-to-fit-schedule
+    - title: I want to find better job suited to my interests and/or a job that better fits my schedule
+      value: find-better-job
       tags:
         - tag: career-support
         - tag: job-hub
