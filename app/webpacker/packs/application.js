@@ -1,6 +1,7 @@
 require.context('govuk-frontend/govuk/assets');
 
 import '../styles/application.scss'; 
+import '../javascript/validation'; 
 import Rails from 'rails-ujs';
 import Turbolinks from 'turbolinks';
 import { initAll } from 'govuk-frontend';

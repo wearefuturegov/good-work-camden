@@ -10,9 +10,16 @@
           return true;
       }
       else{
-          document.getElementById("supportError").style.visibility = "visible";
-          document.getElementById("supportError").classList.add("app-options-validation");
-          document.getElementById("supportError").innerText = "Please select at least one option.";
+          // document.getElementById("supportError").style.visibility = "visible";
+          // document.getElementById("supportError").classList.add("app-options-validation");
+          // document.getElementById("supportError").innerText = "Please select at least one option.";
+
+
+
+          document.getElementById('type-error').classList.remove('start-hidden');
+          document.querySelector('.form-type').classList.add('govuk-form-group--error');
+
+      
 
       return false;
       }
@@ -32,54 +39,85 @@
 </script>
 
 
-<div class="govuk-width-container govuk-body">
+
+
+
 
 <%= link_to("Back", current_page_params.merge(step: '3'), class: "govuk-back-link") %>
 
-<h1 class="govuk-heading-l app-heading-margin-top-bottom">What kind of help do you need?</h1>
+
+<main class="govuk-main-wrapper" id="main-content" role="main">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+
+          <h1 class="govuk-heading-xl">What kind of help do you need?</h1>
+
+
 
 
 <%= form_tag('/services',{:method => "get"}) do %>
 
-  <div class="govuk-checkboxes app-checkbox-wrapper">
 
-  <div class="app-checkbox-width_container">
-      <div class="govuk-checkboxes__item app-checkbox-width-third">
-          <%= radio_button_tag('type', 'adviser', false, class:'govuk-radios__input', id: "advisor") %>
-          <%= label_tag("adviser", "", class:'govuk-label govuk-radios__label') do %>
-          <strong>I want to talk to an employment advisor</strong>
-          <% end %>
-          <label for="advisor" class="govuk-hint app-hint-include-label" >
-                We'll share your answers with an employment advisor, who'll contact you to give personalised support.
-          </label>
-      </div>
-   </div>
-
-    <div class="app-checkbox-width_container">
-      <div class="govuk-checkboxes__item app-checkbox-width-third">
-          <%= radio_button_tag('type', 'search', false, class:'govuk-radios__input', id: "search") %>
-          <%= label_tag("search", "", class:'govuk-label govuk-radios__label') do %>
-          <strong>I'd like to see a list of local services</strong>
-          <% end %>
-          <label for="search" class="govuk-hint app-hint-include-label" >
-                We'll give you a list of services in your area to contact based on your answers
-          </label>
+<div class="govuk-form-group form-type">
+  <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint changed-name-error">
+    <!--<legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        Have you changed your name?
+      </h1>
+    </legend>
+    <div id="changed-name-hint" class="govuk-hint">
+      This includes changing your last name or spelling your name differently.
+    </div>-->
+    <span id="type-error" class="govuk-error-message start-hidden">
+      <span class="govuk-visually-hidden">Error:</span> Please select at least one option.
+    </span>
+    <div class="govuk-checkboxes app-checkbox-wrapper">
+      <div class="app-checkbox-width_container">
+        <div class="govuk-checkboxes__item">
+            <%= radio_button_tag('type', 'adviser', false, class:'govuk-radios__input', id: "advisor") %>
+            <%= label_tag("adviser", "", class:'govuk-label govuk-radios__label') do %>
+            <strong>I want to talk to an employment advisor</strong>
+            <% end %>
+            <label for="advisor" class="govuk-hint app-hint-include-label" >
+                  We'll share your answers with an employment advisor, who'll contact you to give personalised support.
+            </label>
+        </div>
     </div>
-   </div>
+      <div class="app-checkbox-width_container">
+        <div class="govuk-checkboxes__item">
+            <%= radio_button_tag('type', 'search', false, class:'govuk-radios__input', id: "search") %>
+            <%= label_tag("search", "", class:'govuk-label govuk-radios__label') do %>
+            <strong>I'd like to see a list of local services</strong>
+            <% end %>
+            <label for="search" class="govuk-hint app-hint-include-label" >
+                  We'll give you a list of services in your area to contact based on your answers
+            </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
 
-  <% @persist.except("type").each do |key,value| %>
-    <%= hidden_field_tag(key,value) %>
-  <% end %>
-
-
-  </div>
-
-  <div id="supportError">
-  </div>
+<% @persist.except("type").each do |key,value| %>
+  <%= hidden_field_tag(key,value) %>
+<% end %>
 
   <p>
     <%= button_tag("Continue", type: 'submit', name: 'step', value: '3', class:'app-button app-button--start',  onclick:'return BtnClicked()') %>
   </p>
+
+
 <% end %>
 
-</div>
+
+
+        </div>
+    </div>
+</main>
+
+
+
+
+
+
+
