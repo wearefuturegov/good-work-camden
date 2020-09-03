@@ -1,3 +1,4 @@
+
 <!-- start template for all content pages -->
 <a href="#" class="govuk-back-link">Back</a>
 
@@ -215,13 +216,59 @@
 
 
 
+        <div class="govuk-form-group" id="form-name">
+
+            <label class="govuk-label" for="name">
+                Full name
+            </label>
+
+            <span class="govuk-error-message start-hidden">
+              <span class="govuk-visually-hidden">Name:</span> Please enter your full name
+            </span>
+
+
+            <%= text_field_tag(:name, "", class: 'govuk-input govuk-input--width-20') %>
+
+        </div>
+        <p><%= button_tag("Finish", type: 'submit', class:'app-button app-button--start') %></p>
 
 
 
 
+        
+        <br /><br /><br /><br /><br /><br />
 
 
 
+        <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+          <h2 class="govuk-error-summary__title" id="error-summary-title">
+            There is a problem
+          </h2>
+          <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+              <li><a href="#${errors.errorId}">Error text</a></li>
+            </ul>
+          </div>
+        </div>
+
+
+
+        <div class="govuk-form-group" id="form-name">
+
+            <label class="govuk-label" for="name">
+                Full name
+            </label>
+
+            <span class="govuk-error-message">
+              <span class="govuk-visually-hidden">Name:</span> Please enter your full name
+            </span>
+
+
+            <%= text_field_tag(:name, "", class: 'govuk-input govuk-input--error govuk-input--width-20') %>
+
+        </div>
+
+        <p><%= button_tag("Finish", type: 'submit', class:'app-button app-button--start') %></p>
 
 
 

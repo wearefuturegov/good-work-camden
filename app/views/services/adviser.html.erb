@@ -1,54 +1,112 @@
-
 <script>
 
-    function BtnClicked(){
+// change this on every page if making changes
+/**
+errors = [{errorText: "The date your passport was issued must be in the past", errorId: "passport-issued-error"}]
+*/
+const errorSummaryTemplate = function(errors) {
 
-        var nameEntered = HasValue('name');
-        var emailEntered = HasValue('email');
+  let errorsList = '';
+  errors.forEach(errors => {
+    errorsList += `<li><a href="#${errors.errorId}">${errors.errorText}</a></li>`
+  });
 
-        if(nameEntered != '' && emailEntered != ''){
-            return true;
-        }
-        else{
-            document.getElementById("supportError").style.visibility = "visible";
-            document.getElementById("supportError").classList.add("app-options-validation");
-            document.getElementById("supportError").innerHTML = "Please enter your full name and <br>a valid email address in the correct format, like name@example.com";
+  return `<div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+            <h2 class="govuk-error-summary__title" id="error-summary-title">
+              There is a problem
+            </h2>
+            <div class="govuk-error-summary__body">
+              <ul class="govuk-list govuk-error-summary__list">
+                ${errorsList}
+              </ul>
+            </div>
+          </div>`;
+};
 
-        return false;
-        }
-    }
+const setErroredState = function(id) {
+  var element = document.getElementById(`form-${id}`);
+  element.classList.add('govuk-form-group--error');
+  element.querySelector('.govuk-input').classList.add('govuk-input--error');
+  element.querySelector('.govuk-error-message').classList.remove('start-hidden');
+};
 
-    function HasValue(id){
-        var val = '';
-        val = document.getElementById(id).value;
-        return val;
-    }
+const hasValue = function(id) {
+  var val = '';
+  val = document.getElementById(id).value;
+  return val;
+};
+
+
+// end same code
+
+document.addEventListener('DOMContentLoaded', (event) => {
+const element = document.querySelector('form');
+element.addEventListener('submit', event => {
+  var valid = false;
+  var errors = [];
+
+  var nameEntered = hasValue('name');
+  var nameErrors = {errorId: "name", errorText: "Please enter your full name"};
+  var emailEntered = hasValue('email');
+  var emailErrors = {errorId: "email", errorText: "Please enter a valid email address"};
+
+
+  if(nameEntered.length > 0 && emailEntered.length > 0){  
+    valid = true;
+  } 
+    
+  if(nameEntered.length === 0) {
+    setErroredState('name');
+    errors.push(nameErrors);
+  }
+
+  if(emailEntered.length === 0) {
+    setErroredState('email');
+    errors.push(emailErrors);
+  }
+
+  document.getElementById('errorSummary').innerHTML = errorSummaryTemplate(errors);
+
+  if(!valid) {
+    event.preventDefault();
+    console.log('Form submission cancelled.');
+  } 
+
+  });
+
+})
+
 
 </script>
 
+
 <main class="govuk-main-wrapper" id="main-content" role="main">
-
-
     <div class="govuk-grid-row">
-
-
-
         <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-xl">Your details</h1>
-            <p>
+          <h1 class="govuk-heading-xl">Your details</h1>
+          <p class="govuk-body">We need your details to get in touch with you. We won&#39;t use them for anything else.</p>
 
-                <p class="govuk-hint">We need your details to get in touch with you. We won&#39;t use them for anything else.</p>
 
-            </p>
+
+
+          <div id="errorSummary"></div>
+
 
             <%= form_tag('/services/thankyou',{:method => "get"}) do %>
 
 
-            <div class="govuk-form-group">
+
+
+            <div class="govuk-form-group" id="form-name">
 
                 <label class="govuk-label" for="name">
                     Full name
                 </label>
+
+                <span class="govuk-error-message start-hidden">
+                  <span class="govuk-visually-hidden">Name:</span> Please enter your full name
+                </span>
+
 
                 <%= text_field_tag(:name, "", class: 'govuk-input govuk-input--width-20') %>
 
@@ -56,22 +114,28 @@
 
 
 
-            <div class="govuk-form-group">
+            <div class="govuk-form-group" id="form-email">
 
                 <label class="govuk-label" for="email">
                     Email address
                 </label>
+
+
+                <span class="govuk-error-message start-hidden">
+                  <span class="govuk-visually-hidden">Email:</span> Please enter a valid email
+                </span>
 
                 <%= text_field_tag(:email, "", type:'email', autocomplete: "email", name:'email', spellcheck:'false', class: 'govuk-input govuk-input--width-20') %>
 
             </div>
 
 
-            <div class="govuk-form-group ">
+            <div class="govuk-form-group" id="form-phone">
 
                 <label class="govuk-label" for="phone">
                     Phone or mobile number (optional)
                 </label>
+
 
                 <%= text_field_tag(:phone, "", autocomplete: "tel", type:"tel", inputmode:'numeric', pattern:'[0-9]*', class: 'govuk-input govuk-input--width-20') %>
 
@@ -88,14 +152,13 @@
 
             <p>
 
-                <%= button_tag("Finish", type: 'submit', class:'app-button app-button--start', onclick:'return BtnClicked()') %>
+                <%= button_tag("Finish", type: 'submit', class:'app-button app-button--start') %>
 
             </p>
             <% end %>
 
 
+
         </div>
-
-</div>
-
+    </div>
 </main>
