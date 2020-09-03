@@ -25,7 +25,17 @@ $side-content-class: gwc-side-content;
             font-weight: bold;
         }
         a {
-            color: $text-color
+            display: block;
+            color: darken($cerulean, 11);
+
+            &:focus {
+                color: $text-color;
+                outline: none;
+                background-color: $govuk-focus-colour;
+                box-shadow: 0 -2px $govuk-focus-colour, 0 4px $bg-black;
+                text-decoration: none;
+            }
+
         }
     }
 
