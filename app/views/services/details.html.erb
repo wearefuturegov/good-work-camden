@@ -67,13 +67,19 @@
       <p class="govuk-body"><%= @service.address -%></p>
 
 
-      <h2 class="govuk-heading-m">Opening hours</h2>
-      <p class="govuk-body"><%= @service.hours -%></p>
+      <% if @service.hours.present? %>
+        <h2 class="govuk-heading-m">Opening hours</h2>
+        <p class="govuk-body"><%= @service.hours -%></p>
+      <% end %>
 
       <h2 class="govuk-heading-m">Get in touch</h2>
-      <p class="govuk-body"><%= @service.phone -%><br />
-      <a href="mailto:<%= @service.email -%>" class="govuk-link"><%= @service.email -%></a></p>
-      
+      <% if @service.phone.present? %>
+        <p class="govuk-body"><%= @service.phone -%></p>
+      <% end %>
+      <% if @service.email.present? %>
+        <p class="govuk-body"><a href="mailto:<%= @service.email %>" class="govuk-link"><%= @service.email -%></a></p>
+      <% end %>
+
     </div>
 
     <div class="govuk-grid-column-two-thirds">
