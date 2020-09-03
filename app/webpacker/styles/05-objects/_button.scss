@@ -24,7 +24,7 @@
     }
     &:focus{
         outline: none;
-        box-shadow: 0px 0px 0px 3px $govuk-focus-colour;
+        box-shadow: 0px 0px 0px 3px $bg-pink;
     }
     &:active{
         border-color: darken($bay-of-many, 40);
