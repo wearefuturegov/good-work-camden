@@ -33,3 +33,12 @@ end
 Then("I can see my results") do
     expect(page).to have_content("Your results")
 end
+
+When("I choose to view details") do
+
+    find_link('View details', match: :first).click
+end
+
+Then("I can see a details page") do
+    expect(page).to have_content("Is anything missing?")
+end

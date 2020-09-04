@@ -18,3 +18,6 @@ Feature: End to end check
         Then I can continue
 
         Then I can see my results
+
+        When I choose to view details
+        Then I can see a details page
