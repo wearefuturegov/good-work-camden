@@ -33,8 +33,6 @@ Setup of various things is achieved using the following environment variables.
 - `AIRTABLE_BASE_ID` - Airtable base ID
 - `POSTGRES_PASSWORD` - The password for the Postgres user - used in development environment
 - `DATABASE_URL` - The full connection string for the database in production - Heroku compatible.
-- `AIRTABLE_API_KEY`
-- `AIRTABLE_BASE_ID`
 
 ### Deployment
 
