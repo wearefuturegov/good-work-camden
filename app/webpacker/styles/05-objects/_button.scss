@@ -2,9 +2,12 @@
     border-radius: 30px;
 	display: block;
 	cursor: pointer;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: bold;
-	font-size: 1.05rem;
+    // font-family: 'Source Sans Pro', sans-serif;
+    // font-weight: bold;
+    // font-size: 1.05rem;
+    
+    @include govuk-font($size: 19, $weight: bold);
+
     text-decoration: none;
     padding: 15px 55px;
     position: relative;
@@ -24,7 +27,7 @@
     }
     &:focus{
         outline: none;
-        box-shadow: 0px 0px 0px 3px $govuk-focus-colour;
+        box-shadow: 0px 0px 0px 3px $bg-pink;
     }
     &:active{
         border-color: darken($bay-of-many, 40);

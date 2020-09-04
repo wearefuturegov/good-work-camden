@@ -23,10 +23,17 @@ $side-content-class: gwc-side-content;
             padding: 10px 0px;
             margin-top: 10px;
             font-weight: bold;
+
+            // @include govuk-text-colour;
+            @include govuk-font($size: 19);
+        
+            // margin-top: 0;
+            // @include govuk-responsive-margin(4, "bottom");
+
         }
         a {
             display: block;
-            color: darken($cerulean, 11);
+            color: $link-color;
 
             &:focus {
                 color: $text-color;
