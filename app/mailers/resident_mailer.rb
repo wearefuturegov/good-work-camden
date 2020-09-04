@@ -1,5 +1,4 @@
 class ResidentMailer < Mail::Notify::Mailer
-  default from: ENV['CAMDEN_CONTACT_EMAIL']
 
   def confirmation_of_adviser
     @user = params[:user]
