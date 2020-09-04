@@ -20,8 +20,10 @@ Setup of various things is achieved using the following environment variables.
 
 - `CAMDEN_ADVISOR_EMAIL` - The email the app should send completed questionnaires to
 - `CAMDEN_CONTACT_EMAIL` - The email completed contact forms should be sent to
-- `MAILGUN_API_KEY` - An API Key for Mailgun, the mail sender that is used by the system
-- `MAILGUN_DOMAIN` - the domain from Mailgun account settings 
+- `GOVUK_NOTIFY_API_KEY` - An API Key for Gov Notify (Used for sending emails)
+- `GOVUK_NOTIFY_TEMPLATE_ID` - Template ID for Gov Notify
+- `AIRTABLE_API_KEY` - API key for Airtable, which is used for seeding the database
+- `AIRTABLE_BASE_ID` - Airtable base ID
 - `POSTGRES_PASSWORD` - The password for the Postgres user - used in development environment
 - `DATABASE_URL` - The full connection string for the database in production - Heroku compatible.
 
