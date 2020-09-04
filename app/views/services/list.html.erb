@@ -1,14 +1,5 @@
 <%= link_to("Back", current_page_params.merge(step: '2'), class: "govuk-back-link") %>
 
-<div class="govuk-breadcrumbs">
-   <ol class="govuk-breadcrumbs__list">
-      <li class="govuk-breadcrumbs__list-item">
-         <a class="govuk-breadcrumbs__link" href="/">Home</a>
-      </li>
-      <li class="govuk-breadcrumbs__list-item" aria-current="page">Your results</li>
-   </ol>
-</div>
-
 <main class="govuk-main-wrapper" id="main-content" role="main">
    <% if @services.blank? %>
    <div class="govuk-grid-row">
