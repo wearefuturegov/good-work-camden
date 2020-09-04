@@ -29,14 +29,16 @@
   </div>
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-one-third">
-      <h2 class="govuk-heading-m">How they can help</h2>
-      <ul class="govuk-list gwc-list-icon">
-          <% @how_we_can_help.each do |t| %>
-            <li class="gwc-list-icon--check"><%= t.description %></li> 
-          <% end %>
-      </ul>
-    </div>
+    <% if @how_we_can_help.any? %>
+      <div class="govuk-grid-column-one-third">
+        <h2 class="govuk-heading-m">How they can help</h2>
+        <ul class="govuk-list gwc-list-icon">
+            <% @how_we_can_help.each do |t| %>
+              <li class="gwc-list-icon--check"><%= t.description %></li> 
+            <% end %>
+        </ul>
+      </div>
+    <% end %>
 
     <% if @who_is_it_for.any? %>
       <div class="govuk-grid-column-one-third">
