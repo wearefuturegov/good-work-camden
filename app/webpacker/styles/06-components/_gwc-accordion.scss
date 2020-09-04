@@ -6,8 +6,11 @@ $classname: gwc-accordion;
     border-radius: 9px;
 
     &__header {
-        padding: 20px;
+        padding: 15px;
         @include govuk-clearfix;
+        @include screen-min-width-500() {
+            padding: 20px;
+        }
     }
     &__title {
         @include govuk-font($size: 19, $weight: bold);

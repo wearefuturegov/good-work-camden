@@ -4,7 +4,7 @@
       <a class="govuk-breadcrumbs__link" href="/">Home</a>
     </li>
     <li class="govuk-breadcrumbs__list-item">
-        <%= link_to("Your results", services_path(current_page_params.merge(step: '3'))) %>
+        <%= link_to("Your results", services_path(current_page_params.merge(step: '3')), class: "govuk-breadcrumbs__link") %>
     </li>
     <li class="govuk-breadcrumbs__list-item" aria-current="page">
         <%= @service.name %>
