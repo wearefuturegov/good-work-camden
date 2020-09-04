@@ -43,7 +43,7 @@
       
       <div class="govuk-grid-column-one-third text-center">
         <br />
-        <%= link_to "View details", {:action => 'details', :id => s.id }, class: "app-button app-button--start" %>
+        <%= link_to "View details", {:action => 'details', :id => s.id, :loc => @persist[:loc], :sprt => @persist[:sprt], :type => @persist[:type], :step => @persist[:step]}, class: "app-button app-button--start" %>
       </div>
    </div>
 
@@ -86,7 +86,7 @@
             <%= text_field_tag(:email, "", id: "email", type:'email', placeholder: "Email address", autocomplete: 'email', required: true, class: 'govuk-input govuk-input--width-20') %>
          </div>
          <% @persist.each do |key,value| %>
-         <%= hidden_field_tag(key,value) %>
+          <%= hidden_field_tag(key,value) %>
          <% end %>
          <%= button_tag("Send", type: 'submit', class: 'app-button app-button--start', id: 'btnSend', name: 'send', value: '1') %>
          <% end %>

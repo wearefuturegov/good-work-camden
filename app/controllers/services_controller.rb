@@ -173,7 +173,6 @@ class ServicesController < ApplicationController
 
       @who_is_it_for = @service.service_tags.where(required: true)
 
-
       render template: "services/details/"
     else
       redirect_to :action=>'show'
