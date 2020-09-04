@@ -5,8 +5,7 @@ class ResidentMailer < Mail::Notify::Mailer
     view_mail(
       ENV['GOVUK_NOTIFY_TEMPLATE_ID'],
       to: @user[:email],
-      subject: 'Camden employment advisor contact',
-      reply_to_id: ENV['CAMDEN_CONTACT_EMAIL']
+      subject: 'Camden employment advisor contact'
     )
   end
 
@@ -15,8 +14,7 @@ class ResidentMailer < Mail::Notify::Mailer
     view_mail(
       ENV['GOVUK_NOTIFY_TEMPLATE_ID'],
       to: @user[:email],
-      subject: "Your message to Camden's employment support service has been sent",
-      reply_to_id: ENV['CAMDEN_CONTACT_EMAIL']
+      subject: "Your message to Camden's employment support service has been sent"
     )
   end
 
@@ -26,8 +24,7 @@ class ResidentMailer < Mail::Notify::Mailer
     view_mail(
       ENV['GOVUK_NOTIFY_TEMPLATE_ID'],
       to: @user[:email],
-      subject: 'Good Work Camden',
-      reply_to_id: ENV['CAMDEN_CONTACT_EMAIL']
+      subject: 'Good Work Camden'
     )
   end
 end
