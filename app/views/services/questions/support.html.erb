@@ -7,13 +7,22 @@
 
     var noOfSelected = CountChecked();
 
-        if(noOfSelected >= 1 && noOfSelected < 3 ){
-            return true;
-        }
-        else{
-            document.getElementById("supportError").style.visibility = "visible";
-            document.getElementById("supportError").classList.add("app-options-validation");
-            document.getElementById("supportError").innerText = "Please select at least one option and a maximum of two.";
+
+
+
+
+
+    if(noOfSelected === 0) {
+        document.getElementById('service-error').classList.remove('start-hidden');
+        document.querySelector('.form-service').classList.add('govuk-form-group--error');
+
+        return false;
+    } else if (noOfSelected >= 1 && noOfSelected <= 2 ) {
+        return true;
+    } else{
+            // document.getElementById("supportError").style.visibility = "visible";
+            // document.getElementById("supportError").classList.add("app-options-validation");
+            // document.getElementById("supportError").innerText = "Please select at least one option and a maximum of two.";
 
 
           document.getElementById('service-error').classList.remove('start-hidden');
