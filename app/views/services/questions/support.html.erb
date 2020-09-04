@@ -79,16 +79,22 @@
     <div class="app-checkboxes app-checkboxes--two-columns app-checkbox-wrapper">
 
         <% @questions["type_of_support"]["answers"].each do |answer| %>
-        <div class="app-checkbox-width_container ">
+          <div class="app-checkbox-width_container ">
             <div class="govuk-checkboxes__item">
-            <%= check_box_tag("sprt[]", value = answer["value"], checked = @sprt.include?(answer["value"]) ? true : false , options = {
-                class: 'govuk-checkboxes__input',
-                id: "support-#{answer["value"]}"
-            }) %>
-            <%= label_tag("support-#{answer["value"]}", answer["title"] , class:'govuk-label govuk-checkboxes__label' ) %>
+              <%= check_box_tag("sprt[]", value = answer["value"], checked = @sprt.include?(answer["value"]) ? true : false , options = {
+                  class: 'govuk-checkboxes__input',
+                  id: "support-#{answer["value"]}"
+              }) %>
+              <%= label_tag("support-#{answer["value"]}", answer["title"] , class:'govuk-label govuk-checkboxes__label' ) %>
             </div>
-        </div>
+          </div>
         <% end %>
+        <div class="app-checkbox-width_container">
+          <div class="govuk-checkboxes__item app-checkbox-width-third">
+            <%= check_box_tag("sprt[]", value = "othersprt", checked = @sprt.include?('othersprt') ? true : false, options = {class:'govuk-checkboxes__input', id: "othersprt"}) %>
+            <%= label_tag("othersprt", "Other" , class:'govuk-label govuk-checkboxes__label' ) %>
+          </div>
+        </div>
 
     </div>
 
