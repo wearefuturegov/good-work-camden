@@ -1,135 +1,100 @@
+
+
 <div class="govuk-breadcrumbs">
-  <ol class="govuk-breadcrumbs__list">
-    <li class="govuk-breadcrumbs__list-item">
-      <a class="govuk-breadcrumbs__link" href="/">Home</a>
-    </li>
-    <li class="govuk-breadcrumbs__list-item" aria-current="page">Your results</li>
-  </ol>
+   <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+         <a class="govuk-breadcrumbs__link" href="/">Home</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item" aria-current="page">Your results</li>
+   </ol>
 </div>
-
-
-
-
-
-
 <main class="govuk-main-wrapper" id="main-content" role="main">
-
-
-
-
-<% if @services.blank? %>
-    <div class="govuk-grid-row">
+   <% if @services.blank? %>
+   <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-l">Sorry, we don't have any services that match your criteria.</h1>
-        <%# <p><a href="/" class="govuk-link">Back to the homepage</a></p> %>
-                <p><a href="/" class="app-button">Back to the homepage</a></p>
+         <h1 class="govuk-heading-l">Sorry, we don't have any services that match your criteria.</h1>
+         <%# <p><a href="/" class="govuk-link">Back to the homepage</a></p> %>
+         <p><a href="/" class="app-button">Back to the homepage</a></p>
       </div>
-    </div>
-<% else %>
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">Your results</h1>
-      <p class="govuk-body-l">Based on your answers, we think you might find these services near you helpful. We can email this list to you for future reference. We don't view or store your details.</p>
-      <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" data-turbolinks="false" href="#email-page">Email these results to yourself</a></p>
-      <p class="govuk-body">Showing <%= @services.length %> services for your answers and location</p>
-
-    </div>
-  </div>
-
-  <% @services.each do |s| %>   
-
-
-    <div class="gwc-camden-divider"></div>
-
-    <div class="govuk-grid-row">
+   </div>
+   <% else %>
+   <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-
-
-      <h2 class="govuk-heading-l"><%= s.name %></h2>
-      <p class="govuk-body">
-        <%= s.wards %>
-        <% if s.postcode %>
-          (<%= s.distance_to(@postcode.to_s, :mi).round(1) %> miles away)
-        <% end %>
-      </p>
-      <p class="govuk-body"><%= s.summary %></p>
-
-
-
-      <h2 class="govuk-heading-m">How they can help</h2>
-      <ul class="govuk-list gwc-list-icon">
-        <% s.tags.each do |t| %>
-            <% if t.displayed == 1 then %>
-                <li class="gwc-list-icon--check"><%= t.description %></li> 
+         <h1 class="govuk-heading-xl">Your results</h1>
+         <p class="govuk-body-l">Based on your answers, we think you might find these services near you helpful. We can email this list to you for future reference. We don't view or store your details.</p>
+         <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" data-turbolinks="false" href="#email-page">Email these results to yourself</a></p>
+         <p class="govuk-body">Showing <%= @services.length %> services for your answers and location</p>
+      </div>
+   </div>
+   <% @services.each do |s| %>   
+   <div class="gwc-camden-divider"></div>
+   <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+         <h2 class="govuk-heading-l"><%= s.name %></h2>
+         <p class="govuk-body">
+            <%= s.wards %>
+            <% if s.postcode %>
+            (<%= s.distance_to(@postcode.to_s, :mi).round(1) %> miles away)
             <% end %>
-        <% end %>
-      </ul>
-
-
+         </p>
+         <p class="govuk-body"><%= s.summary %></p>
       </div>
-      
       <div class="govuk-grid-column-one-third">
-        <%= link_to "View details", {:action => 'details', :id => s.id }, class: "app-button app-button--start" %>
+         <%= link_to "View details", {:action => 'details', :id => s.id }, class: "app-button app-button--start" %>
       </div>
-    </div>
+   </div>
 
-
-    <% end %>
-
-
-
-  <% end %>
-
-  <div class="gwc-camden-divider"></div>
-
-<div class="govuk-grid-row" id="email-page">
-  <div class="govuk-grid-column-two-thirds">
-
-  <div class="govuk-heading-m">Email your results</div>
-
-  <p class="govuk-body">Send these results in a handy email to yourself or a friend.</p>
-
-  <%= form_tag('services/emailresults') do %>
-
-    <div class="govuk-form-group">
-        <label class="govuk-label visually-hidden" for="email">
-          Email address
-        </label>
-        <%= text_field_tag(:email, "", id: "email", type:'email', placeholder: "Email address", autocomplete: 'email', required: true, class: 'govuk-input govuk-input--width-20') %>
+   <div class="govuk-grid-row">
+      <% if s.tags.where(displayed: true).any? %>
+      <div class="govuk-grid-column-one-third">
+         <h2 class="govuk-heading-m">How they can help</h2>
+         <ul class="govuk-list gwc-list-icon">
+            <% s.tags.where(displayed: true).each do |t| %>
+            <li class="gwc-list-icon--check"><%= t.description %></li>
+            <% end %>
+         </ul>
       </div>
-
-
-      <% @persist.each do |key,value| %>
-        <%= hidden_field_tag(key,value) %>
       <% end %>
-
-      <%= button_tag("Send", type: 'submit', class: 'app-button app-button--start', id: 'btnSend', name: 'send', value: '1') %>
-
-  <% end %>
-
-
-
-
-
-
-  </div>
-</div>
-
+      <% if s.service_tags.where(required: true).any? %>
+      <div class="govuk-grid-column-one-third">
+         <h2 class="govuk-heading-m">Who is it for?</h2>
+         <ul class="govuk-list gwc-list-icon">
+            <% s.service_tags.where(required: true).each do |t| %>
+            <li class="gwc-list-icon--check"><%= t.tag.description %></li>
+            <% end %>
+         </ul>
+      </div>
+      <% end %>
+   </div>
 
 
-
-  <div class="gwc-camden-divider"></div>
-
-
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-
-
-    <h2 class="govuk-heading-m">Is anything missing?</h2>
-    <p class="govuk-body">If there's anything out of date or missing from this service, you can <a href="https://forms.gle/r5ZTh7Nqtib48jZW8" class="govuk-link">request it to be updated</a>.</p>
-
-</div>
-</div>
-
-
+   <% end %>
+   <% end %>
+   <div class="gwc-camden-divider"></div>
+   <div class="govuk-grid-row" id="email-page">
+      <div class="govuk-grid-column-two-thirds">
+         <div class="govuk-heading-m">Email your results</div>
+         <p class="govuk-body">Send these results in a handy email to yourself or a friend.</p>
+         <%= form_tag('services/emailresults') do %>
+         <div class="govuk-form-group">
+            <label class="govuk-label visually-hidden" for="email">
+            Email address
+            </label>
+            <%= text_field_tag(:email, "", id: "email", type:'email', placeholder: "Email address", autocomplete: 'email', required: true, class: 'govuk-input govuk-input--width-20') %>
+         </div>
+         <% @persist.each do |key,value| %>
+         <%= hidden_field_tag(key,value) %>
+         <% end %>
+         <%= button_tag("Send", type: 'submit', class: 'app-button app-button--start', id: 'btnSend', name: 'send', value: '1') %>
+         <% end %>
+      </div>
+   </div>
+   <div class="gwc-camden-divider"></div>
+   <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+         <h2 class="govuk-heading-m">Is anything missing?</h2>
+         <p class="govuk-body">If there's anything out of date or missing from this service, you can <a href="https://forms.gle/r5ZTh7Nqtib48jZW8" class="govuk-link">request it to be updated</a>.</p>
+      </div>
+   </div>
 </main>
+
