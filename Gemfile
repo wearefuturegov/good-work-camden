@@ -33,6 +33,7 @@ gem "mail-notify"
 gem "httparty"
 gem "uk_postcode"
 gem "geocoder"
+gem "rack", ">= 2.2.3"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
