@@ -17,60 +17,8 @@
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload', media: 'all' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
 	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600" rel="stylesheet">
-	
-    <script>
-	       var cookieName = 'cookieCamdenconsent';
-	       var cookieValue = 'dismissed';
-
-	       function dismiss() {
-	           const date = new Date();
-	           // Cookie is valid 1 year
-	           date.setTime(date.getTime() + (365 * 24 * 60 * 60 * 1000));
-	           document.cookie = `${cookieName}=${cookieValue};expires=${date.toUTCString()};path=/`;
-	           document.getElementById("divCookie").style.display = "none";
-	       }
-	   
-	       function checkCookie(){
-	           var myCookie = getCookie(cookieName);
-	           if (myCookie == null) {
-	           //Show Cookie Consent
-	               document.getElementById("divCookie").style.display = "block";
-	           }
-	           else 
-	           {
-	               var cookieArr = myCookie.split(";");
-	               var val = cookieArr[0];
-	               if(val != undefined && val == cookieValue){
-	                   if(document.getElementById("divCookie")!= null){
-	                       document.getElementById("divCookie").style.display = "none";
-	                   }
-	               }
-	                   
-	           }
-	       }
-
-	       function getCookie(name) {
-	           var dc = document.cookie;
-	           var prefix = name + "=";
-	           var begin = dc.indexOf("; " + prefix);
-	           if (begin == -1) {
-	               begin = dc.indexOf(prefix);
-	               if (begin != 0) return null;
-	           }
-	           else
-	           {
-	               begin += 2;
-	               var end = document.cookie.indexOf(";", begin);
-	               if (end == -1) {
-	               end = dc.length;
-	               }
-	           }
-	   
-	           return decodeURI(dc.substring(begin + prefix.length, end));
-	       } 
-	</script>
 </head>
-<body class="govuk-template__body gwc-body-class" onload="checkCookie()">
+<body class="govuk-template__body gwc-body-class">
 	
 	<script>
 	    document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
@@ -187,13 +135,6 @@
     </div>
   </div>
 </footer>
-
-
-
-<div class="gwc-cookie-banner js-cookie-banner start-hidden" id="divCookie">
-		<p>We use cookies to collect information about how you use Good Work Camden. We use this information to make the website work as well as possible and improve our services. <a class="govuk-footer__link" href="/pages/privacy">Learn more about how we use cookies</a></p>
-		<button class="app-button js-cookie-dismiss" onclick="dismiss()">Accept all cookies</button>
-	</div>
 
 
 	<%= render "shared/analytics" %>
