@@ -32,12 +32,7 @@ A Camden resident has requested to speak to an advisor. Review their details bel
 #Type of support they need:
 
 <% @user[:sprt].each do |support_type| %>
-  <% if support_type == 'othersprt' %>
-    * Other  
-  <% else %>
-    * <%= @questions["type_of_support"]["answers"].select{|answer| support_type == answer["value"] }.first["title"]   %>
-  <% end %>
-
+  * <%= @questions["type_of_support"]["answers"].select{|answer| support_type == answer["value"] }.first["title"] %>
 <% end %>
 
 <%= "* Not provided" if @user[:sprt].empty? %>
