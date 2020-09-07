@@ -35,7 +35,7 @@ A Camden resident has requested to speak to an advisor. Review their details bel
   <% if support_type == 'othersprt' %>
     * Other
   <% else %>
-    * <%= @questions["type_of_support"]["answers"].select{|answer| support_type == answer["value"] }.first["title"] unless support_type == 'othersprt' %>
+    * <%= @questions["type_of_support"]["answers"].select{|answer| support_type == answer["value"] }.first["title"] %>
   <% end %>
 
 <% end %>
