@@ -34,7 +34,7 @@
         color: darken($bay-of-many, 40);
     }
 
-    &--start{
+    &--start {
         background-color: $bay-of-many;
         color: var( --main-bg-white-color);
 
@@ -69,5 +69,34 @@
     &--small {
 
         padding: 5px 22px;
+    }
+
+    &--primary {
+        background-color: $bay-of-many;
+        color: var( --main-bg-white-color);
+
+        &:hover{
+            color: white;
+            background-color: lighten($bay-of-many, 10);
+            border-color: lighten($bay-of-many, 10);
+        }
+        &:active{
+            color: white;
+            background-color: darken($bay-of-many, 40);
+            border-color: darken($bay-of-many, 40);
+        }
+    }
+
+    @include govuk-media-query ($until: tablet) {
+
+        margin: 10px 0;
+
+
+
+    &--block {
+        width: 100%;
+    }
+
+
     }
 }
