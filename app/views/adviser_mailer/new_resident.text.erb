@@ -33,9 +33,9 @@ A Camden resident has requested to speak to an advisor. Review their details bel
 
 <% @user[:sprt].each do |support_type| %>
   <% if support_type == 'othersprt' %>
-    * Other
+    * Other  
   <% else %>
-    * <%= @questions["type_of_support"]["answers"].select{|answer| support_type == answer["value"] }.first["title"] %>
+    * <%= @questions["type_of_support"]["answers"].select{|answer| support_type == answer["value"] }.first["title"]   %>
   <% end %>
 
 <% end %>
