@@ -1,14 +1,22 @@
 .gwc-cookie-banner {
+    box-sizing: border-box;
     background-color: $govuk-canvas-background-colour;
     padding: 20px;
 
     border-top: solid 2px $bg-dark-blue;
     text-align: center;
+    width: 100%;
 
     @include govuk-font($size: 19);
     @include govuk-text-colour;
 
     display: block;
 
-    margin-bottom: govuk-spacing(1);
+
+
+    // &--fixed {
+        position: fixed;
+        bottom: 0;
+        z-index: 1;
+    // }
 }

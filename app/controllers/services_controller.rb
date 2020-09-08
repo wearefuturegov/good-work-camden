@@ -29,9 +29,7 @@ class ServicesController < ApplicationController
       end
     end
 
-
-
-    @persist = params.except('step')
+    @persist = params.except('step', 'controller', 'action', 'utf8')
 
     #Check question pre-requistes have been met
     case @step

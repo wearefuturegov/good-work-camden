@@ -1,6 +1,6 @@
 Dear Employment Advisor,
 
-A Camden resident has requested to speak to an adviser. Review their details below and follow up with them to arrange an appointment.
+A Camden resident has requested to speak to an advisor. Review their details below and follow up with them to arrange an appointment.
 
 ---
 
@@ -32,7 +32,8 @@ A Camden resident has requested to speak to an adviser. Review their details bel
 #Type of support they need:
 
 <% @user[:sprt].each do |support_type| %>
-  * <%= @questions["type_of_support"]["answers"].select{|answer| support_type == answer["value"] }.first["title"] %>
+  <%= "* #{@questions["type_of_support"]["answers"].select{|answer| support_type == answer["value"] }.first["title"]}" unless support_type == 'othersprt' %>
+  <%= "* Other" if support_type == 'othersprt' %>
 <% end %>
 
 <%= "* Not provided" if @user[:sprt].empty? %>
