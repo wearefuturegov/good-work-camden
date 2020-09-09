@@ -45,3 +45,7 @@ type_of_support:
         - tag: mental-health
         - tag: disability-and-long-term-physical-conditions
         - tag: health-and-wellbeing
+    - title: I am homeless, at the risk of being made homeless or need housing support
+      value: homeless-and-housing-support
+      tags:
+        - tag: homeless-and-housing-support
