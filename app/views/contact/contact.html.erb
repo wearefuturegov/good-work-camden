@@ -22,6 +22,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl">Contact</h1>
+      <p class="govuk-body">You can use this form to contact us with questions, recommendations or any technical problems using the website. If you need to find employment support, please go <a href="/">back to the homepage and use the service instead.</a></p>
 
         <%= form_tag('/contact/thankyou',{:method => "get", :enforce_utf8 => false}) do %>
                 <div class="govuk-form-group">
@@ -84,7 +85,7 @@
         N1C 4AG
         </p>
 
-        <p class="govuk-body"><span class="govuk-!-font-weight-bold">Email:</span> <a class="govuk-link" href="mailto:gwc@camden.gov.uk">gwc@camden.gov.uk</a>
+        <p class="govuk-body"><span class="govuk-!-font-weight-bold">Email:</span> <a class="govuk-link" href="mailto:<%= ENV['CAMDEN_CONTACT_EMAIL'] %>"><%= ENV['CAMDEN_CONTACT_EMAIL'] %></a>
         <br />
         <span class="govuk-!-font-weight-bold">Phone:</span> 020 7974 4444</p>
     </div>
