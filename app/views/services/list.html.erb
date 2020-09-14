@@ -30,7 +30,7 @@
          <p class="govuk-body">
             <%= s.wards %>
             <% if s.postcode %>
-            (<%= s.distance_to(@postcode.to_s, :mi).round(1) %> miles away)
+            (<%= s.distance_to(@coordinates, :mi).round(1) %> miles away)
             <% end %>
          </p>
          <p class="govuk-body"><%= s.summary %></p>
