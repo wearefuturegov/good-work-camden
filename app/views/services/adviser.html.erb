@@ -20,9 +20,11 @@ element.addEventListener('submit', event => {
   var nameErrors = {errorId: "name", errorText: "Please enter your full name"};
   var emailEntered = hasValue('email');
   var emailErrors = {errorId: "email", errorText: "Please enter a valid email address"};
+  var phoneEntered = hasValue('phone');
+  var phoneErrors = {errorId: "phone", errorText: "Please enter a phone number"};
 
 
-  if(nameEntered.length > 0 && emailEntered.length > 0){  
+  if(nameEntered.length > 0 && emailEntered.length > 0 && phoneEntered.length > 0){  
     valid = true;
   } 
     
@@ -34,6 +36,11 @@ element.addEventListener('submit', event => {
   if(emailEntered.length === 0) {
     setErroredState('email');
     errors.push(emailErrors);
+  }
+
+  if(phoneEntered.length === 0) {
+    setErroredState('phone');
+    errors.push(phoneErrors);
   }
 
   if(errors.length > 0) {
@@ -107,8 +114,13 @@ element.addEventListener('submit', event => {
             <div class="govuk-form-group" id="form-phone">
 
                 <label class="govuk-label" for="phone">
-                    Phone or mobile number (optional)
+                    Phone or mobile number
                 </label>
+
+
+                <span class="govuk-error-message start-hidden">
+                  <span class="govuk-visually-hidden">Phone or Mobile number:</span> Please enter a phone number
+                </span>
 
 
                 <%= text_field_tag(:phone, "", autocomplete: "tel", type:"tel", inputmode:'numeric', pattern:'[0-9]*', class: 'govuk-input govuk-input--width-20') %>
